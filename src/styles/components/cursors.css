@@ -1,0 +1,327 @@
+/* Windows 98 System Cursors */
+
+/* Base cursor utilities */
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-text {
+  cursor: text;
+}
+
+.cursor-wait {
+  cursor: wait;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-crosshair {
+  cursor: crosshair;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
+/* Resize cursors */
+.cursor-resize-n {
+  cursor: n-resize;
+}
+
+.cursor-resize-s {
+  cursor: s-resize;
+}
+
+.cursor-resize-e {
+  cursor: e-resize;
+}
+
+.cursor-resize-w {
+  cursor: w-resize;
+}
+
+.cursor-resize-ne {
+  cursor: ne-resize;
+}
+
+.cursor-resize-nw {
+  cursor: nw-resize;
+}
+
+.cursor-resize-se {
+  cursor: se-resize;
+}
+
+.cursor-resize-sw {
+  cursor: sw-resize;
+}
+
+.cursor-resize-ew {
+  cursor: ew-resize;
+}
+
+.cursor-resize-ns {
+  cursor: ns-resize;
+}
+
+.cursor-resize-nesw {
+  cursor: nesw-resize;
+}
+
+.cursor-resize-nwse {
+  cursor: nwse-resize;
+}
+
+/* Windows 98 specific cursor styles using CSS custom cursors */
+
+/* Windows 98 style arrow cursor */
+.cursor-win98-default {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' stroke='%23000000' stroke-width='1' d='M1 1l5 12 3-3 5 1z'/%3E%3C/svg%3E") 1 1, auto;
+}
+
+/* Windows 98 style hand pointer */
+.cursor-win98-pointer {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' stroke='%23000000' stroke-width='1' d='M6 2h2v6h1v-3h2v3h1v-2h2v2h1v5c0 1-1 2-2 2H7c-1 0-2-1-2-2V8h1V2z'/%3E%3C/svg%3E") 8 0, pointer;
+}
+
+/* Windows 98 style text cursor */
+.cursor-win98-text {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M7 1h2v2H7V1zm0 12h2v2H7v-2zM8 3h1v10H8V3z'/%3E%3C/svg%3E") 8 8, text;
+}
+
+/* Windows 98 style wait cursor (hourglass) */
+.cursor-win98-wait {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M3 2h10v2H3V2zm0 10h10v2H3v-2zM4 4h8l-2 2v4l2 2H4l2-2V6L4 4z'/%3E%3Cpath fill='%23ffff00' d='M6 6h4v4H6V6z'/%3E%3C/svg%3E") 8 8, wait;
+}
+
+/* Windows 98 style help cursor */
+.cursor-win98-help {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23ffffff' stroke='%23000000' stroke-width='1' d='M1 1l5 12 3-3 5 1z'/%3E%3Cpath fill='%23000000' d='M10 4c0-1-1-2-2-2s-2 1-2 2h1c0 0 0-1 1-1s1 1 1 1v1H8v1h1c0 0 0 1 1 1s1-1 1-1V4zm-2 5h1v1H8V9z'/%3E%3C/svg%3E") 1 1, help;
+}
+
+/* Windows 98 style not-allowed cursor */
+.cursor-win98-not-allowed {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23ffffff' stroke='%23000000' stroke-width='1'/%3E%3Cpath stroke='%23ff0000' stroke-width='2' d='M4 4l8 8M12 4l-8 8'/%3E%3C/svg%3E") 8 8, not-allowed;
+}
+
+/* Windows 98 style crosshair cursor */
+.cursor-win98-crosshair {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M7 0h2v7H7V0zm0 9h2v7H7V9zM0 7h7v2H0V7zm9 0h7v2H9V7z'/%3E%3C/svg%3E") 8 8, crosshair;
+}
+
+/* Windows 98 style move cursor */
+.cursor-win98-move {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M8 1l2 2H6l2-2zm0 14l-2-2h4l-2 2zM1 8l2-2v4L1 8zm14 0l-2 2V6l2 2z'/%3E%3Cpath fill='%23000000' d='M7 7h2v2H7V7z'/%3E%3C/svg%3E") 8 8, move;
+}
+
+/* Resize cursors with Windows 98 styling */
+.cursor-win98-resize-n,
+.cursor-win98-resize-s {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M8 1l2 2H6l2-2zm0 14l-2-2h4l-2 2zM7 4h2v8H7V4z'/%3E%3C/svg%3E") 8 8, ns-resize;
+}
+
+.cursor-win98-resize-e,
+.cursor-win98-resize-w {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M1 8l2-2v4L1 8zm14 0l-2 2V6l2 2zM4 7h8v2H4V7z'/%3E%3C/svg%3E") 8 8, ew-resize;
+}
+
+.cursor-win98-resize-ne,
+.cursor-win98-resize-sw {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M12 1l2 2-8 8-2-2 8-8zm-8 8l-2 2 2 2 2-2-2-2z'/%3E%3C/svg%3E") 8 8, nesw-resize;
+}
+
+.cursor-win98-resize-nw,
+.cursor-win98-resize-se {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M2 1l2 2 8 8-2 2L2 5V1zm12 12l2 2h-4l2-2z'/%3E%3C/svg%3E") 8 8, nwse-resize;
+}
+
+/* Application specific cursors */
+
+/* Window controls cursors */
+.window-control {
+  cursor: pointer;
+}
+
+.window-control:hover {
+  cursor: pointer;
+}
+
+/* Titlebar cursor for dragging */
+.titlebar {
+  cursor: move;
+}
+
+.titlebar:active {
+  cursor: move;
+}
+
+/* Splitter cursors */
+.splitter-horizontal {
+  cursor: row-resize;
+}
+
+.splitter-vertical {
+  cursor: col-resize;
+}
+
+.splitter-horizontal.win98-style {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M1 7h14v2H1V7zM5 4h6v1H5V4zm0 7h6v1H5v-1z'/%3E%3C/svg%3E") 8 8, row-resize;
+}
+
+.splitter-vertical.win98-style {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23000000' d='M7 1h2v14H7V1zM4 5h1v6H4V5zm7 0h1v6h-1V5z'/%3E%3C/svg%3E") 8 8, col-resize;
+}
+
+/* Scrollbar cursors */
+.scrollbar-thumb {
+  cursor: pointer;
+}
+
+.scrollbar-track {
+  cursor: pointer;
+}
+
+.scrollbar-button {
+  cursor: pointer;
+}
+
+/* Button cursors */
+.button {
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* Link cursors */
+.link {
+  cursor: pointer;
+}
+
+/* Form element cursors */
+.input,
+.textarea {
+  cursor: text;
+}
+
+.input:disabled,
+.textarea:disabled {
+  cursor: not-allowed;
+}
+
+.select {
+  cursor: pointer;
+}
+
+.checkbox,
+.radio {
+  cursor: pointer;
+}
+
+.checkbox:disabled,
+.radio:disabled {
+  cursor: not-allowed;
+}
+
+/* Menu cursors */
+.menu-item {
+  cursor: pointer;
+}
+
+.menu-item:disabled {
+  cursor: not-allowed;
+}
+
+/* Tree view cursors */
+.tree-expander {
+  cursor: pointer;
+}
+
+.tree-item {
+  cursor: pointer;
+}
+
+/* Table cursors */
+.table-header {
+  cursor: pointer;
+}
+
+.table-resize-handle {
+  cursor: col-resize;
+}
+
+/* Tab cursors */
+.tab {
+  cursor: pointer;
+}
+
+.tab:disabled {
+  cursor: not-allowed;
+}
+
+/* Loading states */
+.loading {
+  cursor: wait;
+}
+
+.processing {
+  cursor: progress;
+}
+
+/* Drag and drop cursors */
+.draggable {
+  cursor: grab;
+}
+
+.dragging {
+  cursor: grabbing;
+}
+
+.drop-zone {
+  cursor: copy;
+}
+
+.no-drop {
+  cursor: no-drop;
+}
+
+/* Context-aware cursor styles */
+.resize-handle-n { cursor: n-resize; }
+.resize-handle-s { cursor: s-resize; }
+.resize-handle-e { cursor: e-resize; }
+.resize-handle-w { cursor: w-resize; }
+.resize-handle-ne { cursor: ne-resize; }
+.resize-handle-nw { cursor: nw-resize; }
+.resize-handle-se { cursor: se-resize; }
+.resize-handle-sw { cursor: sw-resize; }
+
+/* Fallback for older browsers */
+@supports not (cursor: url("data:image/svg+xml,")) {
+  .cursor-win98-default { cursor: default; }
+  .cursor-win98-pointer { cursor: pointer; }
+  .cursor-win98-text { cursor: text; }
+  .cursor-win98-wait { cursor: wait; }
+  .cursor-win98-help { cursor: help; }
+  .cursor-win98-not-allowed { cursor: not-allowed; }
+  .cursor-win98-crosshair { cursor: crosshair; }
+  .cursor-win98-move { cursor: move; }
+  .cursor-win98-resize-n { cursor: n-resize; }
+  .cursor-win98-resize-s { cursor: s-resize; }
+  .cursor-win98-resize-e { cursor: e-resize; }
+  .cursor-win98-resize-w { cursor: w-resize; }
+  .cursor-win98-resize-ne { cursor: ne-resize; }
+  .cursor-win98-resize-nw { cursor: nw-resize; }
+  .cursor-win98-resize-se { cursor: se-resize; }
+  .cursor-win98-resize-sw { cursor: sw-resize; }
+}

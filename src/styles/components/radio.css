@@ -1,0 +1,380 @@
+/* Windows 98 Radio Button Component */
+
+.win98-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  line-height: var(--win98-line-height-normal);
+  gap: var(--win98-spacing-2);
+  position: relative;
+  vertical-align: top;
+}
+
+/* Hidden native radio */
+.win98-radio__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom radio indicator */
+.win98-radio__indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Radio checked state */
+.win98-radio__input:checked + .win98-radio__indicator::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--win98-window-text);
+  position: absolute;
+}
+
+/* Alternative solid circle for checked state */
+.win98-radio--solid-circle .win98-radio__input:checked + .win98-radio__indicator::after {
+  width: 6px;
+  height: 6px;
+}
+
+/* Focus state */
+.win98-radio__input:focus + .win98-radio__indicator {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-radio__input:focus-visible + .win98-radio__indicator {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+/* Disabled state */
+.win98-radio__input:disabled + .win98-radio__indicator {
+  background-color: var(--win98-disabled-background);
+  border-top: var(--win98-border-width) solid var(--win98-disabled-text);
+  border-left: var(--win98-border-width) solid var(--win98-disabled-text);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  cursor: not-allowed;
+}
+
+.win98-radio__input:disabled + .win98-radio__indicator::after {
+  background-color: var(--win98-disabled-text);
+}
+
+.win98-radio__input:disabled ~ .win98-radio__label {
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Radio label */
+.win98-radio__label {
+  color: var(--win98-window-text);
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+}
+
+/* Radio sizes */
+.win98-radio--small {
+  font-size: var(--win98-font-size-small);
+  gap: var(--win98-spacing-1);
+}
+
+.win98-radio--small .win98-radio__indicator {
+  width: 10px;
+  height: 10px;
+}
+
+.win98-radio--small .win98-radio__input:checked + .win98-radio__indicator::after {
+  width: 3px;
+  height: 3px;
+}
+
+.win98-radio--large {
+  font-size: var(--win98-font-size-large);
+  gap: var(--win98-spacing-3);
+}
+
+.win98-radio--large .win98-radio__indicator {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-radio--large .win98-radio__input:checked + .win98-radio__indicator::after {
+  width: 6px;
+  height: 6px;
+}
+
+/* Radio variants */
+.win98-radio--inline {
+  display: inline-flex;
+  margin-right: var(--win98-spacing-md);
+  margin-bottom: var(--win98-spacing-sm);
+}
+
+.win98-radio--block {
+  display: flex;
+  width: 100%;
+  margin-bottom: var(--win98-spacing-sm);
+}
+
+.win98-radio--reverse {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+/* Radio groups */
+.win98-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win98-spacing-sm);
+}
+
+.win98-radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--win98-spacing-md);
+}
+
+.win98-radio-group--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--win98-spacing-lg);
+}
+
+/* Radio group title */
+.win98-radio-group__title {
+  font-weight: var(--win98-font-weight-bold);
+  margin-bottom: var(--win98-spacing-sm);
+  color: var(--win98-window-text);
+  font-size: var(--win98-font-size-normal);
+}
+
+/* Radio list styling */
+.win98-radio-list {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  padding: var(--win98-spacing-sm);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.win98-radio-list .win98-radio {
+  padding: var(--win98-spacing-1) var(--win98-spacing-sm);
+  margin: 0;
+  border-radius: 0;
+}
+
+.win98-radio-list .win98-radio:hover {
+  background-color: var(--win98-hover-background);
+}
+
+/* Radio validation states */
+.win98-radio--valid .win98-radio__indicator {
+  border-color: var(--win98-success-text);
+}
+
+.win98-radio--invalid .win98-radio__indicator {
+  border-color: var(--win98-error-text);
+}
+
+.win98-radio--warning .win98-radio__indicator {
+  border-color: var(--win98-warning-text);
+}
+
+/* Radio button style (looks like a button when selected) */
+.win98-radio--button {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: var(--win98-spacing-2) var(--win98-spacing-4);
+  margin: 0;
+  gap: var(--win98-spacing-2);
+  border-radius: 0;
+}
+
+.win98-radio--button:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-radio--button .win98-radio__input:checked ~ * {
+  color: var(--win98-selection-text);
+}
+
+.win98-radio--button .win98-radio__input:checked + .win98-radio__indicator {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-radio--button .win98-radio__indicator {
+  display: none;
+}
+
+/* Tab-style radio buttons */
+.win98-radio--tab {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: var(--win98-spacing-2) var(--win98-spacing-4);
+  margin: 0;
+  border-radius: 0;
+  position: relative;
+}
+
+.win98-radio--tab:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-radio--tab .win98-radio__input:checked + .win98-radio__indicator {
+  display: none;
+}
+
+.win98-radio--tab .win98-radio__input:checked ~ .win98-radio__label {
+  font-weight: var(--win98-font-weight-bold);
+}
+
+.win98-radio--tab .win98-radio__input:checked ~ * {
+  background-color: var(--win98-window-background);
+}
+
+.win98-radio--tab .win98-radio__indicator {
+  display: none;
+}
+
+/* Toolbar radio buttons */
+.win98-radio--toolbar {
+  background-color: transparent;
+  border: none;
+  padding: var(--win98-spacing-1);
+  margin: 0;
+  gap: var(--win98-spacing-1);
+}
+
+.win98-radio--toolbar:hover {
+  background-color: var(--win98-hover-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-radio--toolbar .win98-radio__input:checked + .win98-radio__indicator {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-radio--toolbar .win98-radio__indicator {
+  display: none;
+}
+
+/* Radio group with border */
+.win98-radio-group--bordered {
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: var(--win98-spacing-md);
+  background-color: var(--win98-control-face);
+  position: relative;
+}
+
+.win98-radio-group--bordered::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: var(--win98-border-width) solid var(--win98-control-light);
+  pointer-events: none;
+}
+
+.win98-radio-group--bordered .win98-radio-group__title {
+  position: absolute;
+  top: calc(-0.5 * var(--win98-font-size-normal) - var(--win98-spacing-1));
+  left: var(--win98-spacing-sm);
+  background-color: var(--win98-control-face);
+  padding: 0 var(--win98-spacing-1);
+  z-index: 1;
+}
+
+/* Compact radio group */
+.win98-radio-group--compact {
+  gap: var(--win98-spacing-1);
+}
+
+.win98-radio-group--compact .win98-radio {
+  margin-bottom: 0;
+}
+
+/* Accessibility improvements */
+.win98-radio__input:focus:not(:focus-visible) + .win98-radio__indicator {
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .win98-radio__indicator {
+    border-width: 2px;
+  }
+  
+  .win98-radio__input:checked + .win98-radio__indicator::after {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-radio__indicator {
+    background: white !important;
+    border: 1px solid black !important;
+  }
+  
+  .win98-radio__input:checked + .win98-radio__indicator::after {
+    background: black !important;
+  }
+  
+  .win98-radio__label {
+    color: black !important;
+  }
+  
+  .win98-radio--button,
+  .win98-radio--tab,
+  .win98-radio--toolbar {
+    background: white !important;
+    border: 1px solid black !important;
+  }
+}

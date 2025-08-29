@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Windows 98 UI Test</title>
+    <link rel="stylesheet" href="../src/styles/base/index.css">
+    <style>
+        body {
+            padding: 20px;
+            background: #c0c0c0;
+        }
+        .test-section {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Windows 98 UI Kit - Simple Test</h1>
+    
+    <div class="test-section">
+        <h2>Basic Buttons</h2>
+        <button class="win98-button">Standard Button</button>
+        <button class="win98-button win98-button-primary">Primary Button</button>
+        <button class="win98-button" disabled>Disabled Button</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Basic Window</h2>
+        <div class="win98-window" style="width: 300px; height: 200px;">
+            <div class="win98-titlebar">
+                <div class="win98-titlebar-text">Test Window</div>
+                <div class="win98-titlebar-controls">
+                    <button class="win98-titlebar-button win98-minimize-button"></button>
+                    <button class="win98-titlebar-button win98-maximize-button"></button>
+                    <button class="win98-titlebar-button win98-close-button"></button>
+                </div>
+            </div>
+            <div class="win98-window-content" style="padding: 10px;">
+                <p>This is a test window with some content.</p>
+                <button class="win98-button">Test Button</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Form Elements</h2>
+        <label>Text Input:</label><br>
+        <input type="text" class="win98-input" value="Test input" style="margin: 5px 0;"><br>
+        
+        <label>
+            <input type="checkbox" class="win98-checkbox" checked>
+            Test Checkbox
+        </label><br>
+        
+        <select class="win98-select" style="margin: 5px 0;">
+            <option>Option 1</option>
+            <option>Option 2</option>
+        </select>
+    </div>
+</body>
+</html>

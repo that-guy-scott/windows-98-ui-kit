@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 98 UI Kit - Standalone Showcase</title>
+    <style>
+        /* Windows 98 Essential Styles - Inline for standalone demo */
+        :root {
+          --win98-control-face: #c0c0c0;
+          --win98-control-light: #ffffff;
+          --win98-control-light-light: #dfdfdf;
+          --win98-control-dark: #808080;
+          --win98-control-dark-dark: #404040;
+          --win98-window-background: #ffffff;
+          --win98-window-text: #000000;
+          --win98-selection-background: #0a246a;
+          --win98-selection-text: #ffffff;
+          --win98-active-title: #0a246a;
+          --win98-inactive-title: #808080;
+          --win98-title-text: #ffffff;
+          --win98-menu-highlight: #0a246a;
+          --win98-font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+          --win98-font-size-normal: 11px;
+          --win98-spacing-2: 4px;
+          --win98-spacing-4: 8px;
+          --win98-titlebar-height: 18px;
+          --win98-button-height: 23px;
+          --win98-border-width: 1px;
+          --win98-border-width-thick: 2px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--win98-font-family);
+            font-size: var(--win98-font-size-normal);
+            background: #008080;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Window styles */
+        .win98-window {
+            background-color: var(--win98-control-face);
+            border-top: var(--win98-border-width-thick) solid var(--win98-control-light);
+            border-left: var(--win98-border-width-thick) solid var(--win98-control-light);
+            border-right: var(--win98-border-width-thick) solid var(--win98-control-dark);
+            border-bottom: var(--win98-border-width-thick) solid var(--win98-control-dark);
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+            min-height: 100px;
+        }
+
+        .win98-titlebar {
+            background: linear-gradient(90deg, var(--win98-active-title) 0%, #4a90e2 100%);
+            color: var(--win98-title-text);
+            height: var(--win98-titlebar-height);
+            display: flex;
+            align-items: center;
+            padding: 2px 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .win98-titlebar__title {
+            flex: 1;
+            margin-left: 4px;
+        }
+
+        .win98-titlebar__controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .win98-window-control {
+            width: 16px;
+            height: 14px;
+            background: var(--win98-control-face);
+            border-top: 1px solid var(--win98-control-light);
+            border-left: 1px solid var(--win98-control-light);
+            border-right: 1px solid var(--win98-control-dark);
+            border-bottom: 1px solid var(--win98-control-dark);
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .win98-window__content {
+            flex: 1;
+            overflow: auto;
+        }
+
+        /* Button styles */
+        .win98-button {
+            background-color: var(--win98-control-face);
+            border-top: 1px solid var(--win98-control-light);
+            border-left: 1px solid var(--win98-control-light);
+            border-right: 1px solid var(--win98-control-dark);
+            border-bottom: 1px solid var(--win98-control-dark);
+            color: var(--win98-window-text);
+            font-family: var(--win98-font-family);
+            font-size: var(--win98-font-size-normal);
+            padding: 4px 8px;
+            min-height: var(--win98-button-height);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            outline: none;
+        }
+
+        .win98-button:hover {
+            background-color: #b8b8b8;
+        }
+
+        .win98-button:active {
+            background-color: #a0a0a0;
+            border-top: 1px solid var(--win98-control-dark);
+            border-left: 1px solid var(--win98-control-dark);
+            border-right: 1px solid var(--win98-control-light);
+            border-bottom: 1px solid var(--win98-control-light);
+            transform: translate(1px, 1px);
+        }
+
+        /* Input styles */
+        .win98-input, .win98-textarea, .win98-select {
+            background: var(--win98-window-background);
+            border-top: 1px solid var(--win98-control-dark-dark);
+            border-left: 1px solid var(--win98-control-dark-dark);
+            border-right: 1px solid var(--win98-control-light-light);
+            border-bottom: 1px solid var(--win98-control-light-light);
+            font-family: var(--win98-font-family);
+            font-size: var(--win98-font-size-normal);
+            padding: 2px 4px;
+            outline: none;
+        }
+
+        .win98-input:focus, .win98-textarea:focus, .win98-select:focus {
+            outline: 1px dotted var(--win98-window-text);
+            outline-offset: -1px;
+        }
+
+        /* Panel styles */
+        .win98-panel {
+            background: var(--win98-control-face);
+            padding: 8px;
+        }
+
+        .win98-panel--raised {
+            border-top: 1px solid var(--win98-control-light);
+            border-left: 1px solid var(--win98-control-light);
+            border-right: 1px solid var(--win98-control-dark);
+            border-bottom: 1px solid var(--win98-control-dark);
+        }
+
+        .win98-panel--sunken {
+            border-top: 1px solid var(--win98-control-dark);
+            border-left: 1px solid var(--win98-control-dark);
+            border-right: 1px solid var(--win98-control-light);
+            border-bottom: 1px solid var(--win98-control-light);
+        }
+
+        /* Progress bar */
+        .win98-progress {
+            background: var(--win98-window-background);
+            border-top: 1px solid var(--win98-control-dark);
+            border-left: 1px solid var(--win98-control-dark);
+            border-right: 1px solid var(--win98-control-light);
+            border-bottom: 1px solid var(--win98-control-light);
+            height: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .win98-progress__bar {
+            background: var(--win98-selection-background);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        /* Tab styles */
+        .win98-tabs {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .win98-tabs__header {
+            display: flex;
+            border-bottom: 1px solid var(--win98-control-dark);
+        }
+
+        .win98-tab {
+            background: var(--win98-control-face);
+            border-top: 1px solid var(--win98-control-light);
+            border-left: 1px solid var(--win98-control-light);
+            border-right: 1px solid var(--win98-control-dark);
+            border-bottom: none;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-family: var(--win98-font-family);
+            font-size: var(--win98-font-size-normal);
+            margin-right: 2px;
+        }
+
+        .win98-tab--active {
+            background: var(--win98-window-background);
+            border-bottom: 1px solid var(--win98-window-background);
+            margin-bottom: -1px;
+        }
+
+        .win98-tabs__content {
+            background: var(--win98-window-background);
+            border-top: 1px solid var(--win98-control-dark);
+            border-left: 1px solid var(--win98-control-dark);
+            border-right: 1px solid var(--win98-control-light);
+            border-bottom: 1px solid var(--win98-control-light);
+            min-height: 100px;
+        }
+
+        /* Table styles */
+        .win98-table {
+            border-collapse: collapse;
+            width: 100%;
+            background: var(--win98-window-background);
+        }
+
+        .win98-table th,
+        .win98-table td {
+            border: 1px solid var(--win98-control-dark);
+            padding: 2px 4px;
+            text-align: left;
+            font-size: var(--win98-font-size-normal);
+        }
+
+        .win98-table th {
+            background: var(--win98-control-face);
+            font-weight: bold;
+        }
+
+        .win98-table__row--selected {
+            background: var(--win98-selection-background);
+            color: var(--win98-selection-text);
+        }
+
+        /* Menu styles */
+        .win98-menubar {
+            background: var(--win98-control-face);
+            display: flex;
+            padding: 2px;
+            border-bottom: 1px solid var(--win98-control-dark);
+        }
+
+        .win98-menu-item {
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: var(--win98-font-size-normal);
+        }
+
+        .win98-menu-item:hover {
+            background: var(--win98-menu-highlight);
+            color: var(--win98-selection-text);
+        }
+
+        /* Demo specific styles */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-section {
+            background: var(--win98-control-face);
+            border: 2px outset var(--win98-control-face);
+            padding: 16px;
+        }
+
+        .demo-title {
+            font-weight: bold;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--win98-control-dark);
+            padding-bottom: 4px;
+        }
+
+        .demo-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin: 8px 0;
+            flex-wrap: wrap;
+        }
+
+        .desktop-simulation {
+            background: #008080;
+            border: 2px inset var(--win98-control-face);
+            height: 400px;
+            position: relative;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .taskbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background: var(--win98-control-face);
+            border-top: 1px solid var(--win98-control-light);
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            gap: 4px;
+        }
+
+        .start-button {
+            padding: 2px 8px;
+            font-weight: bold;
+        }
+
+        .sample-window {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Window -->
+    <div class="win98-window" style="max-width: 600px; margin: 0 auto 20px;">
+        <div class="win98-titlebar">
+            <span>📋</span>
+            <div class="win98-titlebar__title">Windows 98 UI Kit Showcase</div>
+            <div class="win98-titlebar__controls">
+                <button class="win98-window-control">_</button>
+                <button class="win98-window-control">□</button>
+                <button class="win98-window-control">×</button>
+            </div>
+        </div>
+        <div class="win98-window__content" style="padding: 16px;">
+            <p>Welcome to the Windows 98 UI Kit! This showcase demonstrates all the major components available in this comprehensive CSS library for recreating authentic Windows 98 interfaces.</p>
+        </div>
+    </div>
+
+    <div class="showcase-grid">
+        <!-- Buttons Demo -->
+        <div class="demo-section">
+            <div class="demo-title">🖲️ BUTTONS</div>
+            <div class="demo-row">
+                <button class="win98-button">OK</button>
+                <button class="win98-button">Cancel</button>
+                <button class="win98-button">Apply</button>
+                <button class="win98-button" disabled>Disabled</button>
+            </div>
+            <div class="demo-row">
+                <button class="win98-button" style="min-width: 100px;">Large Button</button>
+                <button class="win98-button" style="padding: 2px 6px;">Small</button>
+            </div>
+        </div>
+
+        <!-- Form Controls Demo -->
+        <div class="demo-section">
+            <div class="demo-title">📝 FORM CONTROLS</div>
+            <div class="demo-row">
+                <label>Text:</label>
+                <input type="text" class="win98-input" placeholder="Enter text..." style="width: 150px;">
+            </div>
+            <div class="demo-row">
+                <label>Select:</label>
+                <select class="win98-select">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+            </div>
+            <div class="demo-row">
+                <textarea class="win98-textarea" placeholder="Multi-line text..." rows="3" style="width: 100%;"></textarea>
+            </div>
+            <div class="demo-row">
+                <label><input type="checkbox"> Checkbox</label>
+                <label><input type="radio" name="r1"> Radio 1</label>
+                <label><input type="radio" name="r1"> Radio 2</label>
+            </div>
+        </div>
+
+        <!-- Window Demo -->
+        <div class="demo-section">
+            <div class="demo-title">🪟 WINDOWS</div>
+            <div class="win98-window" style="height: 150px;">
+                <div class="win98-titlebar">
+                    <span>📄</span>
+                    <div class="win98-titlebar__title">Sample Window</div>
+                    <div class="win98-titlebar__controls">
+                        <button class="win98-window-control">_</button>
+                        <button class="win98-window-control">□</button>
+                        <button class="win98-window-control">×</button>
+                    </div>
+                </div>
+                <div class="win98-window__content">
+                    <div class="win98-menubar">
+                        <div class="win98-menu-item">File</div>
+                        <div class="win98-menu-item">Edit</div>
+                        <div class="win98-menu-item">View</div>
+                        <div class="win98-menu-item">Help</div>
+                    </div>
+                    <div style="padding: 8px; background: white; flex: 1;">
+                        <p>Window content area with menu bar above.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Demo -->
+        <div class="demo-section">
+            <div class="demo-title">📑 TABS</div>
+            <div class="win98-tabs">
+                <div class="win98-tabs__header">
+                    <button class="win98-tab win98-tab--active">General</button>
+                    <button class="win98-tab">Security</button>
+                    <button class="win98-tab">Advanced</button>
+                </div>
+                <div class="win98-tabs__content" style="padding: 12px;">
+                    <p>Tab content goes here. Click the tabs above to switch between different panels.</p>
+                    <label style="display: block; margin: 8px 0;"><input type="checkbox"> Enable feature</label>
+                    <label style="display: block; margin: 8px 0;"><input type="checkbox" checked> Auto-save</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panels Demo -->
+        <div class="demo-section">
+            <div class="demo-title">📦 PANELS</div>
+            <div class="win98-panel win98-panel--raised" style="margin-bottom: 8px;">
+                <strong>Raised Panel</strong><br>
+                This panel has a raised 3D appearance typical of Windows 98.
+            </div>
+            <div class="win98-panel win98-panel--sunken">
+                <strong>Sunken Panel</strong><br>
+                This panel appears recessed into the surface.
+            </div>
+        </div>
+
+        <!-- Progress Demo -->
+        <div class="demo-section">
+            <div class="demo-title">📈 PROGRESS</div>
+            <div class="demo-row">
+                <label>Progress:</label>
+                <div class="win98-progress" style="width: 200px;">
+                    <div class="win98-progress__bar" style="width: 75%;"></div>
+                </div>
+                <span>75%</span>
+            </div>
+            <div class="demo-row">
+                <label>Loading:</label>
+                <div class="win98-progress" style="width: 200px;">
+                    <div class="win98-progress__bar" style="width: 40%;"></div>
+                </div>
+                <span>40%</span>
+            </div>
+        </div>
+
+        <!-- Table Demo -->
+        <div class="demo-section">
+            <div class="demo-title">📋 TABLES</div>
+            <table class="win98-table">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Size</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>document.txt</td>
+                        <td>1.2 KB</td>
+                        <td>12/03/98</td>
+                    </tr>
+                    <tr class="win98-table__row--selected">
+                        <td>image.bmp</td>
+                        <td>256 KB</td>
+                        <td>12/01/98</td>
+                    </tr>
+                    <tr>
+                        <td>readme.txt</td>
+                        <td>2.1 KB</td>
+                        <td>11/28/98</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Menu Demo -->
+        <div class="demo-section">
+            <div class="demo-title">🍽️ MENUS</div>
+            <div class="win98-menubar">
+                <div class="win98-menu-item">File</div>
+                <div class="win98-menu-item">Edit</div>
+                <div class="win98-menu-item">View</div>
+                <div class="win98-menu-item">Tools</div>
+                <div class="win98-menu-item">Help</div>
+            </div>
+            <div style="margin-top: 8px; padding: 8px; background: var(--win98-window-background); border: 1px inset;">
+                Hover over the menu items above to see the Windows 98 hover effect.
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Simulation -->
+    <div class="desktop-simulation">
+        <div class="sample-window">
+            <div class="win98-window">
+                <div class="win98-titlebar">
+                    <span>🖼️</span>
+                    <div class="win98-titlebar__title">My Computer</div>
+                    <div class="win98-titlebar__controls">
+                        <button class="win98-window-control">_</button>
+                        <button class="win98-window-control">□</button>
+                        <button class="win98-window-control">×</button>
+                    </div>
+                </div>
+                <div class="win98-window__content" style="padding: 8px; background: white;">
+                    <p style="margin-bottom: 8px;"><strong>💾 3½ Floppy (A:)</strong></p>
+                    <p style="margin-bottom: 8px;"><strong>💿 Local Disk (C:)</strong></p>
+                    <p style="margin-bottom: 8px;"><strong>💿 CD-ROM (D:)</strong></p>
+                    <p><strong>🌐 Network</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 30px; right: 30px; width: 250px;">
+            <div class="win98-window">
+                <div class="win98-titlebar">
+                    <span>❓</span>
+                    <div class="win98-titlebar__title">Confirm</div>
+                    <div class="win98-titlebar__controls">
+                        <button class="win98-window-control">×</button>
+                    </div>
+                </div>
+                <div class="win98-window__content" style="padding: 16px; text-align: center;">
+                    <p style="margin-bottom: 12px;">Delete selected files?</p>
+                    <div style="display: flex; gap: 8px; justify-content: center;">
+                        <button class="win98-button">Yes</button>
+                        <button class="win98-button">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="taskbar">
+            <button class="win98-button start-button">🪟 Start</button>
+            <div style="flex: 1;"></div>
+            <div style="padding: 4px 8px; font-size: 10px; background: var(--win98-control-face); border: 1px inset;">
+                🔊 12:34 PM
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 4px;">
+        <p><strong>✨ Windows 98 UI Kit Complete Showcase ✨</strong></p>
+        <p style="font-size: 10px; margin-top: 4px;">Authentic Windows 98 styling with 32+ components • Perfect for retro projects</p>
+    </div>
+
+    <script>
+        // Add basic interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            document.querySelectorAll('.win98-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    this.parentNode.querySelectorAll('.win98-tab').forEach(t => t.classList.remove('win98-tab--active'));
+                    this.classList.add('win98-tab--active');
+                });
+            });
+            
+            // Table row selection
+            document.querySelectorAll('.win98-table tbody tr').forEach(row => {
+                row.addEventListener('click', function() {
+                    this.parentNode.querySelectorAll('tr').forEach(r => r.classList.remove('win98-table__row--selected'));
+                    this.classList.add('win98-table__row--selected');
+                });
+            });
+            
+            // Progress bar animation
+            setInterval(() => {
+                document.querySelectorAll('.win98-progress__bar').forEach(bar => {
+                    if (!bar.style.width.includes('%')) return;
+                    let width = parseInt(bar.style.width);
+                    width = width >= 100 ? 10 : width + 2;
+                    bar.style.width = width + '%';
+                });
+            }, 200);
+        });
+    </script>
+</body>
+</html>

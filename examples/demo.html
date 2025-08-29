@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 98 UI Kit - Demo</title>
+    <link rel="stylesheet" href="../src/styles/base/index.css">
+    <link rel="stylesheet" href="demo.css">
+</head>
+<body class="win98-desktop">
+    <!-- Desktop Background -->
+    <div class="win98-desktop-background">
+        <!-- Desktop Icons -->
+        <div class="win98-desktop-icon" style="top: 20px; left: 20px;">
+            <div class="win98-icon win98-icon-large win98-icon-computer"></div>
+            <div class="win98-icon-label">My Computer</div>
+        </div>
+        
+        <div class="win98-desktop-icon" style="top: 100px; left: 20px;">
+            <div class="win98-icon win98-icon-large win98-icon-recycle-bin"></div>
+            <div class="win98-icon-label">Recycle Bin</div>
+        </div>
+        
+        <div class="win98-desktop-icon" style="top: 180px; left: 20px;">
+            <div class="win98-icon win98-icon-large win98-icon-network"></div>
+            <div class="win98-icon-label">Network Neighborhood</div>
+        </div>
+        
+        <div class="win98-desktop-icon" style="top: 260px; left: 20px;">
+            <div class="win98-icon win98-icon-large win98-icon-internet-explorer"></div>
+            <div class="win98-icon-label">Internet Explorer</div>
+        </div>
+    </div>
+
+    <!-- Main Demo Window -->
+    <div class="win98-window demo-window" style="width: 800px; height: 600px; left: 100px; top: 50px;">
+        <div class="win98-titlebar">
+            <div class="win98-titlebar-text">Windows 98 UI Kit - Component Demo</div>
+            <div class="win98-titlebar-controls">
+                <button class="win98-titlebar-button win98-minimize-button"></button>
+                <button class="win98-titlebar-button win98-maximize-button"></button>
+                <button class="win98-titlebar-button win98-close-button"></button>
+            </div>
+        </div>
+        
+        <div class="win98-menubar">
+            <div class="win98-menu-item">File</div>
+            <div class="win98-menu-item">Edit</div>
+            <div class="win98-menu-item">View</div>
+            <div class="win98-menu-item">Components</div>
+            <div class="win98-menu-item">Help</div>
+        </div>
+        
+        <div class="win98-toolbar">
+            <button class="win98-toolbar-button">
+                <div class="win98-icon win98-icon-small win98-icon-document"></div>
+                New
+            </button>
+            <button class="win98-toolbar-button">
+                <div class="win98-icon win98-icon-small win98-icon-folder"></div>
+                Open
+            </button>
+            <button class="win98-toolbar-button">
+                <div class="win98-icon win98-icon-small win98-icon-hard-disk"></div>
+                Save
+            </button>
+            <div class="win98-toolbar-separator"></div>
+            <button class="win98-toolbar-button">
+                <div class="win98-icon win98-icon-small win98-icon-printer"></div>
+                Print
+            </button>
+            <button class="win98-toolbar-button">
+                <div class="win98-icon win98-icon-small win98-icon-search"></div>
+                Find
+            </button>
+        </div>
+        
+        <div class="win98-window-content">
+            <!-- Tab Control for Component Categories -->
+            <div class="win98-tabs">
+                <div class="win98-tab-headers">
+                    <div class="win98-tab win98-tab-active" data-tab="buttons">Buttons</div>
+                    <div class="win98-tab" data-tab="forms">Forms</div>
+                    <div class="win98-tab" data-tab="dialogs">Dialogs</div>
+                    <div class="win98-tab" data-tab="data">Data</div>
+                    <div class="win98-tab" data-tab="layout">Layout</div>
+                </div>
+                
+                <!-- Buttons Tab -->
+                <div class="win98-tab-content win98-tab-content-active" id="buttons-tab">
+                    <div class="demo-section">
+                        <h3>Standard Buttons</h3>
+                        <div class="demo-group">
+                            <button class="win98-button">Default Button</button>
+                            <button class="win98-button win98-button-primary">Primary Button</button>
+                            <button class="win98-button" disabled>Disabled Button</button>
+                        </div>
+                        
+                        <h3>Button Sizes</h3>
+                        <div class="demo-group">
+                            <button class="win98-button win98-button-small">Small</button>
+                            <button class="win98-button">Normal</button>
+                            <button class="win98-button win98-button-large">Large</button>
+                        </div>
+                        
+                        <h3>Special Buttons</h3>
+                        <div class="demo-group">
+                            <button class="win98-button win98-button-ok">OK</button>
+                            <button class="win98-button win98-button-cancel">Cancel</button>
+                            <button class="win98-button">
+                                <div class="win98-icon win98-icon-small win98-icon-gears"></div>
+                                Settings
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Forms Tab -->
+                <div class="win98-tab-content" id="forms-tab">
+                    <div class="demo-section">
+                        <h3>Text Inputs</h3>
+                        <div class="win98-form-layout">
+                            <div class="win98-form-group">
+                                <label>Name:</label>
+                                <input type="text" class="win98-input" placeholder="Enter your name">
+                            </div>
+                            <div class="win98-form-group">
+                                <label>Email:</label>
+                                <input type="email" class="win98-input" value="user@example.com">
+                            </div>
+                            <div class="win98-form-group">
+                                <label>Description:</label>
+                                <textarea class="win98-textarea" rows="3" placeholder="Enter description..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <h3>Selection Controls</h3>
+                        <div class="win98-form-layout">
+                            <div class="win98-form-group">
+                                <label>Country:</label>
+                                <select class="win98-select">
+                                    <option>United States</option>
+                                    <option>Canada</option>
+                                    <option>United Kingdom</option>
+                                    <option>Germany</option>
+                                </select>
+                            </div>
+                            
+                            <div class="win98-form-group">
+                                <label>Options:</label>
+                                <div class="win98-checkbox-group">
+                                    <label class="win98-checkbox-label">
+                                        <input type="checkbox" class="win98-checkbox" checked>
+                                        Option 1
+                                    </label>
+                                    <label class="win98-checkbox-label">
+                                        <input type="checkbox" class="win98-checkbox">
+                                        Option 2
+                                    </label>
+                                    <label class="win98-checkbox-label">
+                                        <input type="checkbox" class="win98-checkbox" disabled>
+                                        Disabled Option
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="win98-form-group">
+                                <label>Choose one:</label>
+                                <div class="win98-radio-group">
+                                    <label class="win98-radio-label">
+                                        <input type="radio" name="choice" class="win98-radio" checked>
+                                        Choice A
+                                    </label>
+                                    <label class="win98-radio-label">
+                                        <input type="radio" name="choice" class="win98-radio">
+                                        Choice B
+                                    </label>
+                                    <label class="win98-radio-label">
+                                        <input type="radio" name="choice" class="win98-radio">
+                                        Choice C
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dialogs Tab -->
+                <div class="win98-tab-content" id="dialogs-tab">
+                    <div class="demo-section">
+                        <h3>Dialog Examples</h3>
+                        <div class="demo-group">
+                            <button class="win98-button" onclick="showDialog('info-dialog')">Information Dialog</button>
+                            <button class="win98-button" onclick="showDialog('warning-dialog')">Warning Dialog</button>
+                            <button class="win98-button" onclick="showDialog('error-dialog')">Error Dialog</button>
+                        </div>
+                        
+                        <h3>Progress Indicators</h3>
+                        <div class="demo-group">
+                            <div class="win98-progress-container">
+                                <label>File Progress:</label>
+                                <div class="win98-progress">
+                                    <div class="win98-progress-bar" style="width: 65%"></div>
+                                </div>
+                                <span class="win98-progress-text">65% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Tab -->
+                <div class="win98-tab-content" id="data-tab">
+                    <div class="demo-section">
+                        <h3>List View</h3>
+                        <div class="win98-listview">
+                            <div class="win98-listview-header">
+                                <div class="win98-listview-column">Name</div>
+                                <div class="win98-listview-column">Size</div>
+                                <div class="win98-listview-column">Type</div>
+                                <div class="win98-listview-column">Modified</div>
+                            </div>
+                            <div class="win98-listview-item win98-listview-item-selected">
+                                <div class="win98-listview-cell">
+                                    <div class="win98-icon win98-icon-small win98-icon-notepad-file"></div>
+                                    document.txt
+                                </div>
+                                <div class="win98-listview-cell">1.2 KB</div>
+                                <div class="win98-listview-cell">Text Document</div>
+                                <div class="win98-listview-cell">12/15/1998</div>
+                            </div>
+                            <div class="win98-listview-item">
+                                <div class="win98-listview-cell">
+                                    <div class="win98-icon win98-icon-small win98-icon-folder"></div>
+                                    My Folder
+                                </div>
+                                <div class="win98-listview-cell">--</div>
+                                <div class="win98-listview-cell">File Folder</div>
+                                <div class="win98-listview-cell">12/10/1998</div>
+                            </div>
+                            <div class="win98-listview-item">
+                                <div class="win98-listview-cell">
+                                    <div class="win98-icon win98-icon-small win98-icon-paint"></div>
+                                    mspaint.exe
+                                </div>
+                                <div class="win98-listview-cell">306 KB</div>
+                                <div class="win98-listview-cell">Application</div>
+                                <div class="win98-listview-cell">11/15/1998</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Tree View</h3>
+                        <div class="win98-treeview">
+                            <div class="win98-tree-item win98-tree-item-expanded">
+                                <div class="win98-tree-expander">-</div>
+                                <div class="win98-icon win98-icon-small win98-icon-computer"></div>
+                                My Computer
+                            </div>
+                            <div class="win98-tree-item win98-tree-child">
+                                <div class="win98-tree-expander">+</div>
+                                <div class="win98-icon win98-icon-small win98-icon-hard-disk"></div>
+                                (C:) Local Disk
+                            </div>
+                            <div class="win98-tree-item win98-tree-child">
+                                <div class="win98-tree-expander">+</div>
+                                <div class="win98-icon win98-icon-small win98-icon-floppy-drive"></div>
+                                (A:) Floppy
+                            </div>
+                            <div class="win98-tree-item win98-tree-child">
+                                <div class="win98-tree-expander">+</div>
+                                <div class="win98-icon win98-icon-small win98-icon-cd-drive"></div>
+                                (D:) CD-ROM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Layout Tab -->
+                <div class="win98-tab-content" id="layout-tab">
+                    <div class="demo-section">
+                        <h3>Panels</h3>
+                        <div class="demo-group">
+                            <div class="win98-panel win98-panel-raised">
+                                <h4>Raised Panel</h4>
+                                <p>This is a raised panel with content inside.</p>
+                            </div>
+                            
+                            <div class="win98-panel win98-panel-sunken">
+                                <h4>Sunken Panel</h4>
+                                <p>This is a sunken panel commonly used for content areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="win98-statusbar">
+            <div class="win98-statusbar-section">Ready</div>
+            <div class="win98-statusbar-section">Components: 50+</div>
+            <div class="win98-statusbar-section">Last Updated: Dec 1998</div>
+            <div class="win98-statusbar-resize-grip"></div>
+        </div>
+    </div>
+
+    <!-- Sample Dialogs (Hidden by default) -->
+    <div id="info-dialog" class="win98-dialog" style="display: none;">
+        <div class="win98-titlebar">
+            <div class="win98-titlebar-text">Information</div>
+            <div class="win98-titlebar-controls">
+                <button class="win98-titlebar-button win98-close-button" onclick="hideDialog('info-dialog')"></button>
+            </div>
+        </div>
+        <div class="win98-dialog-content">
+            <div class="win98-dialog-icon">
+                <div class="win98-icon win98-icon-large win98-icon-info"></div>
+            </div>
+            <div class="win98-dialog-text">
+                <p>This is an information dialog. It provides helpful information to the user.</p>
+            </div>
+        </div>
+        <div class="win98-dialog-buttons">
+            <button class="win98-button win98-button-primary" onclick="hideDialog('info-dialog')">OK</button>
+        </div>
+    </div>
+
+    <div id="warning-dialog" class="win98-dialog" style="display: none;">
+        <div class="win98-titlebar">
+            <div class="win98-titlebar-text">Warning</div>
+            <div class="win98-titlebar-controls">
+                <button class="win98-titlebar-button win98-close-button" onclick="hideDialog('warning-dialog')"></button>
+            </div>
+        </div>
+        <div class="win98-dialog-content">
+            <div class="win98-dialog-icon">
+                <div class="win98-icon win98-icon-large win98-icon-warning"></div>
+            </div>
+            <div class="win98-dialog-text">
+                <p>This action may have unexpected consequences. Are you sure you want to continue?</p>
+            </div>
+        </div>
+        <div class="win98-dialog-buttons">
+            <button class="win98-button" onclick="hideDialog('warning-dialog')">Yes</button>
+            <button class="win98-button win98-button-primary" onclick="hideDialog('warning-dialog')">No</button>
+        </div>
+    </div>
+
+    <div id="error-dialog" class="win98-dialog" style="display: none;">
+        <div class="win98-titlebar">
+            <div class="win98-titlebar-text">Error</div>
+            <div class="win98-titlebar-controls">
+                <button class="win98-titlebar-button win98-close-button" onclick="hideDialog('error-dialog')"></button>
+            </div>
+        </div>
+        <div class="win98-dialog-content">
+            <div class="win98-dialog-icon">
+                <div class="win98-icon win98-icon-large win98-icon-error"></div>
+            </div>
+            <div class="win98-dialog-text">
+                <p>An error has occurred. The operation could not be completed.</p>
+                <p><strong>Error Code:</strong> 0x80004005</p>
+            </div>
+        </div>
+        <div class="win98-dialog-buttons">
+            <button class="win98-button win98-button-primary" onclick="hideDialog('error-dialog')">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Demo Interactions -->
+    <script>
+        // Tab switching
+        document.querySelectorAll('.win98-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.win98-tab').forEach(t => t.classList.remove('win98-tab-active'));
+                document.querySelectorAll('.win98-tab-content').forEach(content => content.classList.remove('win98-tab-content-active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('win98-tab-active');
+                document.getElementById(targetTab + '-tab').classList.add('win98-tab-content-active');
+            });
+        });
+
+        // Dialog functions
+        function showDialog(dialogId) {
+            document.getElementById(dialogId).style.display = 'block';
+        }
+
+        function hideDialog(dialogId) {
+            document.getElementById(dialogId).style.display = 'none';
+        }
+
+        // Desktop icon interactions
+        document.querySelectorAll('.win98-desktop-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                // Remove selected class from all icons
+                document.querySelectorAll('.win98-desktop-icon').forEach(i => i.classList.remove('win98-desktop-icon-selected'));
+                // Add selected class to clicked icon
+                icon.classList.add('win98-desktop-icon-selected');
+            });
+        });
+
+        // List view item selection
+        document.querySelectorAll('.win98-listview-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.win98-listview-item').forEach(i => i.classList.remove('win98-listview-item-selected'));
+                item.classList.add('win98-listview-item-selected');
+            });
+        });
+    </script>
+</body>
+</html>

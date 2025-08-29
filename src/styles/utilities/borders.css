@@ -1,0 +1,184 @@
+/* Windows 98 Border and Shadow Utilities */
+
+/* Border Styles */
+.win98-border-raised {
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-border-sunken {
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-border-deep-sunken {
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-border-flat {
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-border-none {
+  border: none;
+}
+
+/* Border Widths */
+.win98-border-1 {
+  border-width: var(--win98-border-width);
+}
+
+.win98-border-2 {
+  border-width: var(--win98-border-width-thick);
+}
+
+/* Focus Styles */
+.win98-focus-outline {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-focus-ring {
+  box-shadow: 0 0 0 var(--win98-border-width) var(--win98-focus-color);
+}
+
+/* Component State Classes */
+.win98-button-raised {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-button-pressed {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-button-hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-button-disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+/* Input Field States */
+.win98-input-field {
+  background-color: var(--win98-window-background);
+  color: var(--win98-window-text);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+}
+
+.win98-input-field:focus {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-focus-color);
+  border-left: var(--win98-border-width) solid var(--win98-focus-color);
+  border-right: var(--win98-border-width) solid var(--win98-focus-color);
+  border-bottom: var(--win98-border-width) solid var(--win98-focus-color);
+}
+
+.win98-input-field:disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+}
+
+/* Panel States */
+.win98-panel-raised {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-panel-sunken {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Window Chrome */
+.win98-window-border {
+  border-top: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-left: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-right: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width-thick) solid var(--win98-control-dark);
+}
+
+.win98-titlebar-active {
+  background: linear-gradient(90deg, var(--win98-active-title) 0%, #4a90e2 100%);
+  color: var(--win98-title-text);
+}
+
+.win98-titlebar-inactive {
+  background-color: var(--win98-inactive-title);
+  color: var(--win98-title-text);
+}
+
+/* Menu States */
+.win98-menu-item {
+  background-color: transparent;
+  color: var(--win98-window-text);
+  padding: var(--win98-spacing-1) var(--win98-spacing-4);
+}
+
+.win98-menu-item:hover {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+}
+
+.win98-menu-item:disabled {
+  color: var(--win98-disabled-text);
+}
+
+/* Selection States */
+.win98-selected {
+  background-color: var(--win98-selection-background);
+  color: var(--win98-selection-text);
+}
+
+.win98-selected-inactive {
+  background-color: var(--win98-inactive-selection);
+  color: var(--win98-window-text);
+}
+
+/* Border Radius (Windows 98 style - typically none) */
+.win98-rounded-none {
+  border-radius: var(--win98-border-radius-none);
+}
+
+/* Shadow Effects (minimal - Windows 98 didn't use many shadows) */
+.win98-shadow-none {
+  box-shadow: none;
+}
+
+.win98-shadow-sm {
+  box-shadow: 1px 1px 0 var(--win98-control-dark);
+}
+
+.win98-shadow-dialog {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}

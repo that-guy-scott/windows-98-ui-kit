@@ -1,0 +1,327 @@
+/* Windows 98 Checkbox Component */
+
+.win98-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  line-height: var(--win98-line-height-normal);
+  gap: var(--win98-spacing-2);
+  position: relative;
+  vertical-align: top;
+}
+
+/* Hidden native checkbox */
+.win98-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom checkbox indicator */
+.win98-checkbox__indicator {
+  width: 13px;
+  height: 13px;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--win98-window-text);
+  box-sizing: border-box;
+}
+
+/* Checkbox checked state */
+.win98-checkbox__input:checked + .win98-checkbox__indicator::after {
+  content: '✓';
+  line-height: 1;
+  position: absolute;
+  color: var(--win98-window-text);
+}
+
+/* Alternative checkmark using CSS shapes */
+.win98-checkbox--css-check .win98-checkbox__input:checked + .win98-checkbox__indicator::after {
+  content: '';
+  width: 3px;
+  height: 6px;
+  border: solid var(--win98-window-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 1px;
+  left: 4px;
+}
+
+/* Indeterminate state */
+.win98-checkbox__input:indeterminate + .win98-checkbox__indicator::after {
+  content: '';
+  width: 7px;
+  height: 2px;
+  background-color: var(--win98-window-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Focus state */
+.win98-checkbox__input:focus + .win98-checkbox__indicator {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-checkbox__input:focus-visible + .win98-checkbox__indicator {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+/* Disabled state */
+.win98-checkbox__input:disabled + .win98-checkbox__indicator {
+  background-color: var(--win98-disabled-background);
+  border-top: var(--win98-border-width) solid var(--win98-disabled-text);
+  border-left: var(--win98-border-width) solid var(--win98-disabled-text);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+}
+
+.win98-checkbox__input:disabled ~ .win98-checkbox__label {
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Checkbox label */
+.win98-checkbox__label {
+  color: var(--win98-window-text);
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+}
+
+/* Checkbox sizes */
+.win98-checkbox--small {
+  font-size: var(--win98-font-size-small);
+  gap: var(--win98-spacing-1);
+}
+
+.win98-checkbox--small .win98-checkbox__indicator {
+  width: 11px;
+  height: 11px;
+  font-size: 8px;
+}
+
+.win98-checkbox--large {
+  font-size: var(--win98-font-size-large);
+  gap: var(--win98-spacing-3);
+}
+
+.win98-checkbox--large .win98-checkbox__indicator {
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+}
+
+/* Checkbox variants */
+.win98-checkbox--inline {
+  display: inline-flex;
+  margin-right: var(--win98-spacing-md);
+  margin-bottom: var(--win98-spacing-sm);
+}
+
+.win98-checkbox--block {
+  display: flex;
+  width: 100%;
+  margin-bottom: var(--win98-spacing-sm);
+}
+
+.win98-checkbox--reverse {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+/* Checkbox groups */
+.win98-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win98-spacing-sm);
+}
+
+.win98-checkbox-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--win98-spacing-md);
+}
+
+.win98-checkbox-group--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--win98-spacing-lg);
+}
+
+/* Checkbox group title */
+.win98-checkbox-group__title {
+  font-weight: var(--win98-font-weight-bold);
+  margin-bottom: var(--win98-spacing-sm);
+  color: var(--win98-window-text);
+  font-size: var(--win98-font-size-normal);
+}
+
+/* Checkbox list styling */
+.win98-checkbox-list {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  padding: var(--win98-spacing-sm);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.win98-checkbox-list .win98-checkbox {
+  padding: var(--win98-spacing-1) var(--win98-spacing-sm);
+  margin: 0;
+  border-radius: 0;
+}
+
+.win98-checkbox-list .win98-checkbox:hover {
+  background-color: var(--win98-hover-background);
+}
+
+/* Checkbox validation states */
+.win98-checkbox--valid .win98-checkbox__indicator {
+  border-color: var(--win98-success-text);
+}
+
+.win98-checkbox--invalid .win98-checkbox__indicator {
+  border-color: var(--win98-error-text);
+}
+
+.win98-checkbox--warning .win98-checkbox__indicator {
+  border-color: var(--win98-warning-text);
+}
+
+/* Checkbox as toggle switch */
+.win98-checkbox--switch {
+  gap: var(--win98-spacing-3);
+}
+
+.win98-checkbox--switch .win98-checkbox__indicator {
+  width: 26px;
+  height: 13px;
+  border-radius: 0;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  position: relative;
+}
+
+.win98-checkbox--switch .win98-checkbox__indicator::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 10px;
+  height: 9px;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  transition: transform var(--win98-transition-fast);
+}
+
+.win98-checkbox--switch .win98-checkbox__input:checked + .win98-checkbox__indicator::before {
+  transform: translateX(11px);
+}
+
+.win98-checkbox--switch .win98-checkbox__input:checked + .win98-checkbox__indicator::after {
+  display: none;
+}
+
+/* Checkbox button style */
+.win98-checkbox--button {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: var(--win98-spacing-2) var(--win98-spacing-4);
+  margin: 0;
+  gap: var(--win98-spacing-2);
+}
+
+.win98-checkbox--button:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-checkbox--button .win98-checkbox__input:checked ~ * {
+  color: var(--win98-selection-text);
+}
+
+.win98-checkbox--button .win98-checkbox__input:checked + .win98-checkbox__indicator {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-checkbox--button .win98-checkbox__indicator {
+  display: none;
+}
+
+/* Accessibility improvements */
+.win98-checkbox__input:focus:not(:focus-visible) + .win98-checkbox__indicator {
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .win98-checkbox__indicator {
+    border-width: 2px;
+  }
+  
+  .win98-checkbox__input:checked + .win98-checkbox__indicator::after {
+    font-weight: 900;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-checkbox--switch .win98-checkbox__indicator::before {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-checkbox__indicator {
+    background: white !important;
+    border: 1px solid black !important;
+  }
+  
+  .win98-checkbox__input:checked + .win98-checkbox__indicator::after {
+    color: black !important;
+  }
+  
+  .win98-checkbox__label {
+    color: black !important;
+  }
+}

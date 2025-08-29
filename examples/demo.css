@@ -1,0 +1,363 @@
+/* Demo Page Specific Styles */
+
+/* Desktop Environment */
+.win98-desktop {
+    margin: 0;
+    padding: 0;
+    font-family: var(--win98-font-family);
+    font-size: var(--win98-font-size-normal);
+    background: var(--win98-desktop-background);
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+.win98-desktop-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--win98-desktop-background);
+}
+
+/* Desktop Icons */
+.win98-desktop-icon {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+    width: 64px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px dotted transparent;
+    color: white;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.win98-desktop-icon:hover,
+.win98-desktop-icon-selected {
+    background-color: var(--win98-selected-background);
+    border-color: #ffffff;
+}
+
+.win98-desktop-icon .win98-icon {
+    filter: drop-shadow(1px 1px 0px #000000);
+}
+
+.win98-desktop-icon .win98-icon-label {
+    font-size: var(--win98-font-size-normal);
+    font-family: var(--win98-font-family);
+    word-wrap: break-word;
+    line-height: 1.2;
+    max-width: 60px;
+}
+
+/* Demo Window Specific Styling */
+.demo-window {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.demo-window .win98-window-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Demo Content Sections */
+.demo-section {
+    padding: var(--win98-spacing-4);
+    overflow-y: auto;
+    flex: 1;
+    background: var(--win98-control-face);
+}
+
+.demo-section h3 {
+    margin: 0 0 var(--win98-spacing-2) 0;
+    font-size: var(--win98-font-size-normal);
+    font-weight: var(--win98-font-weight-bold);
+    color: var(--win98-window-text);
+    border-bottom: 1px solid var(--win98-control-dark);
+    padding-bottom: 2px;
+}
+
+.demo-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--win98-spacing-2);
+    margin-bottom: var(--win98-spacing-4);
+    align-items: center;
+}
+
+/* Form Layout Adjustments for Demo */
+.demo-section .win98-form-layout {
+    max-width: 400px;
+}
+
+.demo-section .win98-form-group {
+    margin-bottom: var(--win98-spacing-3);
+}
+
+.demo-section .win98-form-group label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: var(--win98-font-weight-bold);
+}
+
+/* Checkbox and Radio Groups */
+.win98-checkbox-group,
+.win98-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--win98-spacing-1);
+}
+
+.win98-checkbox-label,
+.win98-radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--win98-spacing-1);
+    font-weight: var(--win98-font-weight-normal) !important;
+    cursor: pointer;
+}
+
+/* Progress Container */
+.win98-progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--win98-spacing-1);
+    margin-bottom: var(--win98-spacing-3);
+    min-width: 200px;
+}
+
+.win98-progress-container label {
+    font-size: var(--win98-font-size-normal);
+    font-weight: var(--win98-font-weight-bold);
+}
+
+.win98-progress-text {
+    font-size: var(--win98-font-size-small);
+    color: var(--win98-window-text);
+}
+
+/* Dialog Positioning */
+.win98-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.win98-dialog-content {
+    display: flex;
+    padding: var(--win98-spacing-4);
+    gap: var(--win98-spacing-3);
+    align-items: flex-start;
+    background: var(--win98-control-face);
+}
+
+.win98-dialog-icon {
+    flex-shrink: 0;
+}
+
+.win98-dialog-text {
+    flex: 1;
+}
+
+.win98-dialog-text p {
+    margin: 0 0 var(--win98-spacing-2) 0;
+    line-height: 1.4;
+}
+
+.win98-dialog-text p:last-child {
+    margin-bottom: 0;
+}
+
+.win98-dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--win98-spacing-2);
+    padding: var(--win98-spacing-2) var(--win98-spacing-4) var(--win98-spacing-4);
+    border-top: 1px solid var(--win98-control-dark);
+    background: var(--win98-control-face);
+}
+
+/* Tab Content Styling */
+.win98-tab-content {
+    display: none;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.win98-tab-content-active {
+    display: block;
+}
+
+/* List View Demo Styling */
+.demo-section .win98-listview {
+    height: 120px;
+    margin-bottom: var(--win98-spacing-4);
+}
+
+/* Tree View Demo Styling */
+.demo-section .win98-treeview {
+    height: 120px;
+    border: var(--win98-border-width) solid var(--win98-control-dark);
+    background: var(--win98-window-background);
+    overflow-y: auto;
+    padding: var(--win98-spacing-1);
+}
+
+.win98-tree-item {
+    display: flex;
+    align-items: center;
+    gap: var(--win98-spacing-1);
+    padding: 1px var(--win98-spacing-1);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.win98-tree-item:hover {
+    background-color: var(--win98-selected-background);
+    color: var(--win98-selected-text);
+}
+
+.win98-tree-child {
+    margin-left: var(--win98-spacing-4);
+}
+
+.win98-tree-expander {
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--win98-font-size-small);
+    font-weight: var(--win98-font-weight-bold);
+    background: var(--win98-control-face);
+    border: var(--win98-border-width) solid var(--win98-control-dark);
+    cursor: pointer;
+    user-select: none;
+}
+
+.win98-tree-expander:hover {
+    background: var(--win98-control-light);
+}
+
+/* Panel Demo Styling */
+.demo-group .win98-panel {
+    min-width: 200px;
+    min-height: 80px;
+    padding: var(--win98-spacing-2);
+    margin-right: var(--win98-spacing-3);
+    margin-bottom: var(--win98-spacing-3);
+}
+
+/* Responsive Demo Adjustments */
+@media (max-width: 1024px) {
+    .demo-window {
+        width: 90% !important;
+        height: 80% !important;
+        left: 5% !important;
+        top: 10% !important;
+    }
+    
+    .win98-desktop-icon {
+        position: relative;
+        display: inline-flex;
+        margin: var(--win98-spacing-2);
+    }
+    
+    .win98-desktop-background {
+        position: static;
+        height: auto;
+        padding: var(--win98-spacing-5);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .demo-section {
+        padding: var(--win98-spacing-2);
+    }
+    
+    .demo-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .demo-group .win98-panel {
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    .win98-form-layout {
+        max-width: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .win98-desktop {
+        background: white;
+        overflow: visible;
+        height: auto;
+    }
+    
+    .win98-desktop-background {
+        display: none;
+    }
+    
+    .demo-window {
+        position: static;
+        width: 100% !important;
+        height: auto !important;
+        transform: none !important;
+    }
+    
+    .win98-dialog {
+        display: none !important;
+    }
+}
+
+/* Focus Management */
+.win98-button:focus,
+.win98-input:focus,
+.win98-textarea:focus,
+.win98-select:focus,
+.win98-tab:focus,
+.win98-tree-expander:focus {
+    outline: 1px dotted var(--win98-window-text);
+    outline-offset: -1px;
+}
+
+/* Animation for Demo Elements */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.win98-tab-content-active {
+    animation: slideIn 0.2s ease-out;
+}
+
+.win98-dialog {
+    animation: slideIn 0.15s ease-out;
+}

@@ -1,0 +1,380 @@
+/* Windows 98 Select/Dropdown Component */
+
+.win98-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+}
+
+/* Native select styling */
+.win98-select__native {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: none;
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  color: var(--win98-window-text);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  line-height: var(--win98-line-height-normal);
+  padding: var(--win98-spacing-1) calc(var(--win98-spacing-2) + 20px) var(--win98-spacing-1) var(--win98-spacing-2);
+  height: var(--win98-button-height);
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Select dropdown arrow */
+.win98-select__arrow {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  width: 17px;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.win98-select__arrow::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--win98-window-text);
+}
+
+/* Select states */
+.win98-select__native:focus {
+  border-top: var(--win98-border-width) solid var(--win98-focus-color);
+  border-left: var(--win98-border-width) solid var(--win98-focus-color);
+  border-bottom: var(--win98-border-width) solid var(--win98-focus-color);
+  outline: none;
+}
+
+.win98-select__native:focus + .win98-select__arrow {
+  border-left: var(--win98-border-width) solid var(--win98-focus-color);
+  border-right: var(--win98-border-width) solid var(--win98-focus-color);
+}
+
+.win98-select__native:disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-select__native:disabled + .win98-select__arrow {
+  background-color: var(--win98-disabled-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-select__native:disabled + .win98-select__arrow::after {
+  border-top-color: var(--win98-disabled-text);
+}
+
+/* Hover state */
+.win98-select:hover .win98-select__arrow {
+  background-color: var(--win98-hover-background);
+}
+
+/* Active/pressed state */
+.win98-select__native:active + .win98-select__arrow,
+.win98-select--open .win98-select__arrow {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Custom dropdown implementation */
+.win98-select--custom {
+  position: relative;
+}
+
+.win98-select__button {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: none;
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  color: var(--win98-window-text);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  line-height: var(--win98-line-height-normal);
+  padding: var(--win98-spacing-1) calc(var(--win98-spacing-2) + 20px) var(--win98-spacing-1) var(--win98-spacing-2);
+  height: var(--win98-button-height);
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.win98-select__button:focus {
+  border-top: var(--win98-border-width) solid var(--win98-focus-color);
+  border-left: var(--win98-border-width) solid var(--win98-focus-color);
+  border-bottom: var(--win98-border-width) solid var(--win98-focus-color);
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+/* Dropdown list */
+.win98-select__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: var(--win98-z-dropdown);
+  display: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.win98-select--open .win98-select__dropdown {
+  display: block;
+}
+
+/* Dropdown options */
+.win98-select__option {
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  background-color: transparent;
+}
+
+.win98-select__option:hover,
+.win98-select__option--highlighted {
+  background-color: var(--win98-selection-background);
+  color: var(--win98-selection-text);
+}
+
+.win98-select__option--selected {
+  background-color: var(--win98-selection-background);
+  color: var(--win98-selection-text);
+  font-weight: var(--win98-font-weight-bold);
+}
+
+.win98-select__option--disabled {
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.win98-select__option--disabled:hover {
+  background-color: transparent;
+  color: var(--win98-disabled-text);
+}
+
+/* Option groups */
+.win98-select__optgroup {
+  font-weight: var(--win98-font-weight-bold);
+  color: var(--win98-window-text);
+  background-color: var(--win98-control-face);
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  cursor: default;
+  user-select: none;
+}
+
+.win98-select__optgroup + .win98-select__option {
+  padding-left: var(--win98-spacing-4);
+}
+
+/* Multi-select */
+.win98-select--multiple .win98-select__dropdown {
+  position: static;
+  display: block;
+  max-height: 120px;
+  box-shadow: none;
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-select--multiple .win98-select__button {
+  display: none;
+}
+
+.win98-select--multiple .win98-select__arrow {
+  display: none;
+}
+
+.win98-select--multiple .win98-select__option--selected {
+  background-color: var(--win98-selection-background);
+  color: var(--win98-selection-text);
+}
+
+/* Select sizes */
+.win98-select--small .win98-select__native,
+.win98-select--small .win98-select__button {
+  height: 19px;
+  font-size: var(--win98-font-size-small);
+  padding: 1px calc(var(--win98-spacing-1) + 16px) 1px var(--win98-spacing-1);
+}
+
+.win98-select--small .win98-select__arrow {
+  width: 15px;
+}
+
+.win98-select--large .win98-select__native,
+.win98-select--large .win98-select__button {
+  height: 27px;
+  font-size: var(--win98-font-size-large);
+  padding: var(--win98-spacing-2) calc(var(--win98-spacing-3) + 20px) var(--win98-spacing-2) var(--win98-spacing-3);
+}
+
+.win98-select--large .win98-select__arrow {
+  width: 20px;
+}
+
+/* Select validation states */
+.win98-select--valid .win98-select__native,
+.win98-select--valid .win98-select__button {
+  border-top: var(--win98-border-width) solid var(--win98-success-text);
+  border-left: var(--win98-border-width) solid var(--win98-success-text);
+  border-bottom: var(--win98-border-width) solid var(--win98-success-text);
+}
+
+.win98-select--valid .win98-select__arrow {
+  border-left: var(--win98-border-width) solid var(--win98-success-text);
+  border-right: var(--win98-border-width) solid var(--win98-success-text);
+}
+
+.win98-select--invalid .win98-select__native,
+.win98-select--invalid .win98-select__button {
+  border-top: var(--win98-border-width) solid var(--win98-error-text);
+  border-left: var(--win98-border-width) solid var(--win98-error-text);
+  border-bottom: var(--win98-border-width) solid var(--win98-error-text);
+}
+
+.win98-select--invalid .win98-select__arrow {
+  border-left: var(--win98-border-width) solid var(--win98-error-text);
+  border-right: var(--win98-border-width) solid var(--win98-error-text);
+}
+
+/* Searchable select */
+.win98-select--searchable .win98-select__search {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  outline: none;
+}
+
+.win98-select--searchable .win98-select__dropdown {
+  border-top: none;
+}
+
+/* Loading state */
+.win98-select--loading .win98-select__arrow::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--win98-window-text);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: win98-select-spin 1s linear infinite;
+}
+
+@keyframes win98-select-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dropdown scrollbar styling */
+.win98-select__dropdown::-webkit-scrollbar {
+  width: var(--win98-scrollbar-width);
+}
+
+.win98-select__dropdown::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-select__dropdown::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-select__dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: var(--win98-control-light-light);
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .win98-select__native,
+  .win98-select__button,
+  .win98-select__dropdown {
+    border-width: 2px;
+  }
+  
+  .win98-select__arrow {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-select--loading .win98-select__arrow::after {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-select__native,
+  .win98-select__button {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+  
+  .win98-select__dropdown {
+    display: none !important;
+  }
+}

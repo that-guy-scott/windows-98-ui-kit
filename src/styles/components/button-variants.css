@@ -1,0 +1,403 @@
+/* Windows 98 Button Variants Component */
+
+/* Primary/Default Action Button */
+.win98-button--primary {
+  font-weight: var(--win98-font-weight-bold);
+  border-width: var(--win98-border-width-thick);
+  border-top: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-left: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-right: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width-thick) solid var(--win98-control-dark);
+}
+
+.win98-button--primary:active,
+.win98-button--primary.win98-button--pressed {
+  border-top: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width-thick) solid var(--win98-control-light);
+}
+
+/* Secondary Button */
+.win98-button--secondary {
+  background-color: var(--win98-control-face);
+  color: var(--win98-window-text);
+}
+
+/* Disabled Button State */
+.win98-button--disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.win98-button--disabled:hover {
+  background-color: var(--win98-disabled-background);
+  transform: none;
+}
+
+/* Button Sizes */
+.win98-button--tiny {
+  min-height: 16px;
+  min-width: 40px;
+  padding: 1px var(--win98-spacing-2);
+  font-size: var(--win98-font-size-tiny);
+}
+
+.win98-button--small {
+  min-height: 19px;
+  min-width: 50px;
+  padding: var(--win98-spacing-1) var(--win98-spacing-3);
+  font-size: var(--win98-font-size-small);
+}
+
+.win98-button--medium {
+  /* Default size - already defined in button.css */
+  min-height: var(--win98-button-height);
+  min-width: 75px;
+  padding: var(--win98-spacing-2) var(--win98-spacing-4);
+  font-size: var(--win98-font-size-normal);
+}
+
+.win98-button--large {
+  min-height: 27px;
+  min-width: 100px;
+  padding: var(--win98-spacing-3) var(--win98-spacing-6);
+  font-size: var(--win98-font-size-large);
+}
+
+.win98-button--extra-large {
+  min-height: 32px;
+  min-width: 120px;
+  padding: var(--win98-spacing-4) var(--win98-spacing-8);
+  font-size: var(--win98-font-size-large);
+  font-weight: var(--win98-font-weight-bold);
+}
+
+/* Button widths */
+.win98-button--narrow {
+  min-width: 50px;
+}
+
+.win98-button--wide {
+  min-width: 120px;
+}
+
+.win98-button--extra-wide {
+  min-width: 160px;
+}
+
+.win98-button--full-width {
+  width: 100%;
+}
+
+/* Icon Buttons */
+.win98-button--icon {
+  min-width: var(--win98-button-height);
+  padding: var(--win98-spacing-2);
+  gap: var(--win98-spacing-2);
+}
+
+.win98-button--icon-only {
+  min-width: var(--win98-button-height);
+  width: var(--win98-button-height);
+  padding: var(--win98-spacing-2);
+  gap: 0;
+}
+
+.win98-button--icon-small {
+  min-width: 19px;
+  width: 19px;
+  height: 19px;
+  padding: var(--win98-spacing-1);
+}
+
+.win98-button--icon-large {
+  min-width: 32px;
+  width: 32px;
+  height: 32px;
+  padding: var(--win98-spacing-2);
+}
+
+/* Icon positioning */
+.win98-button__icon {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  flex-shrink: 0;
+  display: block;
+}
+
+.win98-button__icon--small {
+  width: 12px;
+  height: 12px;
+}
+
+.win98-button__icon--large {
+  width: var(--win98-icon-size-large);
+  height: var(--win98-icon-size-large);
+}
+
+.win98-button__icon--left {
+  order: -1;
+  margin-right: var(--win98-spacing-2);
+}
+
+.win98-button__icon--right {
+  order: 1;
+  margin-left: var(--win98-spacing-2);
+}
+
+.win98-button__icon--top {
+  order: -1;
+  margin-bottom: var(--win98-spacing-1);
+}
+
+.win98-button__icon--bottom {
+  order: 1;
+  margin-top: var(--win98-spacing-1);
+}
+
+/* Vertical icon buttons */
+.win98-button--icon-vertical {
+  flex-direction: column;
+  padding: var(--win98-spacing-2);
+  min-width: auto;
+  width: auto;
+  height: auto;
+  gap: var(--win98-spacing-1);
+}
+
+/* Text-only buttons */
+.win98-button--text-only {
+  background: transparent;
+  border: none;
+  color: var(--win98-window-text);
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  min-height: auto;
+  min-width: auto;
+  text-decoration: underline;
+}
+
+.win98-button--text-only:hover {
+  background-color: var(--win98-hover-background);
+  text-decoration: none;
+}
+
+.win98-button--text-only:active {
+  background-color: var(--win98-pressed-background);
+  transform: none;
+}
+
+/* Flat buttons (no 3D effect) */
+.win98-button--flat {
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+  background-color: var(--win98-control-face);
+}
+
+.win98-button--flat:hover {
+  background-color: var(--win98-hover-background);
+  border-color: var(--win98-control-dark-dark);
+}
+
+.win98-button--flat:active {
+  background-color: var(--win98-pressed-background);
+  border-color: var(--win98-control-dark-dark);
+  transform: none;
+}
+
+/* Outline buttons */
+.win98-button--outline {
+  background-color: transparent;
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+  color: var(--win98-window-text);
+}
+
+.win98-button--outline:hover {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-button--outline:active {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Toggle buttons */
+.win98-button--toggle {
+  position: relative;
+}
+
+.win98-button--toggle.win98-button--active,
+.win98-button--toggle[aria-pressed="true"] {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  transform: translateX(1px) translateY(1px);
+}
+
+/* Split buttons */
+.win98-button--split {
+  position: relative;
+  padding-right: calc(var(--win98-spacing-4) + 16px);
+}
+
+.win98-button--split::after {
+  content: '';
+  position: absolute;
+  right: var(--win98-spacing-2);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+}
+
+.win98-button--split-separator {
+  position: absolute;
+  right: 16px;
+  top: 2px;
+  bottom: 2px;
+  width: 1px;
+  background-color: var(--win98-control-dark);
+}
+
+/* Dropdown buttons */
+.win98-button--dropdown {
+  position: relative;
+  padding-right: calc(var(--win98-spacing-4) + 12px);
+}
+
+.win98-button--dropdown::after {
+  content: '';
+  position: absolute;
+  right: var(--win98-spacing-2);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+}
+
+/* Menu buttons */
+.win98-button--menu {
+  text-align: left;
+  justify-content: flex-start;
+  padding: var(--win98-spacing-1) var(--win98-spacing-4);
+  min-height: 19px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.win98-button--menu:hover {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+}
+
+.win98-button--menu:active {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+  transform: none;
+}
+
+/* Toolbar buttons */
+.win98-button--toolbar {
+  border: none;
+  background-color: transparent;
+  padding: var(--win98-spacing-1);
+  min-width: auto;
+  min-height: auto;
+}
+
+.win98-button--toolbar:hover {
+  background-color: var(--win98-hover-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-button--toolbar:active,
+.win98-button--toolbar.win98-button--pressed {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  transform: none;
+}
+
+/* Button states for variants */
+.win98-button--loading {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.win98-button--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border: 2px solid var(--win98-control-dark);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: win98-button-spin 1s linear infinite;
+}
+
+@keyframes win98-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Button variants for different contexts */
+.win98-button--dialog {
+  min-width: 75px;
+  margin: var(--win98-spacing-1);
+}
+
+.win98-button--wizard {
+  min-width: 100px;
+}
+
+.win98-button--status {
+  font-size: var(--win98-font-size-status);
+  min-height: 16px;
+  padding: 1px var(--win98-spacing-2);
+}
+
+/* Responsive button variants */
+@media (max-width: 480px) {
+  .win98-button--responsive {
+    width: 100%;
+    margin-bottom: var(--win98-spacing-2);
+  }
+  
+  .win98-button--responsive:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* High DPI support */
+@media (min-resolution: 144dpi) {
+  .win98-button__icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

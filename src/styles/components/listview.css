@@ -1,0 +1,328 @@
+/* ===== LIST VIEW COMPONENT ===== */
+
+/* List View Container */
+.win98-listview {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  line-height: var(--win98-line-height);
+  overflow: auto;
+  position: relative;
+}
+
+/* List View Header (for detailed view) */
+.win98-listview__header {
+  background-color: var(--win98-control-face);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.win98-listview__header-column {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  padding: 2px 4px;
+  font-weight: var(--win98-font-weight-normal);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.win98-listview__header-column:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-listview__header-column:active {
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  padding: 3px 3px 1px 5px;
+}
+
+/* Sort indicators */
+.win98-listview__header-column--sortable::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+}
+
+.win98-listview__header-column--sort-asc::after {
+  border-bottom: 4px solid var(--win98-window-text);
+}
+
+.win98-listview__header-column--sort-desc::after {
+  border-top: 4px solid var(--win98-window-text);
+}
+
+/* List View Content */
+.win98-listview__content {
+  padding: 2px;
+}
+
+/* List View Items */
+.win98-listview__item {
+  padding: 1px 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  min-height: 16px;
+}
+
+.win98-listview__item:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-listview__item--selected {
+  background-color: var(--win98-selection-background);
+  color: var(--win98-selection-text);
+}
+
+.win98-listview__item--selected:hover {
+  background-color: var(--win98-selection-background);
+}
+
+.win98-listview__item--focused {
+  border: 1px dotted var(--win98-window-text);
+}
+
+.win98-listview__item--selected.win98-listview__item--focused {
+  border: 1px dotted var(--win98-selection-text);
+}
+
+/* List View Item Content */
+.win98-listview__item-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  flex-shrink: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.win98-listview__item-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.win98-listview__item-details {
+  display: flex;
+  width: 100%;
+}
+
+.win98-listview__item-column {
+  padding: 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-right: 1px solid transparent;
+}
+
+/* List View Modes */
+.win98-listview--large-icons .win98-listview__content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px;
+}
+
+.win98-listview--large-icons .win98-listview__item {
+  flex-direction: column;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+  padding: 4px;
+  justify-content: center;
+}
+
+.win98-listview--large-icons .win98-listview__item-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0;
+  margin-bottom: 2px;
+}
+
+.win98-listview--large-icons .win98-listview__item-text {
+  font-size: 11px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  white-space: normal;
+  max-height: 24px;
+  overflow: hidden;
+}
+
+.win98-listview--small-icons .win98-listview__item-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-listview--list .win98-listview__item {
+  display: flex;
+  align-items: center;
+}
+
+.win98-listview--details .win98-listview__header {
+  display: flex;
+}
+
+.win98-listview--details .win98-listview__item {
+  display: flex;
+  border-bottom: 1px solid transparent;
+}
+
+.win98-listview--details .win98-listview__item:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.win98-listview--details .win98-listview__item--selected:nth-child(even) {
+  background-color: var(--win98-selection-background);
+}
+
+/* Multi-selection */
+.win98-listview--multi-select .win98-listview__item {
+  position: relative;
+}
+
+.win98-listview--multi-select .win98-listview__item::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+
+.win98-listview--multi-select .win98-listview__item--selected::before {
+  border: 1px solid var(--win98-selection-background);
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Disabled state */
+.win98-listview--disabled {
+  background-color: var(--win98-control-face);
+  color: var(--win98-control-dark);
+  cursor: not-allowed;
+}
+
+.win98-listview--disabled .win98-listview__item {
+  cursor: not-allowed;
+  color: var(--win98-control-dark);
+}
+
+.win98-listview--disabled .win98-listview__item:hover {
+  background-color: transparent;
+}
+
+.win98-listview--disabled .win98-listview__header-column {
+  cursor: not-allowed;
+  color: var(--win98-control-dark);
+}
+
+.win98-listview--disabled .win98-listview__header-column:hover {
+  background-color: var(--win98-control-face);
+}
+
+/* Focus management */
+.win98-listview:focus {
+  outline: none;
+}
+
+.win98-listview:focus .win98-listview__item--focused {
+  border: 1px dotted var(--win98-window-text);
+}
+
+/* Scrollbar styling for listview */
+.win98-listview::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-listview::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-listview::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+}
+
+.win98-listview::-webkit-scrollbar-thumb:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-listview::-webkit-scrollbar-corner {
+  background-color: var(--win98-control-face);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .win98-listview--large-icons .win98-listview__item {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .win98-listview--large-icons .win98-listview__item-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .win98-listview__header-column {
+    min-width: 60px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .win98-listview__item--selected {
+    background-color: var(--win98-selection-background);
+    color: var(--win98-selection-text);
+    border: 1px solid var(--win98-window-text);
+  }
+  
+  .win98-listview__item--focused {
+    border: 2px solid var(--win98-window-text);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-listview__item {
+    transition: none;
+  }
+  
+  .win98-listview__header-column {
+    transition: none;
+  }
+}

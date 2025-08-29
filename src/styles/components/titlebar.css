@@ -1,0 +1,280 @@
+/* Windows 98 Window Titlebar Component */
+
+.win98-titlebar {
+  background: linear-gradient(90deg, var(--win98-active-title) 0%, #4a90e2 100%);
+  color: var(--win98-title-text);
+  height: var(--win98-titlebar-height);
+  display: flex;
+  align-items: center;
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  user-select: none;
+  font-size: var(--win98-font-size-title);
+  font-weight: var(--win98-font-weight-bold);
+  cursor: default;
+  position: relative;
+}
+
+/* Titlebar states */
+.win98-titlebar--active {
+  background: linear-gradient(90deg, var(--win98-active-title) 0%, #4a90e2 100%);
+  color: var(--win98-title-text);
+}
+
+.win98-titlebar--inactive {
+  background-color: var(--win98-inactive-title);
+  color: var(--win98-title-text);
+}
+
+/* Titlebar with dragging capability */
+.win98-titlebar--draggable {
+  cursor: move;
+}
+
+.win98-titlebar--dragging {
+  cursor: grabbing;
+}
+
+/* Titlebar text/title */
+.win98-titlebar__title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: var(--win98-font-size-title);
+  font-weight: var(--win98-font-weight-bold);
+  line-height: var(--win98-line-height-tight);
+  margin: 0;
+  padding: 0;
+}
+
+/* Titlebar icon */
+.win98-titlebar__icon {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  margin-right: var(--win98-spacing-2);
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Titlebar controls container */
+.win98-titlebar__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--win98-spacing-1);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Titlebar menu (system menu) */
+.win98-titlebar__menu {
+  margin-right: var(--win98-spacing-2);
+  cursor: pointer;
+}
+
+/* Titlebar sizes */
+.win98-titlebar--small {
+  height: 16px;
+  font-size: var(--win98-font-size-small);
+  padding: var(--win98-spacing-1);
+}
+
+.win98-titlebar--large {
+  height: 22px;
+  font-size: var(--win98-font-size-large);
+  padding: var(--win98-spacing-2) var(--win98-spacing-3);
+}
+
+/* Dialog titlebar (smaller) */
+.win98-titlebar--dialog {
+  height: 16px;
+  font-size: var(--win98-font-size-dialog-title);
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+}
+
+/* Titlebar with context menu */
+.win98-titlebar__context-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  min-width: 120px;
+  z-index: var(--win98-z-dropdown);
+  display: none;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.win98-titlebar__context-menu--open {
+  display: block;
+}
+
+/* Titlebar button base styles */
+.win98-titlebar__button {
+  width: 16px;
+  height: 14px;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 8px;
+  font-weight: bold;
+  color: var(--win98-window-text);
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  position: relative;
+}
+
+.win98-titlebar__button:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-titlebar__button:active,
+.win98-titlebar__button--pressed {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-titlebar__button:disabled,
+.win98-titlebar__button--disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Specific titlebar button types */
+.win98-titlebar__minimize {
+  /* Minimize icon: small line at bottom */
+}
+
+.win98-titlebar__minimize::after {
+  content: '';
+  width: 8px;
+  height: 2px;
+  background-color: currentColor;
+  position: absolute;
+  bottom: 2px;
+}
+
+.win98-titlebar__maximize {
+  /* Maximize icon: rectangle outline */
+}
+
+.win98-titlebar__maximize::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-bottom-width: 2px;
+  position: absolute;
+}
+
+.win98-titlebar__restore {
+  /* Restore icon: overlapping rectangles */
+}
+
+.win98-titlebar__restore::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-bottom-width: 2px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+
+.win98-titlebar__restore::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-bottom-width: 2px;
+  position: absolute;
+  bottom: 1px;
+  left: 1px;
+  background-color: var(--win98-control-face);
+}
+
+.win98-titlebar__close {
+  /* Close icon: X */
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.win98-titlebar__close::after {
+  content: '×';
+  line-height: 1;
+}
+
+/* Titlebar help button */
+.win98-titlebar__help {
+  font-family: serif;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.win98-titlebar__help::after {
+  content: '?';
+  line-height: 1;
+}
+
+/* Titlebar in different window states */
+.win98-window--maximized .win98-titlebar__maximize {
+  display: none;
+}
+
+.win98-window--maximized .win98-titlebar__restore {
+  display: flex;
+}
+
+.win98-window:not(.win98-window--maximized) .win98-titlebar__restore {
+  display: none;
+}
+
+/* Titlebar animation states */
+.win98-titlebar--flashing {
+  animation: win98-titlebar-flash 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes win98-titlebar-flash {
+  0% {
+    background: linear-gradient(90deg, var(--win98-active-title) 0%, #4a90e2 100%);
+  }
+  100% {
+    background-color: var(--win98-inactive-title);
+  }
+}
+
+/* Titlebar double-click area (for maximize/restore) */
+.win98-titlebar__clickable-area {
+  flex: 1;
+  height: 100%;
+  cursor: default;
+}
+
+/* MDI child window titlebar */
+.win98-titlebar--mdi-child {
+  height: 14px;
+  font-size: var(--win98-font-size-small);
+  padding: 1px var(--win98-spacing-1);
+}
+
+.win98-titlebar--mdi-child .win98-titlebar__button {
+  width: 12px;
+  height: 10px;
+  font-size: 6px;
+}

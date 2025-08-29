@@ -1,0 +1,289 @@
+/* Windows 98 Window Controls Component */
+
+/* Base window control button */
+.win98-window-control {
+  width: 16px;
+  height: 14px;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 8px;
+  font-weight: bold;
+  color: var(--win98-window-text);
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  position: relative;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Control button states */
+.win98-window-control:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-window-control:active,
+.win98-window-control.win98-window-control--pressed {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-window-control:focus {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-window-control:disabled,
+.win98-window-control.win98-window-control--disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Minimize button */
+.win98-window-control--minimize::after {
+  content: '';
+  width: 8px;
+  height: 2px;
+  background-color: currentColor;
+  position: absolute;
+  bottom: 3px;
+}
+
+/* Maximize button */
+.win98-window-control--maximize::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-bottom-width: 2px;
+  position: absolute;
+  background-color: transparent;
+}
+
+/* Restore button (shown when maximized) */
+.win98-window-control--restore::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-bottom-width: 2px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: transparent;
+}
+
+.win98-window-control--restore::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-bottom-width: 2px;
+  border-top: none;
+  border-right: none;
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  background-color: var(--win98-control-face);
+}
+
+/* Close button */
+.win98-window-control--close {
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.win98-window-control--close::after {
+  content: '×';
+  line-height: 1;
+  position: absolute;
+}
+
+/* Help button (context help) */
+.win98-window-control--help {
+  font-family: 'Times New Roman', serif;
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.win98-window-control--help::after {
+  content: '?';
+  line-height: 1;
+  position: absolute;
+}
+
+/* Window control sizes */
+.win98-window-control--small {
+  width: 12px;
+  height: 11px;
+  font-size: 6px;
+}
+
+.win98-window-control--small.win98-window-control--minimize::after {
+  width: 6px;
+  height: 1px;
+  bottom: 2px;
+}
+
+.win98-window-control--small.win98-window-control--maximize::after {
+  width: 6px;
+  height: 6px;
+  border-bottom-width: 1px;
+}
+
+.win98-window-control--small.win98-window-control--restore::before {
+  width: 4px;
+  height: 4px;
+  top: 1px;
+  right: 1px;
+  border-bottom-width: 1px;
+}
+
+.win98-window-control--small.win98-window-control--restore::after {
+  width: 4px;
+  height: 4px;
+  bottom: 1px;
+  left: 1px;
+  border-bottom-width: 1px;
+}
+
+.win98-window-control--large {
+  width: 20px;
+  height: 17px;
+  font-size: 10px;
+}
+
+.win98-window-control--large.win98-window-control--minimize::after {
+  width: 10px;
+  height: 2px;
+  bottom: 4px;
+}
+
+.win98-window-control--large.win98-window-control--maximize::after {
+  width: 10px;
+  height: 10px;
+  border-bottom-width: 2px;
+}
+
+/* Control group container */
+.win98-window-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--win98-spacing-1);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.win98-window-controls--left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.win98-window-controls--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* System menu button (top-left icon) */
+.win98-window-control--system-menu {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-right: var(--win98-spacing-2);
+  cursor: pointer;
+}
+
+.win98-window-control--system-menu:hover {
+  background-color: var(--win98-hover-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-window-control--system-menu:active {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* MDI window controls (smaller) */
+.win98-window-control--mdi {
+  width: 12px;
+  height: 10px;
+  font-size: 6px;
+}
+
+.win98-window-control--mdi.win98-window-control--minimize::after {
+  width: 6px;
+  height: 1px;
+  bottom: 2px;
+}
+
+.win98-window-control--mdi.win98-window-control--maximize::after {
+  width: 6px;
+  height: 6px;
+  border-bottom-width: 1px;
+}
+
+.win98-window-control--mdi.win98-window-control--close::after {
+  font-size: 7px;
+}
+
+/* Control button keyboard navigation */
+.win98-window-control:focus-visible {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+/* Control button animations */
+.win98-window-control--animated {
+  transition: all var(--win98-transition-fast);
+}
+
+/* Accessibility support */
+.win98-window-control[aria-pressed="true"] {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .win98-window-control {
+    border-width: 2px;
+  }
+  
+  .win98-window-control--minimize::after,
+  .win98-window-control--maximize::after,
+  .win98-window-control--restore::before,
+  .win98-window-control--restore::after {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-window-control--animated {
+    transition: none;
+  }
+}

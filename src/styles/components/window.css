@@ -1,0 +1,250 @@
+/* Windows 98 Window Container Component */
+
+.win98-window {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-left: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-right: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  min-height: 100px;
+  position: relative;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+}
+
+/* Window with shadow (for dialogs) */
+.win98-window--with-shadow {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Window sizes */
+.win98-window--small {
+  min-width: 150px;
+  min-height: 80px;
+}
+
+.win98-window--medium {
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.win98-window--large {
+  min-width: 500px;
+  min-height: 400px;
+}
+
+/* Window states */
+.win98-window--active {
+  z-index: var(--win98-z-modal);
+}
+
+.win98-window--inactive {
+  z-index: 1;
+}
+
+.win98-window--maximized {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: var(--win98-z-modal);
+}
+
+.win98-window--minimized {
+  display: none;
+}
+
+/* Window inner content area */
+.win98-window__content {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  flex: 1;
+  overflow: auto;
+  padding: var(--win98-spacing-md);
+  color: var(--win98-window-text);
+}
+
+/* Window content without padding */
+.win98-window__content--no-padding {
+  padding: 0;
+}
+
+/* Window content with scrollbars */
+.win98-window__content--scrollable {
+  overflow: auto;
+}
+
+.win98-window__content--scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.win98-window__content--scroll-y {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Window client area (for applications with menus/toolbars) */
+.win98-window__client-area {
+  background-color: var(--win98-window-background);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--win98-window-text);
+}
+
+/* Window footer/status area */
+.win98-window__footer {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  font-size: var(--win98-font-size-status);
+}
+
+/* Resizable window handles */
+.win98-window--resizable {
+  resize: both;
+  overflow: hidden;
+}
+
+/* Window resize handles (for custom resize implementation) */
+.win98-window__resize-handle {
+  position: absolute;
+  background-color: transparent;
+}
+
+.win98-window__resize-handle--n {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  cursor: n-resize;
+}
+
+.win98-window__resize-handle--s {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  cursor: s-resize;
+}
+
+.win98-window__resize-handle--e {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: e-resize;
+}
+
+.win98-window__resize-handle--w {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: w-resize;
+}
+
+.win98-window__resize-handle--ne {
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  cursor: ne-resize;
+}
+
+.win98-window__resize-handle--nw {
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  cursor: nw-resize;
+}
+
+.win98-window__resize-handle--se {
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  cursor: se-resize;
+  background-image: var(--win98-bg-resize-handle);
+}
+
+.win98-window__resize-handle--sw {
+  bottom: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  cursor: sw-resize;
+}
+
+/* Window positioning helpers */
+.win98-window--center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: var(--win98-z-modal);
+}
+
+.win98-window--top-left {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+.win98-window--top-right {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.win98-window--bottom-left {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+.win98-window--bottom-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Nested windows */
+.win98-window .win98-window {
+  position: relative;
+  margin: var(--win98-spacing-md);
+  min-width: 150px;
+  min-height: 80px;
+}
+
+/* Window overlay for modal states */
+.win98-window-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: calc(var(--win98-z-modal) - 1);
+}
+
+/* Window focus management */
+.win98-window:focus {
+  outline: none;
+  z-index: var(--win98-z-modal);
+}

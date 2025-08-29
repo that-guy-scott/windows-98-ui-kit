@@ -1,0 +1,464 @@
+/* Windows 98 Icon System */
+
+/* Base icon styles */
+.win98-icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Icon sizes */
+.win98-icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-icon-medium {
+  width: 24px;
+  height: 24px;
+}
+
+.win98-icon-large {
+  width: 32px;
+  height: 32px;
+}
+
+.win98-icon-xlarge {
+  width: 48px;
+  height: 48px;
+}
+
+/* Legacy class support */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.icon--small { width: 16px; height: 16px; }
+.icon--medium { width: 24px; height: 24px; }
+.icon--large { width: 32px; height: 32px; }
+.icon--xlarge { width: 48px; height: 48px; }
+
+/* === AUTHENTIC WINDOWS 98 ICONS === */
+/* Using actual Windows 98 .ico files from assets directory */
+
+/* System icons */
+.win98-icon-computer,
+.icon--computer {
+  background-image: url("../../../assets/ico/computer.ico");
+}
+
+.win98-icon-computer-explorer,
+.icon--computer-explorer {
+  background-image: url("../../../assets/ico/computer_explorer.ico");
+}
+
+/* Folders and directories */
+.win98-icon-folder,
+.win98-icon-directory-closed,
+.icon--folder {
+  background-image: url("../../../assets/ico/directory_closed.ico");
+}
+
+.win98-icon-folder-open,
+.win98-icon-directory-open,
+.icon--folder-open {
+  background-image: url("../../../assets/ico/directory_open.ico");
+}
+
+.win98-icon-directory-program-group,
+.icon--program-group {
+  background-image: url("../../../assets/ico/directory_program_group.ico");
+}
+
+.win98-icon-directory-control-panel,
+.icon--control-panel {
+  background-image: url("../../../assets/ico/directory_control_panel.ico");
+}
+
+.win98-icon-directory-fonts,
+.icon--fonts {
+  background-image: url("../../../assets/ico/directory_fonts.ico");
+}
+
+.win98-icon-directory-network,
+.icon--network {
+  background-image: url("../../../assets/ico/directory_network_conn.ico");
+}
+
+/* Documents and files */
+.win98-icon-document,
+.icon--document {
+  background-image: url("../../../assets/ico/document.ico");
+}
+
+.win98-icon-file,
+.icon--file {
+  background-image: url("../../../assets/ico/file_windows.ico");
+}
+
+.win98-icon-notepad,
+.icon--notepad {
+  background-image: url("../../../assets/ico/notepad.ico");
+}
+
+.win98-icon-notepad-file,
+.icon--notepad-file {
+  background-image: url("../../../assets/ico/notepad_file.ico");
+}
+
+/* Recycle Bin */
+.win98-icon-recycle-bin,
+.win98-icon-recycle-bin-empty,
+.icon--recycle-bin {
+  background-image: url("../../../assets/ico/recycle_bin_empty.ico");
+}
+
+.win98-icon-recycle-bin-full,
+.icon--recycle-bin-full {
+  background-image: url("../../../assets/ico/recycle_bin_full.ico");
+}
+
+/* Network and connectivity */
+.win98-icon-network,
+.icon--network {
+  background-image: url("../../../assets/ico/network.ico");
+}
+
+.win98-icon-network-drive,
+.icon--network-drive {
+  background-image: url("../../../assets/ico/network_drive.ico");
+}
+
+.win98-icon-modem,
+.icon--modem {
+  background-image: url("../../../assets/ico/modem.ico");
+}
+
+/* Drives */
+.win98-icon-drive,
+.win98-icon-hard-disk,
+.icon--drive {
+  background-image: url("../../../assets/ico/hard_disk_drive.ico");
+}
+
+.win98-icon-floppy-drive,
+.icon--floppy {
+  background-image: url("../../../assets/ico/floppy_drive_3-5.ico");
+}
+
+.win98-icon-cd-drive,
+.icon--cd {
+  background-image: url("../../../assets/ico/cd_drive.ico");
+}
+
+/* Hardware */
+.win98-icon-printer,
+.icon--printer {
+  background-image: url("../../../assets/ico/printer.ico");
+}
+
+.win98-icon-mouse,
+.icon--mouse {
+  background-image: url("../../../assets/ico/mouse.ico");
+}
+
+.win98-icon-keyboard,
+.icon--keyboard {
+  background-image: url("../../../assets/ico/keyboard.ico");
+}
+
+.win98-icon-monitor,
+.icon--monitor {
+  background-image: url("../../../assets/ico/monitor_windows.ico");
+}
+
+.win98-icon-scanner,
+.icon--scanner {
+  background-image: url("../../../assets/ico/scanner.ico");
+}
+
+.win98-icon-camera,
+.icon--camera {
+  background-image: url("../../../assets/ico/camera.ico");
+}
+
+/* Applications */
+.win98-icon-calculator,
+.icon--calculator {
+  background-image: url("../../../assets/ico/calculator.ico");
+}
+
+.win98-icon-paint,
+.icon--paint {
+  background-image: url("../../../assets/ico/paint.ico");
+}
+
+.win98-icon-magnifying-glass,
+.win98-icon-search,
+.icon--search {
+  background-image: url("../../../assets/ico/magnifying_glass.ico");
+}
+
+.win98-icon-help,
+.icon--help {
+  background-image: url("../../../assets/ico/help_book_big.ico");
+}
+
+/* Control Panel items */
+.win98-icon-settings,
+.win98-icon-gears,
+.icon--settings {
+  background-image: url("../../../assets/ico/gears.ico");
+}
+
+.win98-icon-display-properties,
+.icon--display {
+  background-image: url("../../../assets/ico/display_properties.ico");
+}
+
+.win98-icon-accessibility,
+.icon--accessibility {
+  background-image: url("../../../assets/ico/accessibility.ico");
+}
+
+/* Message and dialog icons */
+.win98-icon-warning,
+.icon--warning {
+  background-image: url("../../../assets/ico/msg_warning.ico");
+}
+
+.win98-icon-error,
+.icon--error {
+  background-image: url("../../../assets/ico/msg_error.ico");
+}
+
+.win98-icon-info,
+.win98-icon-information,
+.icon--info {
+  background-image: url("../../../assets/ico/msg_information.ico");
+}
+
+.win98-icon-question,
+.icon--question {
+  background-image: url("../../../assets/ico/msg_question.ico");
+}
+
+/* Games */
+.win98-icon-solitaire,
+.icon--solitaire {
+  background-image: url("../../../assets/ico/game_solitaire.ico");
+}
+
+.win98-icon-minesweeper,
+.icon--minesweeper {
+  background-image: url("../../../assets/ico/game_mine_1.ico");
+}
+
+.win98-icon-freecell,
+.icon--freecell {
+  background-image: url("../../../assets/ico/game_freecell.ico");
+}
+
+.win98-icon-hearts,
+.icon--hearts {
+  background-image: url("../../../assets/ico/game_hearts.ico");
+}
+
+/* Utility and system tools */
+.win98-icon-regedit,
+.icon--registry {
+  background-image: url("../../../assets/ico/regedit.ico");
+}
+
+.win98-icon-msconfig,
+.icon--msconfig {
+  background-image: url("../../../assets/ico/msconfig.ico");
+}
+
+.win98-icon-scandisk,
+.icon--scandisk {
+  background-image: url("../../../assets/ico/scandisk.ico");
+}
+
+.win98-icon-defragment,
+.icon--defrag {
+  background-image: url("../../../assets/ico/defragment.ico");
+}
+
+/* Internet and web */
+.win98-icon-internet-explorer,
+.icon--ie {
+  background-image: url("../../../assets/ico/msie1.ico");
+}
+
+.win98-icon-outlook-express,
+.icon--outlook {
+  background-image: url("../../../assets/ico/outlook_express.ico");
+}
+
+/* Sound and multimedia */
+.win98-icon-loudspeaker,
+.win98-icon-sound,
+.icon--sound {
+  background-image: url("../../../assets/ico/loudspeaker_rays.ico");
+}
+
+.win98-icon-microphone,
+.icon--microphone {
+  background-image: url("../../../assets/ico/microphone.ico");
+}
+
+.win98-icon-media-player,
+.icon--media-player {
+  background-image: url("../../../assets/ico/media_player.ico");
+}
+
+/* Fonts */
+.win98-icon-font-truetype,
+.icon--font-tt {
+  background-image: url("../../../assets/ico/font_tt.ico");
+}
+
+.win98-icon-font-bitmap,
+.icon--font-bitmap {
+  background-image: url("../../../assets/ico/font_bitmap.ico");
+}
+
+/* Additional system utilities */
+.win98-icon-clock,
+.icon--clock {
+  background-image: url("../../../assets/ico/clock.ico");
+}
+
+.win98-icon-calendar,
+.icon--calendar {
+  background-image: url("../../../assets/ico/calendar.ico");
+}
+
+.win98-icon-briefcase,
+.icon--briefcase {
+  background-image: url("../../../assets/ico/briefcase.ico");
+}
+
+/* Desktop utilities */
+.win98-icon-desktop,
+.icon--desktop {
+  background-image: url("../../../assets/ico/desktop.ico");
+}
+
+.win98-icon-wallpaper,
+.icon--wallpaper {
+  background-image: url("../../../assets/ico/monitor_tweakui.ico");
+}
+
+/* Icon button combinations */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  background-color: var(--button-hover-bg, #e0e0e0);
+}
+
+.icon-button:active {
+  background-color: var(--button-active-bg, #c0c0c0);
+}
+
+/* Icon list items */
+.icon-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+.icon-list-item:hover {
+  background-color: var(--selected-bg, #000080);
+  color: var(--selected-text, #ffffff);
+}
+
+.icon-list-item .icon-label {
+  font-size: 11px;
+  font-family: "MS Sans Serif", sans-serif;
+}
+
+/* Desktop icon style */
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  width: 64px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px dotted transparent;
+}
+
+.desktop-icon:focus,
+.desktop-icon.selected {
+  background-color: var(--selected-bg, #000080);
+  color: var(--selected-text, #ffffff);
+  border-color: var(--selected-bg, #000080);
+}
+
+.desktop-icon .icon {
+  width: 32px;
+  height: 32px;
+}
+
+.desktop-icon .icon-label {
+  font-size: 11px;
+  font-family: "MS Sans Serif", sans-serif;
+  word-wrap: break-word;
+  line-height: 1.2;
+}
+
+/* Disabled state for icons */
+.icon--disabled {
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .icon {
+    filter: contrast(1.5);
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .icon-button:hover {
+    background-color: #404040;
+  }
+  
+  .icon-list-item:hover {
+    background-color: #404040;
+  }
+}

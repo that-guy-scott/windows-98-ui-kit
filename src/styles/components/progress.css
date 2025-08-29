@@ -1,0 +1,210 @@
+/* Windows 98 Progress Bar Component */
+
+.win98-progress {
+  width: 100%;
+  height: 20px;
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  background-color: var(--win98-window-background);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  box-sizing: border-box;
+}
+
+.win98-progress__fill {
+  height: 100%;
+  background-color: var(--win98-active-caption);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.3) 2px,
+    rgba(255, 255, 255, 0.3) 4px
+  );
+  transition: width 0.3s ease-in-out;
+  position: relative;
+  min-width: 0;
+}
+
+.win98-progress__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--win98-window-text);
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Indeterminate Progress */
+.win98-progress--indeterminate .win98-progress__fill {
+  width: 30% !important;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--win98-active-caption),
+    var(--win98-active-caption) 8px,
+    rgba(255, 255, 255, 0.3) 8px,
+    rgba(255, 255, 255, 0.3) 16px
+  );
+  animation: win98-progress-indeterminate 2s linear infinite;
+}
+
+@keyframes win98-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(233%);
+  }
+}
+
+/* Progress Variants */
+.win98-progress--small {
+  height: 16px;
+}
+
+.win98-progress--large {
+  height: 24px;
+}
+
+.win98-progress--vertical {
+  width: 20px;
+  height: 200px;
+  display: inline-block;
+}
+
+.win98-progress--vertical .win98-progress__fill {
+  width: 100%;
+  height: var(--progress-value, 0%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.3) 2px,
+    rgba(255, 255, 255, 0.3) 4px
+  );
+}
+
+.win98-progress--vertical .win98-progress__text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Error/Warning Progress States */
+.win98-progress--error .win98-progress__fill {
+  background-color: #c0392b;
+}
+
+.win98-progress--warning .win98-progress__fill {
+  background-color: #f39c12;
+}
+
+.win98-progress--success .win98-progress__fill {
+  background-color: #27ae60;
+}
+
+/* Disabled State */
+.win98-progress:disabled,
+.win98-progress--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.win98-progress:disabled .win98-progress__fill,
+.win98-progress--disabled .win98-progress__fill {
+  background-color: var(--win98-control-face);
+  background-image: none;
+}
+
+/* Chunked Progress (Windows 98 style blocks) */
+.win98-progress--chunked .win98-progress__fill {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--win98-active-caption) 0px,
+    var(--win98-active-caption) 8px,
+    transparent 8px,
+    transparent 10px
+  );
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .win98-progress {
+    border-color: ButtonText;
+  }
+  
+  .win98-progress__fill {
+    background-color: Highlight;
+    background-image: none;
+  }
+  
+  .win98-progress__text {
+    color: HighlightText;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-progress__fill {
+    transition: none;
+  }
+  
+  .win98-progress--indeterminate .win98-progress__fill {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .win98-progress {
+    height: 18px;
+  }
+  
+  .win98-progress__text {
+    font-size: 10px;
+  }
+}
+
+/* CSS Custom Properties for Dynamic Progress */
+.win98-progress[style*="--progress-value"] .win98-progress__fill {
+  width: var(--progress-value, 0%);
+}
+
+/* Focus Management */
+.win98-progress:focus {
+  outline: 1px dotted var(--win98-window-text);
+  outline-offset: -2px;
+}
+
+/* Loading Animation for Chunked Progress */
+.win98-progress--chunked.win98-progress--loading .win98-progress__fill {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--win98-active-caption) 0px,
+    var(--win98-active-caption) 8px,
+    transparent 8px,
+    transparent 10px
+  );
+  animation: win98-progress-chunked-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes win98-progress-chunked-loading {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}

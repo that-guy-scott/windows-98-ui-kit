@@ -1,0 +1,136 @@
+/* Typography Utilities */
+
+/* Font Families */
+.win98-font-system {
+  font-family: var(--win98-font-family);
+}
+
+.win98-font-mono {
+  font-family: var(--win98-font-family-mono);
+}
+
+/* Font Sizes */
+.win98-text-tiny {
+  font-size: var(--win98-font-size-tiny);
+}
+
+.win98-text-small {
+  font-size: var(--win98-font-size-small);
+}
+
+.win98-text-normal {
+  font-size: var(--win98-font-size-normal);
+}
+
+.win98-text-large {
+  font-size: var(--win98-font-size-large);
+}
+
+.win98-text-title {
+  font-size: var(--win98-font-size-title);
+  font-weight: var(--win98-font-weight-bold);
+}
+
+.win98-text-dialog-title {
+  font-size: var(--win98-font-size-dialog-title);
+  font-weight: var(--win98-font-weight-bold);
+}
+
+.win98-text-status {
+  font-size: var(--win98-font-size-status);
+}
+
+/* Font Weights */
+.win98-font-normal {
+  font-weight: var(--win98-font-weight-normal);
+}
+
+.win98-font-bold {
+  font-weight: var(--win98-font-weight-bold);
+}
+
+/* Line Heights */
+.win98-leading-tight {
+  line-height: var(--win98-line-height-tight);
+}
+
+.win98-leading-normal {
+  line-height: var(--win98-line-height-normal);
+}
+
+.win98-leading-relaxed {
+  line-height: var(--win98-line-height-relaxed);
+}
+
+/* Text Colors */
+.win98-text-default {
+  color: var(--win98-window-text);
+}
+
+.win98-text-disabled {
+  color: var(--win98-disabled-text);
+}
+
+.win98-text-info {
+  color: var(--win98-info-text);
+}
+
+.win98-text-error {
+  color: var(--win98-error-text);
+}
+
+.win98-text-warning {
+  color: var(--win98-warning-text);
+}
+
+.win98-text-success {
+  color: var(--win98-success-text);
+}
+
+.win98-text-selection {
+  color: var(--win98-selection-text);
+  background-color: var(--win98-selection-background);
+}
+
+/* Text Rendering - Windows 98 Style */
+.win98-text-crisp {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  font-smooth: never;
+  text-rendering: auto;
+}
+
+/* Text Alignment */
+.win98-text-left {
+  text-align: left;
+}
+
+.win98-text-center {
+  text-align: center;
+}
+
+.win98-text-right {
+  text-align: right;
+}
+
+/* Text Decoration */
+.win98-underline {
+  text-decoration: underline;
+}
+
+.win98-no-underline {
+  text-decoration: none;
+}
+
+/* Text Transform */
+.win98-uppercase {
+  text-transform: uppercase;
+}
+
+.win98-lowercase {
+  text-transform: lowercase;
+}
+
+.win98-capitalize {
+  text-transform: capitalize;
+}

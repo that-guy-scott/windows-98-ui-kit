@@ -1,0 +1,399 @@
+/* Windows 98 Dropdown Menu Component */
+
+.win98-dropdown-menu {
+  position: absolute;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  min-width: 120px;
+  max-width: 300px;
+  z-index: var(--win98-z-dropdown);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  user-select: none;
+  display: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  padding: var(--win98-spacing-1) 0;
+}
+
+.win98-dropdown-menu--open {
+  display: block;
+}
+
+/* Menu positioning */
+.win98-dropdown-menu--top {
+  bottom: 100%;
+  top: auto;
+}
+
+.win98-dropdown-menu--bottom {
+  top: 100%;
+  bottom: auto;
+}
+
+.win98-dropdown-menu--left {
+  right: 0;
+  left: auto;
+}
+
+.win98-dropdown-menu--right {
+  left: 0;
+  right: auto;
+}
+
+/* Menu items */
+.win98-dropdown-menu__item {
+  background-color: transparent;
+  border: none;
+  color: var(--win98-window-text);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  font-weight: var(--win98-font-weight-normal);
+  padding: var(--win98-spacing-1) var(--win98-spacing-4);
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--win98-spacing-2);
+  position: relative;
+  min-height: 19px;
+  box-sizing: border-box;
+}
+
+/* Menu item hover state */
+.win98-dropdown-menu__item:hover {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+}
+
+/* Menu item active/pressed state */
+.win98-dropdown-menu__item:active,
+.win98-dropdown-menu__item--active {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+}
+
+/* Menu item focus state */
+.win98-dropdown-menu__item:focus,
+.win98-dropdown-menu__item:focus-visible {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+  outline: none;
+}
+
+/* Disabled menu item */
+.win98-dropdown-menu__item:disabled,
+.win98-dropdown-menu__item--disabled {
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.win98-dropdown-menu__item--disabled:hover,
+.win98-dropdown-menu__item--disabled:focus {
+  background-color: transparent;
+  color: var(--win98-disabled-text);
+}
+
+/* Menu item with icon */
+.win98-dropdown-menu__item-icon {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  flex-shrink: 0;
+  margin-right: var(--win98-spacing-1);
+}
+
+/* Menu item text */
+.win98-dropdown-menu__item-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Menu item keyboard shortcut */
+.win98-dropdown-menu__item-shortcut {
+  font-size: var(--win98-font-size-small);
+  color: var(--win98-disabled-text);
+  margin-left: var(--win98-spacing-lg);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.win98-dropdown-menu__item:hover .win98-dropdown-menu__item-shortcut {
+  color: var(--win98-menu-hover-text);
+}
+
+/* Menu item with submenu indicator */
+.win98-dropdown-menu__item--has-submenu::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 4px solid currentColor;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Menu item with checkmark */
+.win98-dropdown-menu__item--checked::before {
+  content: '✓';
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--win98-spacing-1);
+  font-size: 10px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.win98-dropdown-menu__item:not(.win98-dropdown-menu__item--checked)::before {
+  content: '';
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  margin-right: var(--win98-spacing-1);
+  flex-shrink: 0;
+}
+
+/* Menu separators */
+.win98-dropdown-menu__separator {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--win98-control-dark) var(--win98-spacing-2), 
+    var(--win98-control-dark) calc(100% - var(--win98-spacing-2)), 
+    transparent 100%);
+  margin: var(--win98-spacing-1) 0;
+  position: relative;
+}
+
+.win98-dropdown-menu__separator::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--win98-control-light) var(--win98-spacing-2), 
+    var(--win98-control-light) calc(100% - var(--win98-spacing-2)), 
+    transparent 100%);
+}
+
+/* Menu groups */
+.win98-dropdown-menu__group {
+  /* Groups are separated by separators */
+}
+
+.win98-dropdown-menu__group-title {
+  font-size: var(--win98-font-size-small);
+  font-weight: var(--win98-font-weight-bold);
+  color: var(--win98-disabled-text);
+  padding: var(--win98-spacing-1) var(--win98-spacing-4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: default;
+  user-select: none;
+}
+
+/* Submenu positioning */
+.win98-dropdown-menu__submenu {
+  position: absolute;
+  left: 100%;
+  top: -1px;
+  margin-left: -1px;
+}
+
+.win98-dropdown-menu__submenu--left {
+  left: auto;
+  right: 100%;
+  margin-left: 0;
+  margin-right: -1px;
+}
+
+/* Menu item states for radio/checkbox groups */
+.win98-dropdown-menu__item--radio.win98-dropdown-menu__item--checked::before {
+  content: '●';
+  font-size: 8px;
+}
+
+.win98-dropdown-menu__item--checkbox.win98-dropdown-menu__item--checked::before {
+  content: '✓';
+  font-size: 10px;
+}
+
+.win98-dropdown-menu__item--checkbox.win98-dropdown-menu__item--indeterminate::before {
+  content: '■';
+  font-size: 6px;
+}
+
+/* Recent/MRU items */
+.win98-dropdown-menu__item--recent {
+  font-style: italic;
+}
+
+.win98-dropdown-menu__item--recent .win98-dropdown-menu__item-text {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Menu with search/filter */
+.win98-dropdown-menu--searchable {
+  padding-top: 0;
+}
+
+.win98-dropdown-menu__search {
+  background-color: var(--win98-window-background);
+  border: none;
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  width: 100%;
+  outline: none;
+  color: var(--win98-window-text);
+}
+
+.win98-dropdown-menu__search:focus {
+  background-color: var(--win98-focus-background);
+  color: var(--win98-focus-text);
+}
+
+/* Menu sizes */
+.win98-dropdown-menu--small {
+  min-width: 80px;
+  font-size: var(--win98-font-size-small);
+}
+
+.win98-dropdown-menu--small .win98-dropdown-menu__item {
+  padding: 1px var(--win98-spacing-2);
+  min-height: 16px;
+}
+
+.win98-dropdown-menu--large {
+  min-width: 160px;
+  font-size: var(--win98-font-size-large);
+}
+
+.win98-dropdown-menu--large .win98-dropdown-menu__item {
+  padding: var(--win98-spacing-2) var(--win98-spacing-6);
+  min-height: 24px;
+}
+
+/* Menu with icons column */
+.win98-dropdown-menu--with-icons {
+  /* Ensures consistent icon spacing */
+}
+
+.win98-dropdown-menu--with-icons .win98-dropdown-menu__item {
+  padding-left: calc(var(--win98-spacing-4) + var(--win98-icon-size-small));
+}
+
+.win98-dropdown-menu--with-icons .win98-dropdown-menu__item-icon {
+  position: absolute;
+  left: var(--win98-spacing-2);
+  margin-right: 0;
+}
+
+/* Context menu specific styles */
+.win98-dropdown-menu--context {
+  position: fixed;
+  z-index: calc(var(--win98-z-dropdown) + 100);
+}
+
+/* Animation states */
+.win98-dropdown-menu--animating {
+  transition: opacity var(--win98-transition-fast);
+}
+
+.win98-dropdown-menu--fade-in {
+  opacity: 0;
+  animation: win98-dropdown-fade-in var(--win98-transition-fast) ease-out forwards;
+}
+
+@keyframes win98-dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Overflow handling */
+.win98-dropdown-menu--scrollable {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.win98-dropdown-menu--scrollable::-webkit-scrollbar {
+  width: var(--win98-scrollbar-width);
+}
+
+.win98-dropdown-menu--scrollable::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-dropdown-menu--scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .win98-dropdown-menu {
+    border-width: 2px;
+  }
+  
+  .win98-dropdown-menu__separator {
+    height: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-dropdown-menu--animating {
+    transition: none;
+  }
+  
+  .win98-dropdown-menu--fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-dropdown-menu {
+    position: static !important;
+    background: white !important;
+    border: 1px solid black !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+  
+  .win98-dropdown-menu__item {
+    color: black !important;
+  }
+  
+  .win98-dropdown-menu__separator {
+    background: black !important;
+  }
+}

@@ -1,0 +1,214 @@
+/* Windows 98 Background Patterns and Textures */
+
+/* Solid Background Colors */
+.win98-bg-control-face {
+  background-color: var(--win98-control-face);
+}
+
+.win98-bg-window {
+  background-color: var(--win98-window-background);
+}
+
+.win98-bg-selection {
+  background-color: var(--win98-selection-background);
+}
+
+.win98-bg-inactive-selection {
+  background-color: var(--win98-inactive-selection);
+}
+
+.win98-bg-active-title {
+  background-color: var(--win98-active-title);
+}
+
+.win98-bg-inactive-title {
+  background-color: var(--win98-inactive-title);
+}
+
+.win98-bg-hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-bg-pressed {
+  background-color: var(--win98-pressed-background);
+}
+
+.win98-bg-disabled {
+  background-color: var(--win98-disabled-background);
+}
+
+/* Windows 98 Titlebar Gradients */
+.win98-bg-titlebar-active {
+  background: linear-gradient(90deg, var(--win98-active-title) 0%, #4a90e2 100%);
+}
+
+.win98-bg-titlebar-inactive {
+  background-color: var(--win98-inactive-title);
+}
+
+/* Windows 98 Desktop Patterns */
+.win98-bg-desktop {
+  background-color: #008080;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0);
+  background-size: 2px 2px;
+}
+
+.win98-bg-desktop-teal {
+  background-color: #008080;
+}
+
+.win98-bg-desktop-blue {
+  background-color: #0066cc;
+}
+
+/* Dithered/Halftone Patterns (CSS approximation) */
+.win98-bg-dithered-light {
+  background-color: var(--win98-control-face);
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--win98-control-light-light) 1px, transparent 0);
+  background-size: 2px 2px;
+}
+
+.win98-bg-dithered-dark {
+  background-color: var(--win98-control-face);
+  background-image: 
+    radial-gradient(circle at 1px 1px, var(--win98-control-dark) 1px, transparent 0);
+  background-size: 2px 2px;
+}
+
+/* Menu Background Patterns */
+.win98-bg-menu {
+  background-color: var(--win98-control-face);
+}
+
+.win98-bg-menu-separator {
+  background: linear-gradient(180deg, var(--win98-control-dark) 0%, var(--win98-control-dark) 50%, var(--win98-control-light) 50%, var(--win98-control-light) 100%);
+  height: 2px;
+}
+
+/* Toolbar Patterns */
+.win98-bg-toolbar {
+  background-color: var(--win98-control-face);
+  background-image: 
+    linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.1) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.1) 75%);
+  background-size: 8px 8px;
+}
+
+/* Dialog Background */
+.win98-bg-dialog {
+  background-color: var(--win98-control-face);
+}
+
+/* Status Bar Background */
+.win98-bg-status {
+  background-color: var(--win98-control-face);
+}
+
+/* Selection Patterns */
+.win98-bg-selection-focus {
+  background-color: var(--win98-focus-background);
+}
+
+.win98-bg-selection-blur {
+  background-color: var(--win98-inactive-selection);
+}
+
+/* Progress Bar Patterns */
+.win98-bg-progress-track {
+  background-color: var(--win98-window-background);
+  border-top: 1px solid var(--win98-control-dark);
+  border-left: 1px solid var(--win98-control-dark);
+  border-right: 1px solid var(--win98-control-light);
+  border-bottom: 1px solid var(--win98-control-light);
+}
+
+.win98-bg-progress-fill {
+  background: linear-gradient(90deg, 
+    var(--win98-active-title) 0%, 
+    #4a90e2 50%, 
+    var(--win98-active-title) 100%);
+}
+
+/* Scrollbar Track Pattern */
+.win98-bg-scrollbar-track {
+  background-color: var(--win98-control-face);
+  background-image: 
+    repeating-linear-gradient(45deg, 
+      transparent 0px, 
+      transparent 1px, 
+      rgba(0,0,0,0.1) 1px, 
+      rgba(0,0,0,0.1) 2px);
+}
+
+/* Text Field Background */
+.win98-bg-text-field {
+  background-color: var(--win98-window-background);
+}
+
+.win98-bg-text-field-disabled {
+  background-color: var(--win98-disabled-background);
+}
+
+/* Button Background States */
+.win98-bg-button-default {
+  background-color: var(--win98-control-face);
+}
+
+.win98-bg-button-hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-bg-button-active {
+  background-color: var(--win98-active-background);
+}
+
+.win98-bg-button-disabled {
+  background-color: var(--win98-disabled-background);
+}
+
+/* Resize Handle Pattern */
+.win98-bg-resize-handle {
+  background-image: 
+    repeating-linear-gradient(45deg, 
+      var(--win98-control-dark) 0px, 
+      var(--win98-control-dark) 1px, 
+      transparent 1px, 
+      transparent 3px,
+      var(--win98-control-light) 3px,
+      var(--win98-control-light) 4px,
+      transparent 4px,
+      transparent 6px);
+  background-size: 6px 6px;
+}
+
+/* Window Client Area */
+.win98-bg-client-area {
+  background-color: var(--win98-window-background);
+}
+
+/* Transparent Background */
+.win98-bg-transparent {
+  background-color: transparent;
+}
+
+/* Background Position and Size Utilities */
+.win98-bg-cover {
+  background-size: cover;
+}
+
+.win98-bg-contain {
+  background-size: contain;
+}
+
+.win98-bg-center {
+  background-position: center;
+}
+
+.win98-bg-repeat {
+  background-repeat: repeat;
+}
+
+.win98-bg-no-repeat {
+  background-repeat: no-repeat;
+}

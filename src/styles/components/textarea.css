@@ -1,0 +1,340 @@
+/* Windows 98 Textarea Component */
+
+.win98-textarea {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  color: var(--win98-window-text);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  line-height: var(--win98-line-height-normal);
+  padding: var(--win98-spacing-2);
+  min-height: 60px;
+  box-sizing: border-box;
+  outline: none;
+  width: 100%;
+  resize: both;
+  overflow: auto;
+  display: block;
+  vertical-align: top;
+}
+
+/* Textarea focus state */
+.win98-textarea:focus {
+  border-top: var(--win98-border-width) solid var(--win98-focus-color);
+  border-left: var(--win98-border-width) solid var(--win98-focus-color);
+  border-right: var(--win98-border-width) solid var(--win98-focus-color);
+  border-bottom: var(--win98-border-width) solid var(--win98-focus-color);
+  outline: none;
+}
+
+/* Disabled textarea state */
+.win98-textarea:disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  resize: none;
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Read-only textarea state */
+.win98-textarea:read-only {
+  background-color: var(--win98-control-face);
+  color: var(--win98-window-text);
+  cursor: default;
+  resize: none;
+}
+
+/* Textarea placeholder styling */
+.win98-textarea::placeholder {
+  color: var(--win98-disabled-text);
+  opacity: 1;
+  font-style: italic;
+}
+
+.win98-textarea::-webkit-input-placeholder {
+  color: var(--win98-disabled-text);
+  font-style: italic;
+}
+
+.win98-textarea::-moz-placeholder {
+  color: var(--win98-disabled-text);
+  opacity: 1;
+  font-style: italic;
+}
+
+.win98-textarea:-ms-input-placeholder {
+  color: var(--win98-disabled-text);
+  font-style: italic;
+}
+
+/* Textarea sizes */
+.win98-textarea--small {
+  min-height: 40px;
+  font-size: var(--win98-font-size-small);
+  padding: var(--win98-spacing-1);
+}
+
+.win98-textarea--medium {
+  min-height: 80px;
+}
+
+.win98-textarea--large {
+  min-height: 120px;
+  font-size: var(--win98-font-size-large);
+  padding: var(--win98-spacing-3);
+}
+
+.win98-textarea--extra-large {
+  min-height: 200px;
+}
+
+/* Textarea resize options */
+.win98-textarea--no-resize {
+  resize: none;
+}
+
+.win98-textarea--resize-vertical {
+  resize: vertical;
+}
+
+.win98-textarea--resize-horizontal {
+  resize: horizontal;
+}
+
+.win98-textarea--resize-both {
+  resize: both;
+}
+
+/* Textarea with custom resize handle */
+.win98-textarea--custom-resize {
+  resize: none;
+  position: relative;
+}
+
+.win98-textarea--custom-resize::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-image: 
+    repeating-linear-gradient(45deg, 
+      var(--win98-control-dark) 0px, 
+      var(--win98-control-dark) 1px, 
+      transparent 1px, 
+      transparent 3px,
+      var(--win98-control-light) 3px,
+      var(--win98-control-light) 4px,
+      transparent 4px,
+      transparent 6px);
+  background-size: 6px 6px;
+  cursor: se-resize;
+  pointer-events: none;
+}
+
+/* Textarea with scrollbars */
+.win98-textarea--scrollable {
+  overflow: auto;
+}
+
+.win98-textarea--scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.win98-textarea--scroll-y {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Textarea with character counter */
+.win98-textarea-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.win98-textarea-container__counter {
+  position: absolute;
+  bottom: var(--win98-spacing-1);
+  right: var(--win98-spacing-2);
+  background-color: var(--win98-control-face);
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: 1px var(--win98-spacing-1);
+  font-size: var(--win98-font-size-tiny);
+  color: var(--win98-disabled-text);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 0;
+}
+
+.win98-textarea-container__counter--warning {
+  color: var(--win98-warning-text);
+  border-color: var(--win98-warning-text);
+}
+
+.win98-textarea-container__counter--error {
+  color: var(--win98-error-text);
+  border-color: var(--win98-error-text);
+}
+
+/* Textarea with line numbers */
+.win98-textarea--with-line-numbers {
+  padding-left: 40px;
+  background-image: linear-gradient(to right, 
+    var(--win98-control-face) 0, 
+    var(--win98-control-face) 35px, 
+    var(--win98-control-dark) 35px, 
+    var(--win98-control-dark) 36px, 
+    transparent 36px);
+  background-repeat: no-repeat;
+  background-attachment: local;
+}
+
+/* Monospace textarea for code */
+.win98-textarea--monospace {
+  font-family: var(--win98-font-family-mono);
+  font-size: var(--win98-font-size-small);
+  line-height: 1.4;
+  white-space: pre;
+  word-wrap: normal;
+  overflow-wrap: normal;
+}
+
+/* Auto-expanding textarea */
+.win98-textarea--auto-expand {
+  resize: none;
+  overflow: hidden;
+  min-height: var(--win98-button-height);
+}
+
+/* Textarea validation states */
+.win98-textarea--valid {
+  border-top: var(--win98-border-width) solid var(--win98-success-text);
+  border-left: var(--win98-border-width) solid var(--win98-success-text);
+  border-right: var(--win98-border-width) solid var(--win98-success-text);
+  border-bottom: var(--win98-border-width) solid var(--win98-success-text);
+}
+
+.win98-textarea--invalid {
+  border-top: var(--win98-border-width) solid var(--win98-error-text);
+  border-left: var(--win98-border-width) solid var(--win98-error-text);
+  border-right: var(--win98-border-width) solid var(--win98-error-text);
+  border-bottom: var(--win98-border-width) solid var(--win98-error-text);
+}
+
+.win98-textarea--warning {
+  border-top: var(--win98-border-width) solid var(--win98-warning-text);
+  border-left: var(--win98-border-width) solid var(--win98-warning-text);
+  border-right: var(--win98-border-width) solid var(--win98-warning-text);
+  border-bottom: var(--win98-border-width) solid var(--win98-warning-text);
+}
+
+/* Textarea toolbar */
+.win98-textarea-toolbar {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: var(--win98-spacing-1);
+  display: flex;
+  align-items: center;
+  gap: var(--win98-spacing-1);
+  margin-bottom: -1px;
+}
+
+.win98-textarea-toolbar__button {
+  background-color: transparent;
+  border: none;
+  padding: var(--win98-spacing-1);
+  cursor: pointer;
+  font-size: var(--win98-font-size-small);
+  color: var(--win98-window-text);
+}
+
+.win98-textarea-toolbar__button:hover {
+  background-color: var(--win98-hover-background);
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-textarea-toolbar__separator {
+  width: 1px;
+  height: 16px;
+  background-color: var(--win98-control-dark);
+  margin: 0 var(--win98-spacing-1);
+}
+
+/* Rich text textarea simulation */
+.win98-textarea--rich-text {
+  font-family: 'Times New Roman', serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Textarea with custom scrollbars */
+.win98-textarea::-webkit-scrollbar {
+  width: var(--win98-scrollbar-width);
+  height: var(--win98-scrollbar-width);
+}
+
+.win98-textarea::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-textarea::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--win98-control-light-light);
+}
+
+.win98-textarea::-webkit-scrollbar-button {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-textarea::-webkit-scrollbar-button:hover {
+  background-color: var(--win98-control-light-light);
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .win98-textarea {
+    border-width: 2px;
+  }
+  
+  .win98-textarea:focus {
+    border-width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-textarea {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+    resize: none !important;
+  }
+  
+  .win98-textarea-container__counter {
+    display: none;
+  }
+}

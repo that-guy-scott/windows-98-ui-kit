@@ -1,0 +1,372 @@
+/* ===== TREE VIEW COMPONENT ===== */
+
+/* Tree View Container */
+.win98-treeview {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  line-height: var(--win98-line-height);
+  overflow: auto;
+  padding: 2px;
+  position: relative;
+}
+
+/* Tree View List */
+.win98-treeview__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.win98-treeview__list--nested {
+  margin-left: 16px;
+  position: relative;
+}
+
+/* Tree View Items */
+.win98-treeview__item {
+  position: relative;
+  user-select: none;
+}
+
+.win98-treeview__item-content {
+  display: flex;
+  align-items: center;
+  padding: 1px 2px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  min-height: 16px;
+}
+
+.win98-treeview__item-content:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-treeview__item--selected .win98-treeview__item-content {
+  background-color: var(--win98-selection-background);
+  color: var(--win98-selection-text);
+}
+
+.win98-treeview__item--selected .win98-treeview__item-content:hover {
+  background-color: var(--win98-selection-background);
+}
+
+.win98-treeview__item--focused .win98-treeview__item-content {
+  border: 1px dotted var(--win98-window-text);
+}
+
+.win98-treeview__item--selected.win98-treeview__item--focused .win98-treeview__item-content {
+  border: 1px dotted var(--win98-selection-text);
+}
+
+/* Expand/Collapse Toggle */
+.win98-treeview__toggle {
+  width: 9px;
+  height: 9px;
+  margin-right: 2px;
+  border: 1px solid var(--win98-window-text);
+  background-color: var(--win98-window-background);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  line-height: 1;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.win98-treeview__toggle::before {
+  content: '';
+  width: 5px;
+  height: 1px;
+  background-color: var(--win98-window-text);
+  position: absolute;
+}
+
+.win98-treeview__toggle--collapsed::after {
+  content: '';
+  width: 1px;
+  height: 5px;
+  background-color: var(--win98-window-text);
+  position: absolute;
+}
+
+.win98-treeview__toggle:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-treeview__toggle:active {
+  border-top: 1px solid var(--win98-control-dark-dark);
+  border-left: 1px solid var(--win98-control-dark-dark);
+  border-right: 1px solid var(--win98-control-light-light);
+  border-bottom: 1px solid var(--win98-control-light-light);
+}
+
+/* Toggle placeholder for leaf nodes */
+.win98-treeview__toggle-placeholder {
+  width: 9px;
+  height: 9px;
+  margin-right: 2px;
+  flex-shrink: 0;
+}
+
+/* Tree View Item Icon */
+.win98-treeview__item-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  flex-shrink: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Different icon states */
+.win98-treeview__item-icon--folder {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVQ4T2NkoBAwUqifYWjDgP///1P08wcGZnQwqL6hoaEBfwAQI4F/8ODBgw4kSTAwMKB7ARkwUqOBAQYYqAEEBlR8wAADjNRoYIABBmpAwAAD9ZwCAO7zJwFNRayNAAAAAElFTkSuQmCC');
+}
+
+.win98-treeview__item-icon--folder-open {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXklEQVQ4T2NkoBAwUqifYWjDgP///1P08wcGZnQwqL6hoaEBfwAQI4F/8ODBgw4kSTAwMKB7ARkwUqOBAQYYqAEEBlR8wAADjNRoYIABBmpAwAAD9ZwCAOvzKAGWyLYKAAAAAElFTkSuQmCC');
+}
+
+.win98-treeview__item-icon--file {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAASklEQVQ4T2NkoBAwUqifAQoaGhoYBrsXmJD0s7OzQ73AxMTExEwtL+Aye/fuXWpnAwOOiYmJ+QdqZwMDjomJifkHamcDA46JiZn5B2pnAwAE1jUF5+7y5QAAAABJRU5ErkJggg==');
+}
+
+/* Tree View Item Text */
+.win98-treeview__item-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tree Lines */
+.win98-treeview__item::before {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: var(--win98-control-dark);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 1px,
+    var(--win98-control-dark) 1px,
+    var(--win98-control-dark) 2px
+  );
+}
+
+.win98-treeview__item::after {
+  content: '';
+  position: absolute;
+  left: -11px;
+  top: 8px;
+  width: 10px;
+  height: 1px;
+  background-color: var(--win98-control-dark);
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0px,
+    transparent 1px,
+    var(--win98-control-dark) 1px,
+    var(--win98-control-dark) 2px
+  );
+}
+
+/* Remove lines for root level items */
+.win98-treeview > .win98-treeview__list > .win98-treeview__item::before,
+.win98-treeview > .win98-treeview__list > .win98-treeview__item::after {
+  display: none;
+}
+
+/* Adjust lines for last items */
+.win98-treeview__item:last-child::before {
+  height: 8px;
+}
+
+/* Nested Lists (collapsed/expanded) */
+.win98-treeview__item--collapsed .win98-treeview__list {
+  display: none;
+}
+
+.win98-treeview__item--expanded .win98-treeview__list {
+  display: block;
+}
+
+/* Loading state */
+.win98-treeview__item--loading .win98-treeview__toggle {
+  background-color: var(--win98-control-face);
+  border: 1px solid var(--win98-control-dark);
+}
+
+.win98-treeview__item--loading .win98-treeview__toggle::before {
+  content: '...';
+  font-size: 6px;
+  line-height: 1;
+  color: var(--win98-window-text);
+  background-color: transparent;
+  width: auto;
+  height: auto;
+}
+
+.win98-treeview__item--loading .win98-treeview__toggle::after {
+  display: none;
+}
+
+/* Disabled state */
+.win98-treeview--disabled {
+  background-color: var(--win98-control-face);
+  color: var(--win98-control-dark);
+  cursor: not-allowed;
+}
+
+.win98-treeview--disabled .win98-treeview__item-content {
+  cursor: not-allowed;
+  color: var(--win98-control-dark);
+}
+
+.win98-treeview--disabled .win98-treeview__item-content:hover {
+  background-color: transparent;
+}
+
+.win98-treeview--disabled .win98-treeview__toggle {
+  cursor: not-allowed;
+  color: var(--win98-control-dark);
+  border-color: var(--win98-control-dark);
+}
+
+.win98-treeview--disabled .win98-treeview__toggle:hover {
+  background-color: var(--win98-window-background);
+}
+
+.win98-treeview--disabled .win98-treeview__toggle::before,
+.win98-treeview--disabled .win98-treeview__toggle::after {
+  background-color: var(--win98-control-dark);
+}
+
+/* Focus management */
+.win98-treeview:focus {
+  outline: none;
+}
+
+.win98-treeview:focus .win98-treeview__item--focused .win98-treeview__item-content {
+  border: 1px dotted var(--win98-window-text);
+}
+
+/* Drag and drop states */
+.win98-treeview__item--drag-over {
+  background-color: var(--win98-hover-background);
+  border: 1px dashed var(--win98-selection-background);
+}
+
+.win98-treeview__item--drag-target::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 2px;
+  background-color: var(--win98-selection-background);
+  z-index: 10;
+}
+
+/* Scrollbar styling for treeview */
+.win98-treeview::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-treeview::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-treeview::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+}
+
+.win98-treeview::-webkit-scrollbar-thumb:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-treeview::-webkit-scrollbar-corner {
+  background-color: var(--win98-control-face);
+}
+
+/* Checkbox tree variant */
+.win98-treeview--checkboxes .win98-treeview__item-content {
+  padding-left: 18px;
+  position: relative;
+}
+
+.win98-treeview--checkboxes .win98-treeview__item-content::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 11px;
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  background-color: var(--win98-window-background);
+}
+
+.win98-treeview--checkboxes .win98-treeview__item--checked .win98-treeview__item-content::after {
+  content: '✓';
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8px;
+  line-height: 1;
+  color: var(--win98-window-text);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .win98-treeview__item--selected .win98-treeview__item-content {
+    background-color: var(--win98-selection-background);
+    color: var(--win98-selection-text);
+    border: 1px solid var(--win98-window-text);
+  }
+  
+  .win98-treeview__item--focused .win98-treeview__item-content {
+    border: 2px solid var(--win98-window-text);
+  }
+  
+  .win98-treeview__toggle {
+    border: 2px solid var(--win98-window-text);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-treeview__item-content {
+    transition: none;
+  }
+  
+  .win98-treeview__toggle {
+    transition: none;
+  }
+}

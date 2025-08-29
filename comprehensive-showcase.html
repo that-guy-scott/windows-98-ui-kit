@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 98 UI Kit - Comprehensive Showcase</title>
+    <link rel="stylesheet" href="src/styles/base/variables.css">
+    <link rel="stylesheet" href="src/styles/base/reset.css">
+    <link rel="stylesheet" href="src/styles/utilities/layout.css">
+    <link rel="stylesheet" href="src/styles/utilities/typography.css">
+    <link rel="stylesheet" href="src/styles/utilities/borders.css">
+    <link rel="stylesheet" href="src/styles/utilities/backgrounds.css">
+    <link rel="stylesheet" href="src/styles/components/window.css">
+    <link rel="stylesheet" href="src/styles/components/titlebar.css">
+    <link rel="stylesheet" href="src/styles/components/window-controls.css">
+    <link rel="stylesheet" href="src/styles/components/button.css">
+    <link rel="stylesheet" href="src/styles/components/button-variants.css">
+    <link rel="stylesheet" href="src/styles/components/special-buttons.css">
+    <link rel="stylesheet" href="src/styles/components/input.css">
+    <link rel="stylesheet" href="src/styles/components/textarea.css">
+    <link rel="stylesheet" href="src/styles/components/form-layout.css">
+    <link rel="stylesheet" href="src/styles/components/select.css">
+    <link rel="stylesheet" href="src/styles/components/checkbox.css">
+    <link rel="stylesheet" href="src/styles/components/radio.css">
+    <link rel="stylesheet" href="src/styles/components/menubar.css">
+    <link rel="stylesheet" href="src/styles/components/dropdown-menu.css">
+    <link rel="stylesheet" href="src/styles/components/context-menu.css">
+    <link rel="stylesheet" href="src/styles/components/tabs.css">
+    <link rel="stylesheet" href="src/styles/components/toolbar.css">
+    <link rel="stylesheet" href="src/styles/components/dialog.css">
+    <link rel="stylesheet" href="src/styles/components/listview.css">
+    <link rel="stylesheet" href="src/styles/components/treeview.css">
+    <link rel="stylesheet" href="src/styles/components/table.css">
+    <link rel="stylesheet" href="src/styles/components/property-sheet.css">
+    <link rel="stylesheet" href="src/styles/components/progress.css">
+    <link rel="stylesheet" href="src/styles/components/statusbar.css">
+    <link rel="stylesheet" href="src/styles/components/loading.css">
+    <link rel="stylesheet" href="src/styles/components/busy-states.css">
+    <link rel="stylesheet" href="src/styles/components/panels.css">
+    <link rel="stylesheet" href="src/styles/components/splitters.css">
+    <link rel="stylesheet" href="src/styles/components/scrollbars.css">
+    <link rel="stylesheet" href="src/styles/components/scroll-containers.css">
+    <link rel="stylesheet" href="src/styles/components/icons.css">
+    <link rel="stylesheet" href="src/styles/components/cursors.css">
+    <style>
+        body {
+            background: #008080 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><rect width="2" height="2" fill="%23008080"/><rect x="2" y="2" width="2" height="2" fill="%23008080"/><rect x="2" y="0" width="2" height="2" fill="%23004040"/><rect x="0" y="2" width="2" height="2" fill="%23004040"/></svg>');
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .showcase-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .component-demo {
+            background: var(--win98-control-face);
+            border: 2px outset var(--win98-control-face);
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .component-title {
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 12px;
+            color: var(--win98-window-text);
+            border-bottom: 1px solid var(--win98-control-dark);
+            padding-bottom: 4px;
+        }
+        
+        .demo-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .demo-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .desktop-demo {
+            position: relative;
+            background: #008080;
+            min-height: 600px;
+            border: 2px inset var(--win98-control-face);
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .taskbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background: var(--win98-control-face);
+            border-top: 1px solid var(--win98-control-light);
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            gap: 4px;
+        }
+        
+        .start-button {
+            height: 22px;
+            padding: 0 8px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        
+        .window-demo {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 320px;
+            height: 240px;
+        }
+        
+        .sample-content {
+            padding: 12px;
+            height: 100%;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="win98-window" style="max-width: 800px; margin: 0 auto 20px;">
+        <div class="win98-titlebar">
+            <div class="win98-titlebar__icon">📋</div>
+            <div class="win98-titlebar__title">Windows 98 UI Kit - Comprehensive Showcase</div>
+            <div class="win98-titlebar__controls">
+                <button class="win98-window-control win98-window-control--minimize">_</button>
+                <button class="win98-window-control win98-window-control--maximize">□</button>
+                <button class="win98-window-control win98-window-control--close">×</button>
+            </div>
+        </div>
+        <div class="win98-window__content" style="padding: 16px;">
+            <p>This showcase demonstrates all 32 components of the Windows 98 UI Kit. Each component is displayed with various states and examples to show the full range of functionality.</p>
+        </div>
+    </div>
+
+    <div class="showcase-container">
+        <!-- Buttons Section -->
+        <div class="component-demo">
+            <div class="component-title">🖲️ BUTTONS & CONTROLS</div>
+            <div class="demo-content">
+                <div class="demo-row">
+                    <button class="win98-button">OK</button>
+                    <button class="win98-button">Cancel</button>
+                    <button class="win98-button win98-button--pressed">Pressed</button>
+                    <button class="win98-button" disabled>Disabled</button>
+                </div>
+                <div class="demo-row">
+                    <button class="win98-button win98-button--small">Small</button>
+                    <button class="win98-button win98-button--large">Large Button</button>
+                    <button class="win98-button win98-button--default">Default</button>
+                </div>
+                <div class="demo-row">
+                    <button class="win98-button win98-button--toolbar">📁</button>
+                    <button class="win98-button win98-button--toolbar">💾</button>
+                    <button class="win98-button win98-button--toolbar">🖨️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Controls Section -->
+        <div class="component-demo">
+            <div class="component-title">📝 FORM CONTROLS</div>
+            <div class="demo-content">
+                <div class="demo-row">
+                    <label>Text Input:</label>
+                    <input type="text" class="win98-input" placeholder="Enter text..." style="width: 200px;">
+                </div>
+                <div class="demo-row">
+                    <label>Password:</label>
+                    <input type="password" class="win98-input" value="password" style="width: 200px;">
+                </div>
+                <div class="demo-row">
+                    <label>Select:</label>
+                    <select class="win98-select">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
+                </div>
+                <div class="demo-row">
+                    <textarea class="win98-textarea" placeholder="Enter multiple lines..." rows="3" cols="30"></textarea>
+                </div>
+                <div class="demo-row">
+                    <label><input type="checkbox" class="win98-checkbox"> Checkbox Option</label>
+                    <label><input type="checkbox" class="win98-checkbox" checked> Checked</label>
+                </div>
+                <div class="demo-row">
+                    <label><input type="radio" class="win98-radio" name="radio1"> Radio 1</label>
+                    <label><input type="radio" class="win98-radio" name="radio1" checked> Radio 2</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Windows Section -->
+        <div class="component-demo">
+            <div class="component-title">🪟 WINDOWS & DIALOGS</div>
+            <div class="demo-content">
+                <div class="win98-window win98-window--small">
+                    <div class="win98-titlebar">
+                        <div class="win98-titlebar__icon">📄</div>
+                        <div class="win98-titlebar__title">Document Window</div>
+                        <div class="win98-titlebar__controls">
+                            <button class="win98-window-control win98-window-control--minimize">_</button>
+                            <button class="win98-window-control win98-window-control--maximize">□</button>
+                            <button class="win98-window-control win98-window-control--close">×</button>
+                        </div>
+                    </div>
+                    <div class="win98-window__content">
+                        <div class="win98-menubar">
+                            <div class="win98-menu-item">File</div>
+                            <div class="win98-menu-item">Edit</div>
+                            <div class="win98-menu-item">View</div>
+                            <div class="win98-menu-item">Help</div>
+                        </div>
+                        <div class="win98-toolbar">
+                            <button class="win98-button win98-button--toolbar">📁</button>
+                            <button class="win98-button win98-button--toolbar">💾</button>
+                            <div class="win98-toolbar__separator"></div>
+                            <button class="win98-button win98-button--toolbar">✂️</button>
+                            <button class="win98-button win98-button--toolbar">📋</button>
+                        </div>
+                        <div style="padding: 8px; height: 60px; background: white; border: 1px inset;">
+                            <p style="font-size: 11px;">Sample document content...</p>
+                        </div>
+                        <div class="win98-statusbar">
+                            <div class="win98-statusbar__section">Ready</div>
+                            <div class="win98-statusbar__section">Line 1, Col 1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="component-demo">
+            <div class="component-title">📑 TABS & NAVIGATION</div>
+            <div class="demo-content">
+                <div class="win98-tabs">
+                    <div class="win98-tabs__header">
+                        <button class="win98-tab win98-tab--active">General</button>
+                        <button class="win98-tab">Security</button>
+                        <button class="win98-tab">Advanced</button>
+                        <button class="win98-tab" disabled>Disabled</button>
+                    </div>
+                    <div class="win98-tabs__content">
+                        <div class="win98-tab-panel" style="padding: 12px; height: 100px; background: var(--win98-window-background);">
+                            <p>General settings panel content goes here...</p>
+                            <label><input type="checkbox" class="win98-checkbox"> Enable feature</label><br>
+                            <label><input type="checkbox" class="win98-checkbox" checked> Auto-save</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Display Section -->
+        <div class="component-demo">
+            <div class="component-title">📊 DATA DISPLAY</div>
+            <div class="demo-content">
+                <div class="win98-listview" style="height: 120px; width: 100%;">
+                    <div class="win98-listview__header">
+                        <div class="win98-listview__column">Name</div>
+                        <div class="win98-listview__column">Size</div>
+                        <div class="win98-listview__column">Modified</div>
+                    </div>
+                    <div class="win98-listview__content">
+                        <div class="win98-listview__row">
+                            <div class="win98-listview__cell">📄 Document.txt</div>
+                            <div class="win98-listview__cell">1.2 KB</div>
+                            <div class="win98-listview__cell">12/03/1998</div>
+                        </div>
+                        <div class="win98-listview__row win98-listview__row--selected">
+                            <div class="win98-listview__cell">📁 Folder</div>
+                            <div class="win98-listview__cell">-</div>
+                            <div class="win98-listview__cell">11/28/1998</div>
+                        </div>
+                        <div class="win98-listview__row">
+                            <div class="win98-listview__cell">🖼️ Image.bmp</div>
+                            <div class="win98-listview__cell">256 KB</div>
+                            <div class="win98-listview__cell">12/01/1998</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tree View Section -->
+        <div class="component-demo">
+            <div class="component-title">🌲 TREE VIEW</div>
+            <div class="demo-content">
+                <div class="win98-treeview" style="height: 140px;">
+                    <div class="win98-treeview__item">
+                        <span class="win98-treeview__toggle win98-treeview__toggle--expanded">-</span>
+                        <span class="win98-treeview__icon">💻</span>
+                        <span class="win98-treeview__text">My Computer</span>
+                    </div>
+                    <div class="win98-treeview__item win98-treeview__item--level-1">
+                        <span class="win98-treeview__toggle">+</span>
+                        <span class="win98-treeview__icon">💾</span>
+                        <span class="win98-treeview__text">3½ Floppy (A:)</span>
+                    </div>
+                    <div class="win98-treeview__item win98-treeview__item--level-1 win98-treeview__item--selected">
+                        <span class="win98-treeview__toggle win98-treeview__toggle--expanded">-</span>
+                        <span class="win98-treeview__icon">💿</span>
+                        <span class="win98-treeview__text">Local Disk (C:)</span>
+                    </div>
+                    <div class="win98-treeview__item win98-treeview__item--level-2">
+                        <span class="win98-treeview__toggle">+</span>
+                        <span class="win98-treeview__icon">📁</span>
+                        <span class="win98-treeview__text">Program Files</span>
+                    </div>
+                    <div class="win98-treeview__item win98-treeview__item--level-2">
+                        <span class="win98-treeview__toggle">+</span>
+                        <span class="win98-treeview__icon">📁</span>
+                        <span class="win98-treeview__text">Windows</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress & Status Section -->
+        <div class="component-demo">
+            <div class="component-title">📈 PROGRESS & STATUS</div>
+            <div class="demo-content">
+                <div class="demo-row">
+                    <label>Progress Bar:</label>
+                    <div class="win98-progress" style="width: 200px;">
+                        <div class="win98-progress__bar" style="width: 65%;"></div>
+                    </div>
+                    <span>65%</span>
+                </div>
+                <div class="demo-row">
+                    <label>Indeterminate:</label>
+                    <div class="win98-progress win98-progress--indeterminate" style="width: 200px;">
+                        <div class="win98-progress__bar"></div>
+                    </div>
+                </div>
+                <div class="win98-statusbar" style="width: 100%; margin-top: 8px;">
+                    <div class="win98-statusbar__section">Ready</div>
+                    <div class="win98-statusbar__section">12:34 PM</div>
+                    <div class="win98-statusbar__section">
+                        <div class="win98-statusbar__grip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panels Section -->
+        <div class="component-demo">
+            <div class="component-title">📦 PANELS & LAYOUT</div>
+            <div class="demo-content">
+                <div class="win98-panel win98-panel--raised" style="padding: 8px; margin-bottom: 8px;">
+                    <strong>Raised Panel</strong><br>
+                    This panel has a raised appearance.
+                </div>
+                <div class="win98-panel win98-panel--sunken" style="padding: 8px; margin-bottom: 8px;">
+                    <strong>Sunken Panel</strong><br>
+                    This panel appears recessed.
+                </div>
+                <div class="win98-groupbox">
+                    <div class="win98-groupbox__title">Group Box</div>
+                    <div class="win98-groupbox__content" style="padding: 8px;">
+                        <label><input type="radio" class="win98-radio" name="group1"> Option A</label><br>
+                        <label><input type="radio" class="win98-radio" name="group1"> Option B</label><br>
+                        <label><input type="radio" class="win98-radio" name="group1" checked> Option C</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="component-demo">
+            <div class="component-title">📋 TABLES & GRIDS</div>
+            <div class="demo-content">
+                <table class="win98-table">
+                    <thead>
+                        <tr>
+                            <th>Process Name</th>
+                            <th>PID</th>
+                            <th>Memory Usage</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>explorer.exe</td>
+                            <td>1024</td>
+                            <td>12,345 KB</td>
+                            <td>Running</td>
+                        </tr>
+                        <tr class="win98-table__row--selected">
+                            <td>notepad.exe</td>
+                            <td>2048</td>
+                            <td>1,234 KB</td>
+                            <td>Running</td>
+                        </tr>
+                        <tr>
+                            <td>calc.exe</td>
+                            <td>4096</td>
+                            <td>567 KB</td>
+                            <td>Running</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Menus Section -->
+        <div class="component-demo">
+            <div class="component-title">🍽️ MENUS</div>
+            <div class="demo-content">
+                <div class="win98-menubar">
+                    <div class="win98-menu-item">File</div>
+                    <div class="win98-menu-item win98-menu-item--active">Edit</div>
+                    <div class="win98-menu-item">View</div>
+                    <div class="win98-menu-item">Tools</div>
+                    <div class="win98-menu-item">Help</div>
+                </div>
+                <div class="win98-dropdown-menu" style="position: relative; display: block; margin-top: 8px; width: 150px;">
+                    <div class="win98-menu-item">New</div>
+                    <div class="win98-menu-item">Open...</div>
+                    <div class="win98-menu-item win98-menu-item--hover">Save</div>
+                    <div class="win98-menu-separator"></div>
+                    <div class="win98-menu-item">Print...</div>
+                    <div class="win98-menu-item win98-menu-item--disabled">Recent Files</div>
+                    <div class="win98-menu-separator"></div>
+                    <div class="win98-menu-item">Exit</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrollbars Section -->
+        <div class="component-demo">
+            <div class="component-title">📜 SCROLLBARS</div>
+            <div class="demo-content">
+                <div class="win98-scroll-container" style="width: 100%; height: 100px; border: 1px inset;">
+                    <div style="width: 400px; height: 200px; background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px;">
+                        <p style="padding: 20px; font-size: 11px;">This is a scrollable area that demonstrates both horizontal and vertical scrollbars. The content is larger than the container, so scrollbars appear automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading States Section -->
+        <div class="component-demo">
+            <div class="component-title">⏳ LOADING STATES</div>
+            <div class="demo-content">
+                <div class="demo-row">
+                    <div class="win98-loading win98-loading--hourglass">⌛</div>
+                    <span>Loading...</span>
+                </div>
+                <div class="demo-row">
+                    <div class="win98-loading win98-loading--spinner">🔄</div>
+                    <span>Processing...</span>
+                </div>
+                <div class="win98-busy-overlay" style="position: relative; width: 200px; height: 60px; background: var(--win98-window-background); border: 1px inset;">
+                    <div class="win98-busy-overlay__content">
+                        <div class="win98-loading">⏳ Please wait...</div>
+                    </div>
+                    <p style="padding: 20px; opacity: 0.5;">Disabled content</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Property Sheet Section -->
+        <div class="component-demo">
+            <div class="component-title">📋 PROPERTY SHEET</div>
+            <div class="demo-content">
+                <div class="win98-property-sheet">
+                    <div class="win98-property-row">
+                        <div class="win98-property-name">File Name:</div>
+                        <div class="win98-property-value">document.txt</div>
+                    </div>
+                    <div class="win98-property-row">
+                        <div class="win98-property-name">Size:</div>
+                        <div class="win98-property-value">1,234 bytes</div>
+                    </div>
+                    <div class="win98-property-row">
+                        <div class="win98-property-name">Created:</div>
+                        <div class="win98-property-value">12/03/1998 3:45 PM</div>
+                    </div>
+                    <div class="win98-property-row">
+                        <div class="win98-property-name">Modified:</div>
+                        <div class="win98-property-value">12/05/1998 10:30 AM</div>
+                    </div>
+                    <div class="win98-property-row">
+                        <div class="win98-property-name">Attributes:</div>
+                        <div class="win98-property-value">
+                            <label><input type="checkbox" class="win98-checkbox"> Read-only</label>
+                            <label><input type="checkbox" class="win98-checkbox" checked> Archive</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Simulation -->
+    <div class="desktop-demo">
+        <div class="window-demo">
+            <div class="win98-window">
+                <div class="win98-titlebar">
+                    <div class="win98-titlebar__icon">🖼️</div>
+                    <div class="win98-titlebar__title">My Pictures</div>
+                    <div class="win98-titlebar__controls">
+                        <button class="win98-window-control win98-window-control--minimize">_</button>
+                        <button class="win98-window-control win98-window-control--maximize">□</button>
+                        <button class="win98-window-control win98-window-control--close">×</button>
+                    </div>
+                </div>
+                <div class="win98-window__content">
+                    <div class="sample-content">
+                        <div class="win98-listview">
+                            <div class="win98-listview__item">🖼️ vacation.bmp</div>
+                            <div class="win98-listview__item">🖼️ family.jpg</div>
+                            <div class="win98-listview__item">🖼️ sunset.gif</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="position: absolute; top: 60px; right: 40px; width: 280px;">
+            <div class="win98-window win98-window--small">
+                <div class="win98-titlebar">
+                    <div class="win98-titlebar__icon">❓</div>
+                    <div class="win98-titlebar__title">Confirmation</div>
+                    <div class="win98-titlebar__controls">
+                        <button class="win98-window-control win98-window-control--close">×</button>
+                    </div>
+                </div>
+                <div class="win98-window__content" style="padding: 16px; text-align: center;">
+                    <p style="margin-bottom: 16px;">Are you sure you want to delete this file?</p>
+                    <div style="display: flex; gap: 8px; justify-content: center;">
+                        <button class="win98-button">Yes</button>
+                        <button class="win98-button">No</button>
+                        <button class="win98-button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="taskbar">
+            <button class="win98-button start-button">🪟 Start</button>
+            <div style="flex: 1;"></div>
+            <div class="win98-button" style="padding: 4px 8px; font-size: 10px;">🔊 12:34 PM</div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; color: white;">
+        <p>✨ Windows 98 UI Kit - Complete Component Showcase ✨</p>
+        <p style="font-size: 10px; opacity: 0.8;">Featuring all 32 components with authentic Windows 98 styling</p>
+    </div>
+
+    <script>
+        // Add some basic interactivity for demonstration
+        document.addEventListener('DOMContentLoaded', function() {
+            // Button hover effects are handled by CSS
+            
+            // Tab switching
+            document.querySelectorAll('.win98-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    if (!this.disabled) {
+                        // Remove active class from all tabs
+                        this.parentNode.querySelectorAll('.win98-tab').forEach(t => t.classList.remove('win98-tab--active'));
+                        // Add active class to clicked tab
+                        this.classList.add('win98-tab--active');
+                    }
+                });
+            });
+            
+            // Menu item highlighting
+            document.querySelectorAll('.win98-menu-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    if (!this.classList.contains('win98-menu-item--disabled')) {
+                        this.classList.add('win98-menu-item--hover');
+                    }
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.classList.remove('win98-menu-item--hover');
+                });
+            });
+            
+            // Tree view toggle
+            document.querySelectorAll('.win98-treeview__toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    if (this.classList.contains('win98-treeview__toggle--expanded')) {
+                        this.classList.remove('win98-treeview__toggle--expanded');
+                        this.textContent = '+';
+                    } else {
+                        this.classList.add('win98-treeview__toggle--expanded');
+                        this.textContent = '-';
+                    }
+                });
+            });
+            
+            // List view selection
+            document.querySelectorAll('.win98-listview__row, .win98-table tbody tr').forEach(row => {
+                row.addEventListener('click', function() {
+                    // Remove selection from siblings
+                    this.parentNode.querySelectorAll('.win98-listview__row--selected, .win98-table__row--selected').forEach(r => {
+                        r.classList.remove('win98-listview__row--selected', 'win98-table__row--selected');
+                    });
+                    // Add selection to clicked row
+                    this.classList.add(this.classList.contains('win98-listview__row') ? 'win98-listview__row--selected' : 'win98-table__row--selected');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

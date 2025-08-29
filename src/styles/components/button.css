@@ -1,0 +1,276 @@
+/* Windows 98 Button Component */
+
+.win98-button {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  color: var(--win98-window-text);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  font-weight: var(--win98-font-weight-normal);
+  line-height: var(--win98-line-height-tight);
+  padding: var(--win98-spacing-2) var(--win98-spacing-4);
+  min-height: var(--win98-button-height);
+  min-width: 75px;
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--win98-spacing-2);
+  text-align: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Button states */
+.win98-button:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-button:active,
+.win98-button.win98-button--pressed {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  transform: translateX(1px) translateY(1px);
+}
+
+.win98-button:focus,
+.win98-button:focus-visible {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-button:disabled,
+.win98-button.win98-button--disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-button:disabled:hover,
+.win98-button.win98-button--disabled:hover {
+  background-color: var(--win98-disabled-background);
+  transform: none;
+}
+
+/* Button sizes */
+.win98-button--small {
+  min-height: 19px;
+  min-width: 50px;
+  padding: var(--win98-spacing-1) var(--win98-spacing-3);
+  font-size: var(--win98-font-size-small);
+}
+
+.win98-button--large {
+  min-height: 27px;
+  min-width: 100px;
+  padding: var(--win98-spacing-3) var(--win98-spacing-6);
+  font-size: var(--win98-font-size-large);
+}
+
+.win98-button--wide {
+  min-width: 120px;
+}
+
+.win98-button--full-width {
+  width: 100%;
+}
+
+/* Button variants */
+.win98-button--default {
+  /* Default styling - same as base */
+}
+
+.win98-button--primary {
+  font-weight: var(--win98-font-weight-bold);
+  border-width: var(--win98-border-width-thick);
+}
+
+.win98-button--flat {
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+  background-color: var(--win98-control-face);
+}
+
+.win98-button--flat:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-button--flat:active {
+  background-color: var(--win98-pressed-background);
+  border: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  transform: none;
+}
+
+/* Button with icon */
+.win98-button--icon {
+  min-width: var(--win98-button-height);
+  padding: var(--win98-spacing-2);
+}
+
+.win98-button--icon-only {
+  min-width: var(--win98-button-height);
+  width: var(--win98-button-height);
+  padding: var(--win98-spacing-2);
+  gap: 0;
+}
+
+.win98-button__icon {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  flex-shrink: 0;
+  display: block;
+}
+
+.win98-button__icon--left {
+  order: -1;
+}
+
+.win98-button__icon--right {
+  order: 1;
+}
+
+/* Button text styles */
+.win98-button__text {
+  flex: 1;
+}
+
+.win98-button--no-text .win98-button__text {
+  display: none;
+}
+
+/* Special button styles */
+.win98-button--ok {
+  font-weight: var(--win98-font-weight-bold);
+}
+
+.win98-button--cancel {
+  /* Standard styling */
+}
+
+.win98-button--help {
+  min-width: 50px;
+}
+
+/* Button groups */
+.win98-button-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--win98-spacing-2);
+}
+
+.win98-button-group--vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.win98-button-group--attached {
+  gap: 0;
+}
+
+.win98-button-group--attached .win98-button:not(:first-child) {
+  border-left: none;
+}
+
+.win98-button-group--attached .win98-button:not(:last-child) {
+  border-right: none;
+}
+
+/* Default button (responds to Enter key) */
+.win98-button--default-action {
+  font-weight: var(--win98-font-weight-bold);
+  border-width: var(--win98-border-width-thick);
+}
+
+/* Toggle button states */
+.win98-button--toggle.win98-button--active {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Radio button styling (when used as button) */
+.win98-button--radio {
+  border-radius: 0;
+  position: relative;
+}
+
+.win98-button--radio.win98-button--checked {
+  background-color: var(--win98-selection-background);
+  color: var(--win98-selection-text);
+}
+
+/* Checkbox button styling (when used as button) */
+.win98-button--checkbox {
+  border-radius: 0;
+  position: relative;
+}
+
+.win98-button--checkbox.win98-button--checked {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Button animations */
+.win98-button--animated {
+  transition: all var(--win98-transition-fast);
+}
+
+/* Button accessibility */
+.win98-button[aria-pressed="true"] {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .win98-button {
+    border-width: 2px;
+  }
+  
+  .win98-button--primary {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .win98-button--animated {
+    transition: none;
+  }
+  
+  .win98-button:active,
+  .win98-button.win98-button--pressed {
+    transform: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-button {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+}

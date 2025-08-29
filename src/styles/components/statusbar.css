@@ -1,0 +1,301 @@
+/* Windows 98 Status Bar Component */
+
+.win98-statusbar {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  padding: 0;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  color: var(--win98-window-text);
+  position: relative;
+  box-sizing: border-box;
+  min-height: 22px;
+}
+
+.win98-statusbar__panel {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 2px 6px;
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  background-color: var(--win98-control-face);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  margin-right: 2px;
+}
+
+.win98-statusbar__panel:last-child {
+  margin-right: 0;
+}
+
+/* Primary panel (main status text) */
+.win98-statusbar__panel--primary {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Fixed width panels */
+.win98-statusbar__panel--small {
+  width: 60px;
+  flex: none;
+}
+
+.win98-statusbar__panel--medium {
+  width: 100px;
+  flex: none;
+}
+
+.win98-statusbar__panel--large {
+  width: 150px;
+  flex: none;
+}
+
+/* Raised panel variant */
+.win98-statusbar__panel--raised {
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+}
+
+/* Flat panel (no border) */
+.win98-statusbar__panel--flat {
+  border: none;
+  padding: 2px 8px;
+}
+
+/* Status indicators */
+.win98-statusbar__indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.win98-statusbar__indicator::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.win98-statusbar__indicator--ready::before {
+  background-color: #27ae60;
+}
+
+.win98-statusbar__indicator--busy::before {
+  background-color: #f39c12;
+  animation: win98-statusbar-blink 1s ease-in-out infinite alternate;
+}
+
+.win98-statusbar__indicator--error::before {
+  background-color: #c0392b;
+}
+
+.win98-statusbar__indicator--offline::before {
+  background-color: var(--win98-control-dark);
+}
+
+@keyframes win98-statusbar-blink {
+  from { opacity: 1; }
+  to { opacity: 0.3; }
+}
+
+/* Progress panel */
+.win98-statusbar__progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 120px;
+}
+
+.win98-statusbar__progress-bar {
+  flex: 1;
+  height: 12px;
+  border-top: 1px solid var(--win98-control-dark-dark);
+  border-left: 1px solid var(--win98-control-dark-dark);
+  border-right: 1px solid var(--win98-control-light-light);
+  border-bottom: 1px solid var(--win98-control-light-light);
+  background-color: var(--win98-window-background);
+  position: relative;
+  overflow: hidden;
+}
+
+.win98-statusbar__progress-fill {
+  height: 100%;
+  background-color: var(--win98-active-caption);
+  transition: width 0.3s ease-in-out;
+  min-width: 0;
+}
+
+.win98-statusbar__progress-text {
+  font-size: 10px;
+  color: var(--win98-window-text);
+  white-space: nowrap;
+}
+
+/* Resize grip */
+.win98-statusbar__resize-grip {
+  width: 16px;
+  height: 16px;
+  background-image: 
+    linear-gradient(135deg, transparent 0%, transparent 30%, var(--win98-control-dark-dark) 30%, var(--win98-control-dark-dark) 32%, transparent 32%),
+    linear-gradient(135deg, transparent 0%, transparent 40%, var(--win98-control-dark-dark) 40%, var(--win98-control-dark-dark) 42%, transparent 42%),
+    linear-gradient(135deg, transparent 0%, transparent 50%, var(--win98-control-dark-dark) 50%, var(--win98-control-dark-dark) 52%, transparent 52%);
+  background-size: 4px 4px;
+  background-position: 0 0, 2px 2px, 4px 4px;
+  background-repeat: repeat;
+  cursor: nw-resize;
+  flex-shrink: 0;
+  margin-left: auto;
+  opacity: 0.6;
+}
+
+.win98-statusbar__resize-grip:hover {
+  opacity: 1;
+}
+
+/* Icon support */
+.win98-statusbar__icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  flex-shrink: 0;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Caps Lock, Num Lock, etc. indicators */
+.win98-statusbar__key-indicator {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.win98-statusbar__key-indicator--active {
+  background-color: var(--win98-active-caption);
+  color: var(--win98-active-caption-text);
+}
+
+/* Time display */
+.win98-statusbar__time {
+  min-width: 80px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+}
+
+/* Notification area */
+.win98-statusbar__notification-area {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 4px;
+}
+
+.win98-statusbar__notification-icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.win98-statusbar__notification-icon:hover {
+  opacity: 1;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .win98-statusbar {
+    border-color: ButtonText;
+    background-color: ButtonFace;
+    color: ButtonText;
+  }
+  
+  .win98-statusbar__panel {
+    border-color: ButtonText;
+    background-color: ButtonFace;
+  }
+  
+  .win98-statusbar__indicator--ready::before {
+    background-color: Highlight;
+  }
+  
+  .win98-statusbar__indicator--busy::before {
+    background-color: ButtonText;
+  }
+  
+  .win98-statusbar__indicator--error::before {
+    background-color: ButtonText;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-statusbar__progress-fill {
+    transition: none;
+  }
+  
+  .win98-statusbar__indicator--busy::before {
+    animation: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .win98-statusbar {
+    height: 20px;
+    font-size: 10px;
+  }
+  
+  .win98-statusbar__panel {
+    padding: 1px 4px;
+    font-size: 10px;
+  }
+  
+  .win98-statusbar__panel--small {
+    width: 50px;
+  }
+  
+  .win98-statusbar__panel--medium {
+    width: 80px;
+  }
+  
+  .win98-statusbar__resize-grip {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Focus Management */
+.win98-statusbar__panel:focus {
+  outline: 1px dotted var(--win98-window-text);
+  outline-offset: -2px;
+}
+
+/* Disabled State */
+.win98-statusbar--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.win98-statusbar--disabled .win98-statusbar__panel {
+  background-color: var(--win98-control-face);
+  color: var(--win98-control-dark);
+}

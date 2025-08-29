@@ -1,0 +1,342 @@
+/* Windows 98 Splitter Controls */
+
+/* Base Splitter Component */
+.win98-splitter {
+  background-color: var(--win98-control-face);
+  position: relative;
+  user-select: none;
+  touch-action: none;
+  box-sizing: border-box;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  z-index: 10;
+}
+
+/* Vertical Splitter (for horizontal splitting) */
+.win98-splitter--vertical {
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  background-color: var(--win98-control-face);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Horizontal Splitter (for vertical splitting) */
+.win98-splitter--horizontal {
+  height: 6px;
+  width: 100%;
+  cursor: row-resize;
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  background-color: var(--win98-control-face);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+/* Splitter Handle */
+.win98-splitter__handle {
+  background-color: var(--win98-control-face);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Vertical Splitter Handle */
+.win98-splitter--vertical .win98-splitter__handle {
+  width: 100%;
+  height: 20px;
+  flex-direction: column;
+}
+
+/* Horizontal Splitter Handle */
+.win98-splitter--horizontal .win98-splitter__handle {
+  height: 100%;
+  width: 20px;
+  flex-direction: row;
+}
+
+/* Splitter Grip Dots */
+.win98-splitter__grip {
+  background-color: var(--win98-control-dark);
+  position: relative;
+}
+
+/* Vertical Splitter Grip */
+.win98-splitter--vertical .win98-splitter__grip {
+  width: 2px;
+  height: 2px;
+  margin: 1px 0;
+  box-shadow: 
+    1px 1px 0 var(--win98-control-light-light),
+    0 0 0 1px var(--win98-control-dark);
+}
+
+/* Horizontal Splitter Grip */
+.win98-splitter--horizontal .win98-splitter__grip {
+  width: 2px;
+  height: 2px;
+  margin: 0 1px;
+  box-shadow: 
+    1px 1px 0 var(--win98-control-light-light),
+    0 0 0 1px var(--win98-control-dark);
+}
+
+/* Splitter States */
+.win98-splitter:hover {
+  background-color: var(--win98-control-light);
+}
+
+.win98-splitter:active,
+.win98-splitter--dragging {
+  background-color: var(--win98-control-dark);
+}
+
+.win98-splitter--disabled {
+  cursor: default;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Splitter Container */
+.win98-split-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.win98-split-container--vertical {
+  flex-direction: row;
+}
+
+.win98-split-container--horizontal {
+  flex-direction: column;
+}
+
+/* Split Panes */
+.win98-split-pane {
+  overflow: auto;
+  position: relative;
+  box-sizing: border-box;
+  background-color: var(--win98-control-face);
+}
+
+.win98-split-pane--primary {
+  flex-shrink: 0;
+}
+
+.win98-split-pane--secondary {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Resizing States */
+.win98-split-container--resizing {
+  cursor: col-resize;
+}
+
+.win98-split-container--resizing.win98-split-container--horizontal {
+  cursor: row-resize;
+}
+
+.win98-split-container--resizing * {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Resize Ghost/Preview */
+.win98-splitter__ghost {
+  position: absolute;
+  background-color: var(--win98-control-dark);
+  opacity: 0.5;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.win98-splitter__ghost--vertical {
+  width: 2px;
+  height: 100%;
+  top: 0;
+}
+
+.win98-splitter__ghost--horizontal {
+  height: 2px;
+  width: 100%;
+  left: 0;
+}
+
+/* Splitter Variants */
+.win98-splitter--thick {
+  width: 8px;
+}
+
+.win98-splitter--thick.win98-splitter--horizontal {
+  height: 8px;
+  width: 100%;
+}
+
+.win98-splitter--thin {
+  width: 4px;
+}
+
+.win98-splitter--thin.win98-splitter--horizontal {
+  height: 4px;
+  width: 100%;
+}
+
+/* Splitter with Button */
+.win98-splitter--with-button {
+  position: relative;
+}
+
+.win98-splitter__button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.win98-splitter--vertical .win98-splitter__button {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.win98-splitter--horizontal .win98-splitter__button {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.win98-splitter__button:hover {
+  background-color: var(--win98-control-light);
+}
+
+.win98-splitter__button:active {
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-splitter__button::before {
+  content: "⋮";
+  font-family: monospace;
+  transform: rotate(90deg);
+  font-size: 10px;
+}
+
+.win98-splitter--horizontal .win98-splitter__button::before {
+  transform: rotate(0deg);
+  content: "⋯";
+}
+
+/* Nested Splitters */
+.win98-split-container .win98-split-container {
+  border: none;
+}
+
+/* Minimum Sizes */
+.win98-split-pane[data-min-width] {
+  min-width: attr(data-min-width px, 50px);
+}
+
+.win98-split-pane[data-min-height] {
+  min-height: attr(data-min-height px, 50px);
+}
+
+/* Accessibility */
+.win98-splitter:focus-visible {
+  outline: 1px dotted var(--win98-window-text);
+  outline-offset: -2px;
+}
+
+.win98-splitter[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Keyboard Navigation Support */
+.win98-splitter[tabindex]:focus {
+  background-color: var(--win98-highlight);
+  color: var(--win98-highlight-text);
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .win98-splitter {
+    border-color: currentColor;
+  }
+  
+  .win98-splitter__button {
+    border-color: currentColor;
+  }
+  
+  .win98-splitter__grip {
+    background-color: currentColor;
+    box-shadow: none;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-splitter__ghost {
+    display: none;
+  }
+}
+
+/* Touch Device Adjustments */
+@media (pointer: coarse) {
+  .win98-splitter--vertical {
+    width: 12px;
+  }
+  
+  .win98-splitter--horizontal {
+    height: 12px;
+  }
+  
+  .win98-splitter__button {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .win98-splitter {
+    display: none;
+  }
+  
+  .win98-split-container {
+    display: block;
+  }
+  
+  .win98-split-pane {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+  }
+}

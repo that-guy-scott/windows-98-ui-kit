@@ -1,0 +1,373 @@
+/* Windows 98 Busy States Component */
+
+/* Busy Overlay for Forms and Containers */
+.win98-busy-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(192, 192, 192, 0.7);
+  z-index: 1000;
+  pointer-events: auto;
+  cursor: wait;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win98-busy-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 1px,
+      rgba(128, 128, 128, 0.1) 1px,
+      rgba(128, 128, 128, 0.1) 2px
+    );
+  pointer-events: none;
+}
+
+.win98-busy-overlay__indicator {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  color: var(--win98-window-text);
+  min-width: 200px;
+  text-align: center;
+}
+
+/* Busy Cursor States */
+.win98-cursor-wait,
+.win98-busy {
+  cursor: wait !important;
+}
+
+.win98-cursor-wait *,
+.win98-busy * {
+  cursor: wait !important;
+}
+
+/* Disabled Busy State */
+.win98-busy-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  filter: grayscale(50%);
+  position: relative;
+}
+
+.win98-busy-disabled::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(192, 192, 192, 0.3);
+  z-index: 10;
+  pointer-events: auto;
+  cursor: not-allowed;
+}
+
+/* Form Busy States */
+.win98-form--busy {
+  position: relative;
+  pointer-events: none;
+}
+
+.win98-form--busy .win98-button,
+.win98-form--busy .win98-input,
+.win98-form--busy .win98-select,
+.win98-form--busy .win98-textarea {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.win98-form--busy .win98-button:disabled {
+  opacity: 0.4;
+}
+
+/* Window Busy State */
+.win98-window--busy {
+  pointer-events: none;
+  position: relative;
+}
+
+.win98-window--busy .win98-titlebar {
+  background: linear-gradient(to bottom, 
+    rgba(128, 128, 128, 0.9) 0%, 
+    rgba(64, 64, 64, 0.9) 100%);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.win98-window--busy .win98-window__content {
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+/* Button Busy States */
+.win98-button--busy {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.win98-button--busy::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--win98-window-text);
+  border-top: 1px solid transparent;
+  border-radius: 50%;
+  animation: win98-button-spin 1s linear infinite;
+}
+
+@keyframes win98-button-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.win98-button--busy .win98-button__text {
+  opacity: 0.3;
+}
+
+/* Input Busy States */
+.win98-input--busy,
+.win98-textarea--busy,
+.win98-select--busy {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(128, 128, 128, 0.1) 8px,
+      rgba(128, 128, 128, 0.1) 16px
+    );
+  animation: win98-input-busy-slide 2s linear infinite;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+@keyframes win98-input-busy-slide {
+  0% { background-position: 0 0; }
+  100% { background-position: 16px 0; }
+}
+
+/* List Busy States */
+.win98-listview--busy,
+.win98-treeview--busy,
+.win98-table--busy {
+  position: relative;
+  pointer-events: none;
+}
+
+.win98-listview--busy::after,
+.win98-treeview--busy::after,
+.win98-table--busy::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(128, 128, 128, 0.2) 4px,
+      rgba(128, 128, 128, 0.2) 8px
+    );
+  z-index: 5;
+  pointer-events: auto;
+  cursor: wait;
+}
+
+/* Progress Bar Busy State */
+.win98-progress--busy .win98-progress__fill {
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      var(--win98-active-caption),
+      var(--win98-active-caption) 8px,
+      rgba(255, 255, 255, 0.3) 8px,
+      rgba(255, 255, 255, 0.3) 16px
+    );
+  animation: win98-progress-busy-slide 1.5s linear infinite;
+}
+
+@keyframes win98-progress-busy-slide {
+  0% { background-position: 0 0; }
+  100% { background-position: 16px 0; }
+}
+
+/* Menu Busy States */
+.win98-menubar--busy,
+.win98-dropdown-menu--busy {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.win98-menubar--busy .win98-menubar__item,
+.win98-dropdown-menu--busy .win98-dropdown-menu__item {
+  cursor: wait;
+  color: var(--win98-control-dark);
+}
+
+/* Dialog Busy States */
+.win98-dialog--busy {
+  pointer-events: none;
+}
+
+.win98-dialog--busy .win98-dialog__content {
+  opacity: 0.7;
+  position: relative;
+}
+
+.win98-dialog--busy .win98-dialog__content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(192, 192, 192, 0.5);
+  z-index: 1;
+}
+
+/* Busy Text Styles */
+.win98-busy-text {
+  font-style: italic;
+  color: var(--win98-control-dark);
+  position: relative;
+}
+
+.win98-busy-text::after {
+  content: '...';
+  animation: win98-busy-dots 1.5s ease-in-out infinite;
+}
+
+@keyframes win98-busy-dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Processing States */
+.win98-processing {
+  position: relative;
+  overflow: hidden;
+}
+
+.win98-processing::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--win98-active-caption),
+    transparent
+  );
+  animation: win98-processing-scan 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes win98-processing-scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .win98-busy-overlay {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .win98-busy-overlay__indicator {
+    border-color: ButtonText;
+    background-color: ButtonFace;
+    color: ButtonText;
+  }
+  
+  .win98-busy-disabled::after {
+    background-color: rgba(128, 128, 128, 0.8);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-button--busy::after,
+  .win98-input--busy,
+  .win98-textarea--busy,
+  .win98-select--busy,
+  .win98-progress--busy .win98-progress__fill,
+  .win98-busy-text::after,
+  .win98-processing::before {
+    animation: none;
+  }
+  
+  .win98-button--busy::after {
+    content: '⏳';
+    border: none;
+    font-size: 12px;
+    width: auto;
+    height: auto;
+  }
+}
+
+/* Accessibility Support */
+.win98-busy-overlay[aria-busy="true"],
+.win98-form--busy[aria-busy="true"],
+.win98-window--busy[aria-busy="true"] {
+  /* Screen readers will announce busy state */
+}
+
+/* Focus Management During Busy States */
+.win98-busy-overlay:focus,
+.win98-busy-disabled:focus {
+  outline: 1px dotted var(--win98-window-text);
+  outline-offset: -2px;
+}
+
+/* Network/Loading Busy States */
+.win98-busy--network {
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 128, 255, 0.1) 10px,
+      rgba(0, 128, 255, 0.1) 20px
+    );
+  animation: win98-network-busy 1s linear infinite;
+}
+
+@keyframes win98-network-busy {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 0; }
+}

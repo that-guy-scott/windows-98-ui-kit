@@ -1,0 +1,386 @@
+/* Windows 98 Context Menu Component */
+
+.win98-context-menu {
+  position: fixed;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  min-width: 140px;
+  max-width: 300px;
+  z-index: calc(var(--win98-z-dropdown) + 100);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  user-select: none;
+  display: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: var(--win98-spacing-1) 0;
+}
+
+.win98-context-menu--open {
+  display: block;
+}
+
+/* Context menu items */
+.win98-context-menu__item {
+  background-color: transparent;
+  border: none;
+  color: var(--win98-window-text);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  font-weight: var(--win98-font-weight-normal);
+  padding: var(--win98-spacing-1) var(--win98-spacing-4) var(--win98-spacing-1) calc(var(--win98-spacing-4) + var(--win98-icon-size-small) + var(--win98-spacing-2));
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--win98-spacing-2);
+  position: relative;
+  min-height: 19px;
+  box-sizing: border-box;
+}
+
+/* Context menu item hover state */
+.win98-context-menu__item:hover {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+}
+
+/* Context menu item active/pressed state */
+.win98-context-menu__item:active,
+.win98-context-menu__item--active {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+}
+
+/* Context menu item focus state */
+.win98-context-menu__item:focus,
+.win98-context-menu__item:focus-visible {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+  outline: none;
+}
+
+/* Disabled context menu item */
+.win98-context-menu__item:disabled,
+.win98-context-menu__item--disabled {
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.win98-context-menu__item--disabled:hover,
+.win98-context-menu__item--disabled:focus {
+  background-color: transparent;
+  color: var(--win98-disabled-text);
+}
+
+/* Context menu item icon space (always reserved) */
+.win98-context-menu__item-icon {
+  position: absolute;
+  left: var(--win98-spacing-2);
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Context menu item text */
+.win98-context-menu__item-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Context menu item keyboard shortcut */
+.win98-context-menu__item-shortcut {
+  font-size: var(--win98-font-size-small);
+  color: var(--win98-disabled-text);
+  margin-left: var(--win98-spacing-lg);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.win98-context-menu__item:hover .win98-context-menu__item-shortcut {
+  color: var(--win98-menu-hover-text);
+}
+
+/* Context menu item with submenu indicator */
+.win98-context-menu__item--has-submenu::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 4px solid currentColor;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Context menu item with checkmark */
+.win98-context-menu__item--checked .win98-context-menu__item-icon::before {
+  content: '✓';
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Context menu item states for different types */
+.win98-context-menu__item--radio.win98-context-menu__item--checked .win98-context-menu__item-icon::before {
+  content: '●';
+  font-size: 8px;
+}
+
+.win98-context-menu__item--checkbox.win98-context-menu__item--checked .win98-context-menu__item-icon::before {
+  content: '✓';
+  font-size: 10px;
+}
+
+.win98-context-menu__item--checkbox.win98-context-menu__item--indeterminate .win98-context-menu__item-icon::before {
+  content: '■';
+  font-size: 6px;
+}
+
+/* Context menu separators */
+.win98-context-menu__separator {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--win98-control-dark) var(--win98-spacing-2), 
+    var(--win98-control-dark) calc(100% - var(--win98-spacing-2)), 
+    transparent 100%);
+  margin: var(--win98-spacing-1) 0;
+  position: relative;
+}
+
+.win98-context-menu__separator::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--win98-control-light) var(--win98-spacing-2), 
+    var(--win98-control-light) calc(100% - var(--win98-spacing-2)), 
+    transparent 100%);
+}
+
+/* Context menu groups */
+.win98-context-menu__group-title {
+  font-size: var(--win98-font-size-small);
+  font-weight: var(--win98-font-weight-bold);
+  color: var(--win98-disabled-text);
+  padding: var(--win98-spacing-1) var(--win98-spacing-4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: default;
+  user-select: none;
+}
+
+/* Context submenu positioning */
+.win98-context-menu__submenu {
+  position: fixed;
+  left: 100%;
+  top: -1px;
+  margin-left: -1px;
+}
+
+.win98-context-menu__submenu--left {
+  left: auto;
+  right: 100%;
+  margin-left: 0;
+  margin-right: -1px;
+}
+
+/* Default context menu items (common actions) */
+.win98-context-menu__item--cut .win98-context-menu__item-icon::before {
+  content: '✂';
+  font-size: 12px;
+}
+
+.win98-context-menu__item--copy .win98-context-menu__item-icon::before {
+  content: '📋';
+  font-size: 10px;
+}
+
+.win98-context-menu__item--paste .win98-context-menu__item-icon::before {
+  content: '📄';
+  font-size: 10px;
+}
+
+.win98-context-menu__item--delete .win98-context-menu__item-icon::before {
+  content: '🗑';
+  font-size: 10px;
+}
+
+.win98-context-menu__item--properties .win98-context-menu__item-icon::before {
+  content: '⚙';
+  font-size: 10px;
+}
+
+.win98-context-menu__item--rename .win98-context-menu__item-icon::before {
+  content: '✏';
+  font-size: 10px;
+}
+
+.win98-context-menu__item--refresh .win98-context-menu__item-icon::before {
+  content: '🔄';
+  font-size: 10px;
+}
+
+/* Context menu for different contexts */
+.win98-context-menu--file {
+  /* File-specific context menu styling */
+}
+
+.win98-context-menu--edit {
+  /* Edit context menu styling */
+}
+
+.win98-context-menu--view {
+  /* View context menu styling */
+}
+
+/* Context menu positioning helpers */
+.win98-context-menu--position-auto {
+  /* JavaScript will handle positioning */
+}
+
+.win98-context-menu--position-top {
+  transform: translateY(-100%);
+}
+
+.win98-context-menu--position-left {
+  transform: translateX(-100%);
+}
+
+.win98-context-menu--position-top-left {
+  transform: translate(-100%, -100%);
+}
+
+/* Context menu sizes */
+.win98-context-menu--small {
+  min-width: 100px;
+  font-size: var(--win98-font-size-small);
+}
+
+.win98-context-menu--small .win98-context-menu__item {
+  padding: 1px var(--win98-spacing-2) 1px calc(var(--win98-spacing-2) + 12px + var(--win98-spacing-1));
+  min-height: 16px;
+}
+
+.win98-context-menu--small .win98-context-menu__item-icon {
+  width: 12px;
+  height: 12px;
+  left: var(--win98-spacing-1);
+}
+
+.win98-context-menu--large {
+  min-width: 180px;
+  font-size: var(--win98-font-size-large);
+}
+
+.win98-context-menu--large .win98-context-menu__item {
+  padding: var(--win98-spacing-2) var(--win98-spacing-6) var(--win98-spacing-2) calc(var(--win98-spacing-6) + 20px + var(--win98-spacing-2));
+  min-height: 24px;
+}
+
+.win98-context-menu--large .win98-context-menu__item-icon {
+  width: 20px;
+  height: 20px;
+  left: var(--win98-spacing-3);
+}
+
+/* Animation states */
+.win98-context-menu--fade-in {
+  animation: win98-context-fade-in var(--win98-transition-fast) ease-out;
+}
+
+@keyframes win98-context-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Overflow handling */
+.win98-context-menu--scrollable {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.win98-context-menu--scrollable::-webkit-scrollbar {
+  width: var(--win98-scrollbar-width);
+}
+
+.win98-context-menu--scrollable::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-context-menu--scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+/* Touch device support */
+@media (pointer: coarse) {
+  .win98-context-menu__item {
+    min-height: 32px;
+    padding-top: var(--win98-spacing-2);
+    padding-bottom: var(--win98-spacing-2);
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .win98-context-menu {
+    border-width: 2px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .win98-context-menu__separator {
+    height: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-context-menu--fade-in {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-context-menu {
+    position: static !important;
+    background: white !important;
+    border: 1px solid black !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+  
+  .win98-context-menu__item {
+    color: black !important;
+  }
+  
+  .win98-context-menu__separator {
+    background: black !important;
+  }
+}

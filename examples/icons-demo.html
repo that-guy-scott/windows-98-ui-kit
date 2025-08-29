@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 98 Icons Demo</title>
+    <link rel="stylesheet" href="../src/styles/base/index.css">
+    <style>
+        body {
+            background-color: #c0c0c0;
+            font-family: "MS Sans Serif", sans-serif;
+            font-size: 11px;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            text-align: center;
+            min-height: 80px;
+            justify-content: center;
+        }
+        
+        .icon-item:hover {
+            background: #e0e0e0;
+        }
+        
+        .icon-label {
+            font-size: 10px;
+            margin-top: 5px;
+            word-wrap: break-word;
+            max-width: 100px;
+        }
+        
+        .size-demo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border: 1px inset #c0c0c0;
+        }
+        
+        h1, h2 {
+            color: #000080;
+            margin: 20px 0 10px 0;
+        }
+        
+        .demo-section {
+            margin: 30px 0;
+            padding: 15px;
+            background: white;
+            border: 2px inset #c0c0c0;
+        }
+        
+        .toolbar-demo {
+            display: flex;
+            background: #c0c0c0;
+            border: 1px outset #c0c0c0;
+            padding: 2px;
+            margin: 10px 0;
+        }
+        
+        .toolbar-button {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 6px;
+            border: 1px outset #c0c0c0;
+            background: #c0c0c0;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        
+        .toolbar-button:hover {
+            background: #e0e0e0;
+        }
+        
+        .toolbar-button:active {
+            border: 1px inset #c0c0c0;
+        }
+        
+        .listview-demo {
+            background: white;
+            border: 2px inset #c0c0c0;
+            padding: 0;
+            margin: 10px 0;
+        }
+        
+        .listview-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 2px 4px;
+            cursor: pointer;
+        }
+        
+        .listview-item:hover {
+            background: #000080;
+            color: white;
+        }
+        
+        .desktop-demo {
+            background: #008080;
+            padding: 20px;
+            min-height: 200px;
+            position: relative;
+            border: 2px inset #c0c0c0;
+            margin: 10px 0;
+        }
+        
+        .desktop-icon {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 4px;
+            width: 64px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            text-shadow: 1px 1px 1px black;
+        }
+        
+        .desktop-icon:hover {
+            background: rgba(0, 0, 128, 0.5);
+        }
+        
+        .desktop-icon .icon-label {
+            font-size: 11px;
+            word-wrap: break-word;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="win98-window" style="margin: 0 auto; max-width: 1000px;">
+        <div class="win98-titlebar">
+            <div class="win98-titlebar-text">Windows 98 Icons Demo</div>
+            <div class="win98-titlebar-controls">
+                <button class="win98-titlebar-button win98-minimize-button"></button>
+                <button class="win98-titlebar-button win98-maximize-button"></button>
+                <button class="win98-titlebar-button win98-close-button"></button>
+            </div>
+        </div>
+        
+        <div class="win98-window-content" style="padding: 15px;">
+            <h1>Authentic Windows 98 Icons</h1>
+            <p>This demo showcases authentic Windows 98 .ico files integrated into the UI kit.</p>
+            
+            <!-- Icon Size Demonstrations -->
+            <div class="demo-section">
+                <h2>Icon Sizes</h2>
+                <div class="size-demo">
+                    <span>Small (16px):</span>
+                    <div class="win98-icon win98-icon-small win98-icon-computer"></div>
+                    <div class="win98-icon win98-icon-small win98-icon-folder"></div>
+                    <div class="win98-icon win98-icon-small win98-icon-document"></div>
+                </div>
+                <div class="size-demo">
+                    <span>Medium (24px):</span>
+                    <div class="win98-icon win98-icon-medium win98-icon-computer"></div>
+                    <div class="win98-icon win98-icon-medium win98-icon-folder"></div>
+                    <div class="win98-icon win98-icon-medium win98-icon-document"></div>
+                </div>
+                <div class="size-demo">
+                    <span>Large (32px):</span>
+                    <div class="win98-icon win98-icon-large win98-icon-computer"></div>
+                    <div class="win98-icon win98-icon-large win98-icon-folder"></div>
+                    <div class="win98-icon win98-icon-large win98-icon-document"></div>
+                </div>
+            </div>
+            
+            <!-- Desktop Icons Demo -->
+            <div class="demo-section">
+                <h2>Desktop Environment</h2>
+                <div class="desktop-demo">
+                    <div class="desktop-icon" style="top: 10px; left: 10px;">
+                        <div class="win98-icon win98-icon-large win98-icon-computer"></div>
+                        <div class="icon-label">My Computer</div>
+                    </div>
+                    <div class="desktop-icon" style="top: 90px; left: 10px;">
+                        <div class="win98-icon win98-icon-large win98-icon-recycle-bin"></div>
+                        <div class="icon-label">Recycle Bin</div>
+                    </div>
+                    <div class="desktop-icon" style="top: 10px; left: 90px;">
+                        <div class="win98-icon win98-icon-large win98-icon-network"></div>
+                        <div class="icon-label">Network Neighborhood</div>
+                    </div>
+                    <div class="desktop-icon" style="top: 90px; left: 90px;">
+                        <div class="win98-icon win98-icon-large win98-icon-internet-explorer"></div>
+                        <div class="icon-label">Internet Explorer</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Toolbar Demo -->
+            <div class="demo-section">
+                <h2>Toolbar with Icons</h2>
+                <div class="toolbar-demo">
+                    <div class="toolbar-button">
+                        <div class="win98-icon win98-icon-small win98-icon-document"></div>
+                        New
+                    </div>
+                    <div class="toolbar-button">
+                        <div class="win98-icon win98-icon-small win98-icon-folder"></div>
+                        Open
+                    </div>
+                    <div class="toolbar-button">
+                        <div class="win98-icon win98-icon-small win98-icon-drive"></div>
+                        Save
+                    </div>
+                    <div class="toolbar-button">
+                        <div class="win98-icon win98-icon-small win98-icon-printer"></div>
+                        Print
+                    </div>
+                    <div class="toolbar-button">
+                        <div class="win98-icon win98-icon-small win98-icon-search"></div>
+                        Find
+                    </div>
+                </div>
+            </div>
+            
+            <!-- File Explorer Demo -->
+            <div class="demo-section">
+                <h2>File Explorer View</h2>
+                <div class="listview-demo">
+                    <div class="listview-item">
+                        <div class="win98-icon win98-icon-small win98-icon-folder"></div>
+                        <span>Program Files</span>
+                    </div>
+                    <div class="listview-item">
+                        <div class="win98-icon win98-icon-small win98-icon-folder"></div>
+                        <span>Windows</span>
+                    </div>
+                    <div class="listview-item">
+                        <div class="win98-icon win98-icon-small win98-icon-notepad-file"></div>
+                        <span>readme.txt</span>
+                    </div>
+                    <div class="listview-item">
+                        <div class="win98-icon win98-icon-small win98-icon-paint"></div>
+                        <span>mspaint.exe</span>
+                    </div>
+                    <div class="listview-item">
+                        <div class="win98-icon win98-icon-small win98-icon-calculator"></div>
+                        <span>calc.exe</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Icons Grid -->
+            <div class="demo-section">
+                <h2>System Icons</h2>
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-computer"></div>
+                        <div class="icon-label">Computer</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-hard-disk"></div>
+                        <div class="icon-label">Hard Disk</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-floppy-drive"></div>
+                        <div class="icon-label">Floppy Drive</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-cd-drive"></div>
+                        <div class="icon-label">CD Drive</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-network-drive"></div>
+                        <div class="icon-label">Network Drive</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-printer"></div>
+                        <div class="icon-label">Printer</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Application Icons -->
+            <div class="demo-section">
+                <h2>Application Icons</h2>
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-notepad"></div>
+                        <div class="icon-label">Notepad</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-paint"></div>
+                        <div class="icon-label">Paint</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-calculator"></div>
+                        <div class="icon-label">Calculator</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-internet-explorer"></div>
+                        <div class="icon-label">Internet Explorer</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-outlook-express"></div>
+                        <div class="icon-label">Outlook Express</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-media-player"></div>
+                        <div class="icon-label">Media Player</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game Icons -->
+            <div class="demo-section">
+                <h2>Games</h2>
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-solitaire"></div>
+                        <div class="icon-label">Solitaire</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-minesweeper"></div>
+                        <div class="icon-label">Minesweeper</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-freecell"></div>
+                        <div class="icon-label">FreeCell</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-hearts"></div>
+                        <div class="icon-label">Hearts</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dialog Icons -->
+            <div class="demo-section">
+                <h2>Dialog Icons</h2>
+                <div class="icon-grid">
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-info"></div>
+                        <div class="icon-label">Information</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-warning"></div>
+                        <div class="icon-label">Warning</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-error"></div>
+                        <div class="icon-label">Error</div>
+                    </div>
+                    <div class="icon-item">
+                        <div class="win98-icon win98-icon-large win98-icon-question"></div>
+                        <div class="icon-label">Question</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="win98-statusbar">
+            <div class="win98-statusbar-section">Ready</div>
+            <div class="win98-statusbar-section">Icons: 50+ authentic Windows 98 .ico files</div>
+        </div>
+    </div>
+</body>
+</html>

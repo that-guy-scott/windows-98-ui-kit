@@ -1,0 +1,145 @@
+/* Windows 98 CSS Custom Properties */
+:root {
+  /* Primary Color Palette */
+  --win98-control-face: #c0c0c0;
+  --win98-control-light: #ffffff;
+  --win98-control-light-light: #dfdfdf;
+  --win98-control-dark: #808080;
+  --win98-control-dark-dark: #404040;
+
+  /* System Colors */
+  --win98-window-background: #ffffff;
+  --win98-window-text: #000000;
+  --win98-selection-background: #0a246a;
+  --win98-selection-text: #ffffff;
+  --win98-inactive-selection: #808080;
+
+  /* Accent Colors */
+  --win98-active-title: #0a246a;
+  --win98-inactive-title: #808080;
+  --win98-title-text: #ffffff;
+  --win98-menu-highlight: #0a246a;
+
+  /* Status Colors */
+  --win98-info-text: #000080;
+  --win98-error-text: #800000;
+  --win98-warning-text: #808000;
+  --win98-success-text: #008000;
+  
+  /* State Colors - Focus */
+  --win98-focus-color: #0a246a;
+  --win98-focus-background: #0a246a;
+  --win98-focus-text: #ffffff;
+  
+  /* State Colors - Hover */
+  --win98-hover-background: #b8b8b8;
+  --win98-menu-hover: #0a246a;
+  --win98-menu-hover-text: #ffffff;
+  
+  /* State Colors - Active/Pressed */
+  --win98-active-background: #a0a0a0;
+  --win98-pressed-background: #a0a0a0;
+  
+  /* State Colors - Disabled */
+  --win98-disabled-background: #c0c0c0;
+  --win98-disabled-text: #808080;
+  --win98-disabled-text-light: #ffffff;
+
+  /* Typography */
+  --win98-font-family: "MS Sans Serif", "Microsoft Sans Serif", sans-serif;
+  --win98-font-family-mono: "Courier New", monospace;
+  
+  /* Font Sizes */
+  --win98-font-size-tiny: 7px;
+  --win98-font-size-small: 8px;
+  --win98-font-size-normal: 11px;
+  --win98-font-size-large: 12px;
+  --win98-font-size-title: 11px;
+  --win98-font-size-dialog-title: 8px;
+  --win98-font-size-status: 8px;
+  
+  /* Font Weights */
+  --win98-font-weight-normal: normal;
+  --win98-font-weight-bold: bold;
+  
+  /* Line Heights */
+  --win98-line-height-tight: 1.1;
+  --win98-line-height-normal: 1.2;
+  --win98-line-height-relaxed: 1.3;
+
+  /* Spacing Scale (Windows 98 2px grid) */
+  --win98-spacing-0: 0;
+  --win98-spacing-1: 2px;
+  --win98-spacing-2: 4px;
+  --win98-spacing-3: 6px;
+  --win98-spacing-4: 8px;
+  --win98-spacing-5: 10px;
+  --win98-spacing-6: 12px;
+  --win98-spacing-7: 14px;
+  --win98-spacing-8: 16px;
+  --win98-spacing-10: 20px;
+  --win98-spacing-12: 24px;
+  --win98-spacing-16: 32px;
+  
+  /* Semantic Spacing */
+  --win98-spacing-xs: var(--win98-spacing-1);
+  --win98-spacing-sm: var(--win98-spacing-2);
+  --win98-spacing-md: var(--win98-spacing-4);
+  --win98-spacing-lg: var(--win98-spacing-6);
+  --win98-spacing-xl: var(--win98-spacing-8);
+  
+  /* Border Radius (Windows 98 typically uses 0) */
+  --win98-border-radius-none: 0;
+  --win98-border-radius-sm: 0;
+  --win98-border-radius-md: 0;
+  --win98-border-radius-lg: 0;
+  
+  /* Box Sizing */
+  --win98-box-sizing: border-box;
+
+  /* Component Dimensions */
+  --win98-titlebar-height: 18px;
+  --win98-button-height: 23px;
+  --win98-menu-height: 19px;
+  --win98-scrollbar-width: 16px;
+  --win98-border-width: 1px;
+  --win98-border-width-thick: 2px;
+
+  /* Icon Sizes */
+  --win98-icon-size-small: 16px;
+  --win98-icon-size-large: 32px;
+
+  /* Z-Index Scale */
+  --win98-z-dropdown: 1000;
+  --win98-z-modal: 2000;
+  --win98-z-tooltip: 3000;
+
+  /* Border Styles - Raised (3D Effect) */
+  --win98-border-raised: 
+    var(--win98-border-width) solid var(--win98-control-light) 
+    var(--win98-border-width) solid var(--win98-control-dark) 
+    var(--win98-border-width) solid var(--win98-control-dark) 
+    var(--win98-border-width) solid var(--win98-control-light);
+  
+  /* Border Styles - Sunken (Pressed Effect) */
+  --win98-border-sunken: 
+    var(--win98-border-width) solid var(--win98-control-dark) 
+    var(--win98-border-width) solid var(--win98-control-light) 
+    var(--win98-border-width) solid var(--win98-control-light) 
+    var(--win98-border-width) solid var(--win98-control-dark);
+
+  /* Border Styles - Deep Sunken (Text Fields) */
+  --win98-border-deep-sunken: 
+    var(--win98-border-width) solid var(--win98-control-dark-dark) 
+    var(--win98-border-width) solid var(--win98-control-light-light) 
+    var(--win98-border-width) solid var(--win98-control-light-light) 
+    var(--win98-border-width) solid var(--win98-control-dark-dark);
+
+  /* Focus Outline */
+  --win98-focus-outline: var(--win98-border-width) dotted var(--win98-window-text);
+  --win98-focus-outline-offset: -1px;
+
+  /* Transitions (minimal for retro feel) */
+  --win98-transition-fast: 0.1s ease;
+  --win98-transition-normal: 0.2s ease;
+}

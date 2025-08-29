@@ -1,0 +1,473 @@
+/* Windows 98 Special Buttons Component */
+
+/* OK/Cancel Dialog Buttons */
+.win98-button--ok {
+  font-weight: var(--win98-font-weight-bold);
+  min-width: 75px;
+}
+
+.win98-button--cancel {
+  min-width: 75px;
+}
+
+.win98-button--yes {
+  font-weight: var(--win98-font-weight-bold);
+  min-width: 75px;
+}
+
+.win98-button--no {
+  min-width: 75px;
+}
+
+.win98-button--apply {
+  min-width: 75px;
+}
+
+.win98-button--help {
+  min-width: 50px;
+}
+
+/* Toolbar Buttons */
+.win98-toolbar-button {
+  background-color: transparent;
+  border: none;
+  padding: var(--win98-spacing-1);
+  min-width: auto;
+  min-height: auto;
+  width: 24px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+.win98-toolbar-button:hover {
+  background-color: var(--win98-hover-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-toolbar-button:active,
+.win98-toolbar-button.win98-toolbar-button--pressed {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-toolbar-button:disabled {
+  background-color: transparent;
+  border: none;
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+}
+
+.win98-toolbar-button__icon {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  display: block;
+}
+
+/* Radio Button Styling */
+.win98-radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  line-height: var(--win98-line-height-normal);
+  gap: var(--win98-spacing-2);
+  position: relative;
+}
+
+.win98-radio__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.win98-radio__indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.win98-radio__input:checked + .win98-radio__indicator::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--win98-window-text);
+  position: absolute;
+}
+
+.win98-radio__input:focus + .win98-radio__indicator {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-radio__input:disabled + .win98-radio__indicator {
+  background-color: var(--win98-disabled-background);
+  border-color: var(--win98-disabled-text);
+}
+
+.win98-radio__input:disabled + .win98-radio__indicator::after {
+  background-color: var(--win98-disabled-text);
+}
+
+.win98-radio__input:disabled ~ .win98-radio__label {
+  color: var(--win98-disabled-text);
+}
+
+.win98-radio__label {
+  color: var(--win98-window-text);
+  cursor: pointer;
+}
+
+/* Checkbox Styling */
+.win98-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  line-height: var(--win98-line-height-normal);
+  gap: var(--win98-spacing-2);
+  position: relative;
+}
+
+.win98-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.win98-checkbox__indicator {
+  width: 13px;
+  height: 13px;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--win98-window-text);
+}
+
+.win98-checkbox__input:checked + .win98-checkbox__indicator::after {
+  content: '✓';
+  line-height: 1;
+  position: absolute;
+}
+
+.win98-checkbox__input:indeterminate + .win98-checkbox__indicator::after {
+  content: '';
+  width: 7px;
+  height: 2px;
+  background-color: var(--win98-window-text);
+  position: absolute;
+}
+
+.win98-checkbox__input:focus + .win98-checkbox__indicator {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-checkbox__input:disabled + .win98-checkbox__indicator {
+  background-color: var(--win98-disabled-background);
+  border-color: var(--win98-disabled-text);
+  color: var(--win98-disabled-text);
+}
+
+.win98-checkbox__input:disabled ~ .win98-checkbox__label {
+  color: var(--win98-disabled-text);
+}
+
+.win98-checkbox__label {
+  color: var(--win98-window-text);
+  cursor: pointer;
+}
+
+/* Browse/File Dialog Buttons */
+.win98-button--browse {
+  min-width: 25px;
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  font-size: var(--win98-font-size-small);
+}
+
+.win98-button--browse::after {
+  content: '...';
+  font-weight: bold;
+}
+
+/* Dropdown Arrow Button */
+.win98-button--dropdown-arrow {
+  min-width: 17px;
+  width: 17px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win98-button--dropdown-arrow::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+}
+
+/* Spin Button (Up/Down arrows) */
+.win98-spin-button {
+  display: inline-flex;
+  flex-direction: column;
+  width: 16px;
+  height: var(--win98-button-height);
+}
+
+.win98-spin-button__up,
+.win98-spin-button__down {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 8px;
+  color: var(--win98-window-text);
+}
+
+.win98-spin-button__up {
+  border-bottom: none;
+}
+
+.win98-spin-button__down {
+  border-top: none;
+}
+
+.win98-spin-button__up::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid currentColor;
+}
+
+.win98-spin-button__down::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid currentColor;
+}
+
+.win98-spin-button__up:hover,
+.win98-spin-button__down:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-spin-button__up:active,
+.win98-spin-button__down:active {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Tab Button */
+.win98-tab-button {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: none;
+  padding: var(--win98-spacing-2) var(--win98-spacing-4);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  display: inline-block;
+  position: relative;
+  outline: none;
+}
+
+.win98-tab-button:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-tab-button--active {
+  background-color: var(--win98-window-background);
+  border-bottom: var(--win98-border-width) solid var(--win98-window-background);
+  z-index: 1;
+}
+
+.win98-tab-button:focus {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+.win98-tab-button:disabled {
+  background-color: var(--win98-disabled-background);
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Progress Button (with embedded progress) */
+.win98-button--progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.win98-button--progress::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: var(--progress, 0%);
+  background-color: var(--win98-selection-background);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.win98-button--progress .win98-button__text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Icon-only special buttons */
+.win98-button--close-icon {
+  width: 16px;
+  height: 14px;
+  padding: 0;
+  font-size: 8px;
+  font-weight: bold;
+  color: var(--win98-window-text);
+}
+
+.win98-button--close-icon::after {
+  content: '×';
+}
+
+.win98-button--minimize-icon {
+  width: 16px;
+  height: 14px;
+  padding: 0;
+}
+
+.win98-button--minimize-icon::after {
+  content: '';
+  width: 8px;
+  height: 2px;
+  background-color: currentColor;
+  position: absolute;
+  bottom: 3px;
+}
+
+.win98-button--maximize-icon {
+  width: 16px;
+  height: 14px;
+  padding: 0;
+}
+
+.win98-button--maximize-icon::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-bottom-width: 2px;
+  position: absolute;
+}
+
+/* Menu separator button */
+.win98-button--separator {
+  background: none;
+  border: none;
+  height: 1px;
+  margin: var(--win98-spacing-1) 0;
+  padding: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+.win98-button--separator::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    var(--win98-control-dark) 0%, 
+    var(--win98-control-dark) 50%, 
+    var(--win98-control-light) 50%, 
+    var(--win98-control-light) 100%);
+}
+
+/* Group box button */
+.win98-button--group-box {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  cursor: default;
+  user-select: none;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .win98-button--progress::before {
+    transition: none;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .win98-radio__indicator,
+  .win98-checkbox__indicator {
+    border-width: 2px;
+  }
+  
+  .win98-toolbar-button:hover,
+  .win98-toolbar-button:active {
+    border-width: 2px;
+  }
+}

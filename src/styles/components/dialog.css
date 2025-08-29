@@ -1,0 +1,485 @@
+/* Windows 98 Dialog Component */
+
+.win98-dialog {
+  position: fixed;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-left: var(--win98-border-width-thick) solid var(--win98-control-light);
+  border-right: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width-thick) solid var(--win98-control-dark);
+  min-width: 200px;
+  min-height: 100px;
+  max-width: 90vw;
+  max-height: 90vh;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  display: none;
+  flex-direction: column;
+  z-index: var(--win98-z-modal);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.win98-dialog--open {
+  display: flex;
+}
+
+/* Dialog titlebar */
+.win98-dialog__titlebar {
+  background: linear-gradient(90deg, var(--win98-active-title) 0%, #4a90e2 100%);
+  color: var(--win98-title-text);
+  height: var(--win98-titlebar-height);
+  display: flex;
+  align-items: center;
+  padding: var(--win98-spacing-1) var(--win98-spacing-2);
+  user-select: none;
+  font-size: var(--win98-font-size-dialog-title);
+  font-weight: var(--win98-font-weight-bold);
+  cursor: move;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.win98-dialog__titlebar--inactive {
+  background-color: var(--win98-inactive-title);
+}
+
+/* Dialog icon */
+.win98-dialog__icon {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  margin-right: var(--win98-spacing-2);
+  flex-shrink: 0;
+}
+
+/* Dialog title */
+.win98-dialog__title {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  font-size: var(--win98-font-size-dialog-title);
+  font-weight: var(--win98-font-weight-bold);
+}
+
+/* Dialog close button */
+.win98-dialog__close {
+  width: 16px;
+  height: 14px;
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  color: var(--win98-window-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: bold;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.win98-dialog__close::after {
+  content: '×';
+  line-height: 1;
+}
+
+.win98-dialog__close:hover {
+  background-color: var(--win98-hover-background);
+}
+
+.win98-dialog__close:active {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+.win98-dialog__close:focus {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+/* Dialog content area */
+.win98-dialog__content {
+  background-color: var(--win98-control-face);
+  flex: 1;
+  padding: var(--win98-spacing-md);
+  overflow: auto;
+  color: var(--win98-window-text);
+  line-height: var(--win98-line-height-normal);
+}
+
+/* Dialog content without padding */
+.win98-dialog__content--no-padding {
+  padding: 0;
+}
+
+/* Dialog message content */
+.win98-dialog__message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--win98-spacing-md);
+  margin-bottom: var(--win98-spacing-lg);
+}
+
+.win98-dialog__message-icon {
+  width: var(--win98-icon-size-large);
+  height: var(--win98-icon-size-large);
+  flex-shrink: 0;
+  margin-top: var(--win98-spacing-1);
+}
+
+.win98-dialog__message-text {
+  flex: 1;
+  color: var(--win98-window-text);
+  line-height: var(--win98-line-height-normal);
+}
+
+/* Dialog button area */
+.win98-dialog__buttons {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: var(--win98-spacing-md);
+  display: flex;
+  gap: var(--win98-spacing-md);
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.win98-dialog__buttons--center {
+  justify-content: center;
+}
+
+.win98-dialog__buttons--left {
+  justify-content: flex-start;
+}
+
+.win98-dialog__buttons--space-between {
+  justify-content: space-between;
+}
+
+/* Dialog sizes */
+.win98-dialog--small {
+  min-width: 150px;
+  min-height: 80px;
+}
+
+.win98-dialog--medium {
+  min-width: 300px;
+  min-height: 150px;
+}
+
+.win98-dialog--large {
+  min-width: 500px;
+  min-height: 300px;
+}
+
+.win98-dialog--full-width {
+  width: 90vw;
+}
+
+.win98-dialog--full-height {
+  height: 90vh;
+}
+
+/* Dialog positioning */
+.win98-dialog--center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.win98-dialog--top {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.win98-dialog--top-left {
+  top: 20px;
+  left: 20px;
+  transform: none;
+}
+
+.win98-dialog--top-right {
+  top: 20px;
+  right: 20px;
+  transform: none;
+}
+
+/* Dialog states */
+.win98-dialog--maximized {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  transform: none;
+}
+
+.win98-dialog--minimized {
+  display: none;
+}
+
+.win98-dialog--resizable {
+  resize: both;
+  overflow: hidden;
+  min-width: 200px;
+  min-height: 100px;
+}
+
+/* Dialog modality */
+.win98-dialog--modal {
+  /* Modal dialogs should have backdrop */
+}
+
+.win98-dialog--modeless {
+  /* Modeless dialogs can be interacted with while open */
+}
+
+/* Dialog animation states */
+.win98-dialog--fade-in {
+  animation: win98-dialog-fade-in 0.2s ease-out;
+}
+
+.win98-dialog--fade-out {
+  animation: win98-dialog-fade-out 0.2s ease-in forwards;
+}
+
+@keyframes win98-dialog-fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes win98-dialog-fade-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
+
+/* Dialog resize handles */
+.win98-dialog__resize-handle {
+  position: absolute;
+  background-color: transparent;
+}
+
+.win98-dialog__resize-handle--n {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  cursor: n-resize;
+}
+
+.win98-dialog__resize-handle--s {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  cursor: s-resize;
+}
+
+.win98-dialog__resize-handle--e {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: e-resize;
+}
+
+.win98-dialog__resize-handle--w {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  cursor: w-resize;
+}
+
+.win98-dialog__resize-handle--ne {
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  cursor: ne-resize;
+}
+
+.win98-dialog__resize-handle--nw {
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  cursor: nw-resize;
+}
+
+.win98-dialog__resize-handle--se {
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  cursor: se-resize;
+  background-image: var(--win98-bg-resize-handle);
+}
+
+.win98-dialog__resize-handle--sw {
+  bottom: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  cursor: sw-resize;
+}
+
+/* Dialog form layouts */
+.win98-dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win98-spacing-md);
+}
+
+.win98-dialog__form-row {
+  display: flex;
+  align-items: center;
+  gap: var(--win98-spacing-md);
+}
+
+.win98-dialog__form-row--vertical {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--win98-spacing-sm);
+}
+
+/* Dialog input groups */
+.win98-dialog__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--win98-spacing-sm);
+  flex: 1;
+}
+
+.win98-dialog__input-group--horizontal {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Dialog tabs */
+.win98-dialog__tabs {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.win98-dialog__tab-content {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  padding: var(--win98-spacing-md);
+  flex: 1;
+}
+
+/* Dialog accessibility */
+.win98-dialog[aria-hidden="true"] {
+  display: none;
+}
+
+.win98-dialog:focus {
+  outline: none;
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .win98-dialog {
+    border-width: 3px;
+  }
+  
+  .win98-dialog__close {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-dialog--fade-in,
+  .win98-dialog--fade-out {
+    animation: none;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .win98-dialog {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+  
+  .win98-dialog--center {
+    top: 2.5vh;
+    left: 2.5vw;
+    right: 2.5vw;
+    bottom: 2.5vh;
+    transform: none;
+    width: auto;
+    height: auto;
+  }
+  
+  .win98-dialog__content {
+    padding: var(--win98-spacing-sm);
+  }
+  
+  .win98-dialog__buttons {
+    flex-direction: column;
+    gap: var(--win98-spacing-sm);
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-dialog {
+    position: static !important;
+    background: white !important;
+    border: 2px solid black !important;
+    box-shadow: none !important;
+    display: block !important;
+    transform: none !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin-bottom: 20px;
+  }
+  
+  .win98-dialog__titlebar {
+    background: white !important;
+    color: black !important;
+    border-bottom: 1px solid black;
+  }
+  
+  .win98-dialog__close {
+    display: none !important;
+  }
+  
+  .win98-dialog__content {
+    background: white !important;
+    color: black !important;
+  }
+}

@@ -1,0 +1,410 @@
+/* Windows 98 Scrollable Containers */
+
+/* Base Scrollable Container */
+.win98-scroll-container {
+  overflow: auto;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  color: var(--win98-window-text);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Apply Windows 98 scrollbar styling */
+.win98-scroll-container::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background-color: var(--win98-control-face);
+}
+
+.win98-scroll-container::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  min-height: 16px;
+  min-width: 16px;
+}
+
+.win98-scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--win98-control-light);
+}
+
+.win98-scroll-container::-webkit-scrollbar-thumb:active {
+  background-color: var(--win98-control-dark);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-scroll-container::-webkit-scrollbar-corner {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+}
+
+/* Scrollbar Buttons */
+.win98-scroll-container::-webkit-scrollbar-button {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.win98-scroll-container::-webkit-scrollbar-button:hover {
+  background-color: var(--win98-control-light);
+}
+
+.win98-scroll-container::-webkit-scrollbar-button:active {
+  background-color: var(--win98-control-dark);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+/* Container Variants */
+.win98-scroll-container--vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.win98-scroll-container--horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.win98-scroll-container--no-scrollbar {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.win98-scroll-container--no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Content Area */
+.win98-scroll-content {
+  padding: 8px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.win98-scroll-content--no-padding {
+  padding: 0;
+}
+
+.win98-scroll-content--small-padding {
+  padding: 4px;
+}
+
+.win98-scroll-content--large-padding {
+  padding: 12px;
+}
+
+/* Scroll Position Indicators */
+.win98-scroll-container--with-indicators {
+  position: relative;
+}
+
+.win98-scroll-indicator {
+  position: absolute;
+  background-color: var(--win98-control-face);
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+  padding: 2px 4px;
+  font-size: 10px;
+  line-height: 1;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.win98-scroll-container--with-indicators.win98-scroll-container--scrolling .win98-scroll-indicator {
+  opacity: 1;
+}
+
+.win98-scroll-indicator--top {
+  top: 4px;
+  right: 20px;
+}
+
+.win98-scroll-indicator--bottom {
+  bottom: 4px;
+  right: 20px;
+}
+
+.win98-scroll-indicator--left {
+  left: 4px;
+  bottom: 20px;
+}
+
+.win98-scroll-indicator--right {
+  right: 4px;
+  bottom: 20px;
+}
+
+/* List Container */
+.win98-list-container {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  overflow: auto;
+  max-height: 200px;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  color: var(--win98-window-text);
+  box-sizing: border-box;
+}
+
+.win98-list-container::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-list-container::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-list-container::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+}
+
+.win98-list-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--win98-control-light);
+}
+
+/* Text Area Container */
+.win98-textarea-container {
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  overflow: auto;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size);
+  color: var(--win98-window-text);
+  box-sizing: border-box;
+  resize: both;
+  min-height: 100px;
+  min-width: 200px;
+}
+
+.win98-textarea-container::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+.win98-textarea-container::-webkit-scrollbar-track {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+}
+
+.win98-textarea-container::-webkit-scrollbar-thumb {
+  background-color: var(--win98-control-face);
+  border-top: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark-dark);
+}
+
+/* Virtualized Container */
+.win98-virtual-container {
+  overflow: auto;
+  background-color: var(--win98-window-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light-light);
+  position: relative;
+}
+
+.win98-virtual-container__viewport {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.win98-virtual-container__content {
+  position: relative;
+  transform-origin: top left;
+}
+
+/* Smooth Scrolling */
+.win98-scroll-container--smooth {
+  scroll-behavior: smooth;
+}
+
+/* Snap Scrolling */
+.win98-scroll-container--snap-y {
+  scroll-snap-type: y mandatory;
+}
+
+.win98-scroll-container--snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.win98-scroll-snap-item {
+  scroll-snap-align: start;
+}
+
+.win98-scroll-snap-item--center {
+  scroll-snap-align: center;
+}
+
+.win98-scroll-snap-item--end {
+  scroll-snap-align: end;
+}
+
+/* Overflow Handling */
+.win98-overflow-hidden {
+  overflow: hidden;
+}
+
+.win98-overflow-visible {
+  overflow: visible;
+}
+
+.win98-overflow-auto {
+  overflow: auto;
+}
+
+.win98-overflow-scroll {
+  overflow: scroll;
+}
+
+/* Size Variants */
+.win98-scroll-container--small {
+  max-height: 100px;
+}
+
+.win98-scroll-container--medium {
+  max-height: 200px;
+}
+
+.win98-scroll-container--large {
+  max-height: 400px;
+}
+
+.win98-scroll-container--full-height {
+  height: 100%;
+  max-height: none;
+}
+
+/* Focus Management */
+.win98-scroll-container:focus-visible {
+  outline: 1px dotted var(--win98-window-text);
+  outline-offset: -3px;
+}
+
+/* Accessibility */
+.win98-scroll-container[aria-label]::before {
+  content: attr(aria-label);
+  position: absolute;
+  top: -999px;
+  left: -999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .win98-scroll-container,
+  .win98-list-container,
+  .win98-textarea-container {
+    border-color: currentColor;
+  }
+  
+  .win98-scroll-container::-webkit-scrollbar-track,
+  .win98-scroll-container::-webkit-scrollbar-thumb,
+  .win98-scroll-container::-webkit-scrollbar-button {
+    border-color: currentColor;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .win98-scroll-container--smooth {
+    scroll-behavior: auto;
+  }
+  
+  .win98-scroll-indicator {
+    transition: none;
+  }
+}
+
+/* Touch Device Adjustments */
+@media (pointer: coarse) {
+  .win98-scroll-container::-webkit-scrollbar {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .win98-scroll-container::-webkit-scrollbar-button {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .win98-scroll-container,
+  .win98-list-container,
+  .win98-textarea-container {
+    overflow: visible;
+    max-height: none;
+    border: 1px solid #000;
+  }
+  
+  .win98-scroll-indicator {
+    display: none;
+  }
+}
+
+/* Dark Mode Support (if theme variables support it) */
+@media (prefers-color-scheme: dark) {
+  .win98-scroll-container,
+  .win98-list-container,
+  .win98-textarea-container {
+    /* Windows 98 typically didn't have dark mode, but this allows for theme extension */
+    background-color: var(--win98-window-background);
+    color: var(--win98-window-text);
+  }
+}

@@ -1,0 +1,326 @@
+/* Windows 98 Menu Bar Component */
+
+.win98-menubar {
+  background-color: var(--win98-control-face);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  display: flex;
+  align-items: center;
+  height: var(--win98-menu-height);
+  padding: 0;
+  margin: 0;
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  color: var(--win98-window-text);
+  user-select: none;
+  position: relative;
+  z-index: var(--win98-z-dropdown);
+}
+
+/* Menu bar items */
+.win98-menubar__item {
+  background-color: transparent;
+  border: none;
+  color: var(--win98-window-text);
+  font-family: var(--win98-font-family);
+  font-size: var(--win98-font-size-normal);
+  font-weight: var(--win98-font-weight-normal);
+  padding: var(--win98-spacing-1) var(--win98-spacing-4);
+  height: calc(var(--win98-menu-height) - 2px);
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: var(--win98-spacing-2);
+  position: relative;
+  margin: 1px 0;
+}
+
+/* Menu item hover state */
+.win98-menubar__item:hover {
+  background-color: var(--win98-menu-hover);
+  color: var(--win98-menu-hover-text);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+  margin: 0;
+}
+
+/* Menu item active/pressed state */
+.win98-menubar__item:active,
+.win98-menubar__item--active {
+  background-color: var(--win98-pressed-background);
+  color: var(--win98-window-text);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+  margin: 0;
+}
+
+/* Menu item focus state */
+.win98-menubar__item:focus,
+.win98-menubar__item:focus-visible {
+  outline: var(--win98-focus-outline);
+  outline-offset: var(--win98-focus-outline-offset);
+}
+
+/* Disabled menu item */
+.win98-menubar__item:disabled,
+.win98-menubar__item--disabled {
+  color: var(--win98-disabled-text);
+  cursor: not-allowed;
+  background-color: transparent;
+  border: none;
+  margin: 1px 0;
+}
+
+.win98-menubar__item--disabled:hover {
+  background-color: transparent;
+  color: var(--win98-disabled-text);
+  border: none;
+  margin: 1px 0;
+}
+
+/* Menu item with icon */
+.win98-menubar__item-icon {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  flex-shrink: 0;
+}
+
+/* Menu item text */
+.win98-menubar__item-text {
+  flex: 1;
+}
+
+/* Menu item with keyboard shortcut */
+.win98-menubar__item-shortcut {
+  font-size: var(--win98-font-size-small);
+  color: var(--win98-disabled-text);
+  margin-left: var(--win98-spacing-lg);
+}
+
+.win98-menubar__item:hover .win98-menubar__item-shortcut {
+  color: var(--win98-menu-hover-text);
+}
+
+/* Menu item with submenu indicator */
+.win98-menubar__item--has-submenu::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 4px solid currentColor;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  margin-left: var(--win98-spacing-sm);
+}
+
+/* Keyboard navigation support */
+.win98-menubar__item[data-key]::before {
+  content: attr(data-key);
+  position: absolute;
+  left: var(--win98-spacing-2);
+  text-decoration: underline;
+  font-weight: var(--win98-font-weight-bold);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.win98-menubar--show-keys .win98-menubar__item[data-key]::before {
+  opacity: 1;
+}
+
+.win98-menubar--show-keys .win98-menubar__item[data-key] .win98-menubar__item-text {
+  margin-left: 12px;
+}
+
+/* Menu bar with system menu */
+.win98-menubar--with-system-menu {
+  padding-left: var(--win98-spacing-sm);
+}
+
+/* System menu button */
+.win98-menubar__system-menu {
+  width: var(--win98-icon-size-small);
+  height: var(--win98-icon-size-small);
+  background-color: transparent;
+  border: none;
+  margin-right: var(--win98-spacing-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win98-menubar__system-menu:hover {
+  background-color: var(--win98-hover-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-light);
+  border-left: var(--win98-border-width) solid var(--win98-control-light);
+  border-right: var(--win98-border-width) solid var(--win98-control-dark);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+.win98-menubar__system-menu:active {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: var(--win98-border-width) solid var(--win98-control-light);
+}
+
+/* Menu bar separators */
+.win98-menubar__separator {
+  width: 1px;
+  height: calc(var(--win98-menu-height) - 4px);
+  background-color: var(--win98-control-dark);
+  margin: 2px var(--win98-spacing-sm);
+  flex-shrink: 0;
+}
+
+.win98-menubar__separator::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: var(--win98-control-light);
+  margin-left: 1px;
+}
+
+/* Menu bar sizes */
+.win98-menubar--small {
+  height: 16px;
+  font-size: var(--win98-font-size-small);
+}
+
+.win98-menubar--small .win98-menubar__item {
+  height: 14px;
+  padding: 1px var(--win98-spacing-2);
+}
+
+.win98-menubar--large {
+  height: 24px;
+  font-size: var(--win98-font-size-large);
+}
+
+.win98-menubar--large .win98-menubar__item {
+  height: 22px;
+  padding: var(--win98-spacing-2) var(--win98-spacing-6);
+}
+
+/* Menu bar styles */
+.win98-menubar--flat {
+  border: none;
+  background-color: var(--win98-window-background);
+}
+
+.win98-menubar--flat .win98-menubar__item:hover {
+  border: var(--win98-border-width) solid var(--win98-control-dark);
+}
+
+/* MDI menu bar */
+.win98-menubar--mdi {
+  background-color: var(--win98-active-title);
+  color: var(--win98-title-text);
+  border-bottom: none;
+}
+
+.win98-menubar--mdi .win98-menubar__item {
+  color: var(--win98-title-text);
+}
+
+.win98-menubar--mdi .win98-menubar__item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--win98-title-text);
+  border: var(--win98-border-width) solid rgba(255, 255, 255, 0.3);
+}
+
+/* Menu bar dropdown state */
+.win98-menubar__item--dropdown-open {
+  background-color: var(--win98-pressed-background);
+  border-top: var(--win98-border-width) solid var(--win98-control-dark);
+  border-left: var(--win98-border-width) solid var(--win98-control-dark);
+  border-right: var(--win98-border-width) solid var(--win98-control-light);
+  border-bottom: none;
+  margin: 0;
+  margin-bottom: 1px;
+}
+
+/* Menu bar alignment */
+.win98-menubar--left {
+  justify-content: flex-start;
+}
+
+.win98-menubar--center {
+  justify-content: center;
+}
+
+.win98-menubar--right {
+  justify-content: flex-end;
+}
+
+.win98-menubar--space-between {
+  justify-content: space-between;
+}
+
+/* Menu bar groups */
+.win98-menubar__group {
+  display: flex;
+  align-items: center;
+  margin: 0 var(--win98-spacing-sm);
+}
+
+.win98-menubar__group:first-child {
+  margin-left: 0;
+}
+
+.win98-menubar__group:last-child {
+  margin-right: 0;
+}
+
+/* Context sensitivity */
+.win98-menubar--context-sensitive .win98-menubar__item[data-context]:not([data-context*="current"]) {
+  display: none;
+}
+
+/* Accessibility improvements */
+.win98-menubar[role="menubar"] {
+  /* Already properly structured */
+}
+
+.win98-menubar__item[role="menuitem"] {
+  /* Already properly structured */
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .win98-menubar {
+    border-bottom-width: 2px;
+  }
+  
+  .win98-menubar__item:hover,
+  .win98-menubar__item:active {
+    border-width: 2px;
+  }
+  
+  .win98-menubar__separator {
+    width: 2px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .win98-menubar {
+    background: white !important;
+    border-bottom: 1px solid black !important;
+  }
+  
+  .win98-menubar__item {
+    color: black !important;
+  }
+  
+  .win98-menubar__separator {
+    background: black !important;
+  }
+}
