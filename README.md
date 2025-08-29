@@ -6,8 +6,6 @@
 [![CSS](https://img.shields.io/badge/CSS-3-1572B6?logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
 [![HTML](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white)](https://html.spec.whatwg.org/)
 [![Windows 98](https://img.shields.io/badge/Windows-98-008080?logo=windows&logoColor=white)](https://en.wikipedia.org/wiki/Windows_98)
-[![Retro](https://img.shields.io/badge/Style-Retro-purple)](https://github.com/topics/retro)
-[![Component Library](https://img.shields.io/badge/Type-Component%20Library-orange)](https://github.com/topics/component-library)
 
 A comprehensive HTML/CSS UI kit that faithfully recreates the iconic Windows 98 aesthetic. Build nostalgic web applications with authentic retro styling and pixel-perfect components.
 
